@@ -1,0 +1,41 @@
+Detecting C compiler ABI info failed to compile with the following output:
+Change Dir: G:/code/C or C++/little-task/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):nmake -f Makefile /nologo cmTC_9ff00\fast && 	G:\2019\VC\Tools\MSVC\14.29.30133\bin\HostX86\x86\nmake.exe  -f CMakeFiles\cmTC_9ff00.dir\build.make /nologo -L                  CMakeFiles\cmTC_9ff00.dir\build
+Building C object CMakeFiles/cmTC_9ff00.dir/CMakeCCompilerABI.c.obj
+	"G:\IDE\Clion\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\cmTC_9ff00.dir\CMakeCCompilerABI.c.obj.d --working-dir="G:\code\C or C++\little-task\cmake-build-debug\CMakeFiles\CMakeTmp" --filter-prefix="" -- G:\2019\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe @C:\Users\lenovo\AppData\Local\Temp\nm397E.tmp
+NMAKE : fatal error U1077: “"G:\IDE\Clion\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe"”: 返回代码“0xc0000409”
+Stop.
+NMAKE : fatal error U1077: “G:\2019\VC\Tools\MSVC\14.29.30133\bin\HostX86\x86\nmake.exe”: 返回代码“0x2”
+Stop.
+
+
+
+
+Detecting CXX compiler ABI info failed to compile with the following output:
+Change Dir: G:/code/C or C++/little-task/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):nmake -f Makefile /nologo cmTC_aa6c5\fast && 	G:\2019\VC\Tools\MSVC\14.29.30133\bin\HostX86\x86\nmake.exe  -f CMakeFiles\cmTC_aa6c5.dir\build.make /nologo -L                  CMakeFiles\cmTC_aa6c5.dir\build
+Building CXX object CMakeFiles/cmTC_aa6c5.dir/CMakeCXXCompilerABI.cpp.obj
+	"G:\IDE\Clion\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\cmTC_aa6c5.dir\CMakeCXXCompilerABI.cpp.obj.d --working-dir="G:\code\C or C++\little-task\cmake-build-debug\CMakeFiles\CMakeTmp" --filter-prefix="" -- G:\2019\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe @C:\Users\lenovo\AppData\Local\Temp\nm4005.tmp
+NMAKE : fatal error U1077: “"G:\IDE\Clion\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe"”: 返回代码“0xc0000409”
+Stop.
+NMAKE : fatal error U1077: “G:\2019\VC\Tools\MSVC\14.29.30133\bin\HostX86\x86\nmake.exe”: 返回代码“0x2”
+Stop.
+
+
+
+
+Determining if the include file pthread.h exists failed with the following output:
+Change Dir: G:/code/C or C++/little-task/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):nmake -f Makefile /nologo cmTC_c509f\fast && 	G:\2019\VC\Tools\MSVC\14.29.30133\bin\HostX86\x86\nmake.exe  -f CMakeFiles\cmTC_c509f.dir\build.make /nologo -L                  CMakeFiles\cmTC_c509f.dir\build
+Building C object CMakeFiles/cmTC_c509f.dir/CheckIncludeFile.c.obj
+	"G:\IDE\Clion\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\cmTC_c509f.dir\CheckIncludeFile.c.obj.d --working-dir="G:\code\C or C++\little-task\cmake-build-debug\CMakeFiles\CMakeTmp" --filter-prefix="" -- G:\2019\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe @C:\Users\lenovo\AppData\Local\Temp\nm9139.tmp
+NMAKE : fatal error U1077: “"G:\IDE\Clion\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe"”: 返回代码“0xc0000409”
+Stop.
+NMAKE : fatal error U1077: “G:\2019\VC\Tools\MSVC\14.29.30133\bin\HostX86\x86\nmake.exe”: 返回代码“0x2”
+Stop.
+
+
+

@@ -1,0 +1,3 @@
+G:/code/C or C++/little-task/cmake-build-debug/CMakeFiles/little_task.dir
+G:/code/C or C++/little-task/cmake-build-debug/CMakeFiles/edit_cache.dir
+G:/code/C or C++/little-task/cmake-build-debug/CMakeFiles/rebuild_cache.dir
