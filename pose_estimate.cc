@@ -12,7 +12,7 @@ bool pose_estimate::PnPCeres::operator()(const T *const camera,
   point[0] = T(_xyz.x);
   point[1] = T(_xyz.y);
   point[2] = T(_xyz.z);
-  AngleAxisRotatePoint(camera, point, p);  //计算RP
+  ceres::AngleAxisRotatePoint(camera, point, p);  //计算RP
   p[0] += camera[3];
   p[1] += camera[4];
   p[2] += camera[5];
