@@ -55,54 +55,54 @@ include CMakeFiles\little_task.dir\progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles\little_task.dir\flags.make
 
-CMakeFiles\little_task.dir\main.cpp.obj: CMakeFiles\little_task.dir\flags.make
-CMakeFiles\little_task.dir\main.cpp.obj: ..\main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="G:\code\C or C++\little-task\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/little_task.dir/main.cpp.obj"
+CMakeFiles\little_task.dir\main.cc.obj: CMakeFiles\little_task.dir\flags.make
+CMakeFiles\little_task.dir\main.cc.obj: ..\main.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="G:\code\C or C++\little-task\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/little_task.dir/main.cc.obj"
 	G:\2019\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\little_task.dir\main.cpp.obj /FdCMakeFiles\little_task.dir\ /FS -c "G:\code\C or C++\little-task\main.cpp"
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\little_task.dir\main.cc.obj /FdCMakeFiles\little_task.dir\ /FS -c "G:\code\C or C++\little-task\main.cc"
 <<
 
-CMakeFiles\little_task.dir\main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/little_task.dir/main.cpp.i"
-	G:\2019\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe > CMakeFiles\little_task.dir\main.cpp.i @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "G:\code\C or C++\little-task\main.cpp"
+CMakeFiles\little_task.dir\main.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/little_task.dir/main.cc.i"
+	G:\2019\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe > CMakeFiles\little_task.dir\main.cc.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "G:\code\C or C++\little-task\main.cc"
 <<
 
-CMakeFiles\little_task.dir\main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/little_task.dir/main.cpp.s"
+CMakeFiles\little_task.dir\main.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/little_task.dir/main.cc.s"
 	G:\2019\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\little_task.dir\main.cpp.s /c "G:\code\C or C++\little-task\main.cpp"
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\little_task.dir\main.cc.s /c "G:\code\C or C++\little-task\main.cc"
 <<
 
-CMakeFiles\little_task.dir\featurePoints\detectPoints.cpp.obj: CMakeFiles\little_task.dir\flags.make
-CMakeFiles\little_task.dir\featurePoints\detectPoints.cpp.obj: ..\featurePoints\detectPoints.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="G:\code\C or C++\little-task\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/little_task.dir/featurePoints/detectPoints.cpp.obj"
+CMakeFiles\little_task.dir\featurePoints\detectPoints.cc.obj: CMakeFiles\little_task.dir\flags.make
+CMakeFiles\little_task.dir\featurePoints\detectPoints.cc.obj: ..\featurePoints\detectPoints.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="G:\code\C or C++\little-task\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/little_task.dir/featurePoints/detectPoints.cc.obj"
 	G:\2019\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\little_task.dir\featurePoints\detectPoints.cpp.obj /FdCMakeFiles\little_task.dir\ /FS -c "G:\code\C or C++\little-task\featurePoints\detectPoints.cpp"
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\little_task.dir\featurePoints\detectPoints.cc.obj /FdCMakeFiles\little_task.dir\ /FS -c "G:\code\C or C++\little-task\featurePoints\detectPoints.cc"
 <<
 
-CMakeFiles\little_task.dir\featurePoints\detectPoints.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/little_task.dir/featurePoints/detectPoints.cpp.i"
-	G:\2019\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe > CMakeFiles\little_task.dir\featurePoints\detectPoints.cpp.i @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "G:\code\C or C++\little-task\featurePoints\detectPoints.cpp"
+CMakeFiles\little_task.dir\featurePoints\detectPoints.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/little_task.dir/featurePoints/detectPoints.cc.i"
+	G:\2019\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe > CMakeFiles\little_task.dir\featurePoints\detectPoints.cc.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "G:\code\C or C++\little-task\featurePoints\detectPoints.cc"
 <<
 
-CMakeFiles\little_task.dir\featurePoints\detectPoints.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/little_task.dir/featurePoints/detectPoints.cpp.s"
+CMakeFiles\little_task.dir\featurePoints\detectPoints.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/little_task.dir/featurePoints/detectPoints.cc.s"
 	G:\2019\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\little_task.dir\featurePoints\detectPoints.cpp.s /c "G:\code\C or C++\little-task\featurePoints\detectPoints.cpp"
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\little_task.dir\featurePoints\detectPoints.cc.s /c "G:\code\C or C++\little-task\featurePoints\detectPoints.cc"
 <<
 
 # Object files for target little_task
 little_task_OBJECTS = \
-"CMakeFiles\little_task.dir\main.cpp.obj" \
-"CMakeFiles\little_task.dir\featurePoints\detectPoints.cpp.obj"
+"CMakeFiles\little_task.dir\main.cc.obj" \
+"CMakeFiles\little_task.dir\featurePoints\detectPoints.cc.obj"
 
 # External object files for target little_task
 little_task_EXTERNAL_OBJECTS =
 
-little_task.exe: CMakeFiles\little_task.dir\main.cpp.obj
-little_task.exe: CMakeFiles\little_task.dir\featurePoints\detectPoints.cpp.obj
+little_task.exe: CMakeFiles\little_task.dir\main.cc.obj
+little_task.exe: CMakeFiles\little_task.dir\featurePoints\detectPoints.cc.obj
 little_task.exe: CMakeFiles\little_task.dir\build.make
 little_task.exe: E:\src\vcpkg\installed\x86-windows\debug\lib\opencv_highguid.lib
 little_task.exe: E:\src\vcpkg\installed\x86-windows\debug\lib\opencv_mld.lib

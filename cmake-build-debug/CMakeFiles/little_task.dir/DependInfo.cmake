@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "G:/code/C or C++/little-task/featurePoints/detectPoints.cpp" "G:/code/C or C++/little-task/cmake-build-debug/CMakeFiles/little_task.dir/featurePoints/detectPoints.cpp.obj"
-  "G:/code/C or C++/little-task/main.cpp" "G:/code/C or C++/little-task/cmake-build-debug/CMakeFiles/little_task.dir/main.cpp.obj"
+  "G:/code/C or C++/little-task/featurePoints/detectPoints.cc" "G:/code/C or C++/little-task/cmake-build-debug/CMakeFiles/little_task.dir/featurePoints/detectPoints.cc.obj"
+  "G:/code/C or C++/little-task/main.cc" "G:/code/C or C++/little-task/cmake-build-debug/CMakeFiles/little_task.dir/main.cc.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "MSVC")
 

@@ -9,7 +9,7 @@ find_package(Eigen3 CONFIG REQUIRED)
 find_package(g2o CONFIG REQUIRED)
 include_directories(${OpenCV_INCLUDE_DIRS})
 
-add_executable(little_task main.cpp featurePoints/detectPoints.cpp featurePoints/detectPoints.h)
+add_executable(little_task main.cc featurePoints/detectPoints.cc featurePoints/detectPoints.h)
 
 target_link_libraries(little_task
                         ${OpenCV_LIBS}

@@ -98,13 +98,13 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="G:/code/C or C++/little-task/featurePoints/detectPoints.cpp">
+		<Unit filename="G:/code/C or C++/little-task/featurePoints/detectPoints.cc">
 			<Option target="little_task"/>
 		</Unit>
 		<Unit filename="G:/code/C or C++/little-task/featurePoints/detectPoints.h">
 			<Option target="little_task"/>
 		</Unit>
-		<Unit filename="G:/code/C or C++/little-task/main.cpp">
+		<Unit filename="G:/code/C or C++/little-task/main.cc">
 			<Option target="little_task"/>
 		</Unit>
 		<Unit filename="G:/code/C or C++/little-task/CMakeLists.txt">

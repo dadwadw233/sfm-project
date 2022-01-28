@@ -118,53 +118,53 @@ little_task\fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\little_task.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\little_task.dir\build
 .PHONY : little_task\fast
 
-featurePoints\detectPoints.obj: featurePoints\detectPoints.cpp.obj
+featurePoints\detectPoints.obj: featurePoints\detectPoints.cc.obj
 .PHONY : featurePoints\detectPoints.obj
 
 # target to build an object file
-featurePoints\detectPoints.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\little_task.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\little_task.dir\featurePoints\detectPoints.cpp.obj
-.PHONY : featurePoints\detectPoints.cpp.obj
+featurePoints\detectPoints.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\little_task.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\little_task.dir\featurePoints\detectPoints.cc.obj
+.PHONY : featurePoints\detectPoints.cc.obj
 
-featurePoints\detectPoints.i: featurePoints\detectPoints.cpp.i
+featurePoints\detectPoints.i: featurePoints\detectPoints.cc.i
 .PHONY : featurePoints\detectPoints.i
 
 # target to preprocess a source file
-featurePoints\detectPoints.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\little_task.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\little_task.dir\featurePoints\detectPoints.cpp.i
-.PHONY : featurePoints\detectPoints.cpp.i
+featurePoints\detectPoints.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\little_task.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\little_task.dir\featurePoints\detectPoints.cc.i
+.PHONY : featurePoints\detectPoints.cc.i
 
-featurePoints\detectPoints.s: featurePoints\detectPoints.cpp.s
+featurePoints\detectPoints.s: featurePoints\detectPoints.cc.s
 .PHONY : featurePoints\detectPoints.s
 
 # target to generate assembly for a file
-featurePoints\detectPoints.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\little_task.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\little_task.dir\featurePoints\detectPoints.cpp.s
-.PHONY : featurePoints\detectPoints.cpp.s
+featurePoints\detectPoints.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\little_task.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\little_task.dir\featurePoints\detectPoints.cc.s
+.PHONY : featurePoints\detectPoints.cc.s
 
-main.obj: main.cpp.obj
+main.obj: main.cc.obj
 .PHONY : main.obj
 
 # target to build an object file
-main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\little_task.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\little_task.dir\main.cpp.obj
-.PHONY : main.cpp.obj
+main.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\little_task.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\little_task.dir\main.cc.obj
+.PHONY : main.cc.obj
 
-main.i: main.cpp.i
+main.i: main.cc.i
 .PHONY : main.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\little_task.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\little_task.dir\main.cpp.i
-.PHONY : main.cpp.i
+main.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\little_task.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\little_task.dir\main.cc.i
+.PHONY : main.cc.i
 
-main.s: main.cpp.s
+main.s: main.cc.s
 .PHONY : main.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\little_task.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\little_task.dir\main.cpp.s
-.PHONY : main.cpp.s
+main.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\little_task.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\little_task.dir\main.cc.s
+.PHONY : main.cc.s
 
 # Help Target
 help:

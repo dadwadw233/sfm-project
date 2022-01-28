@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/little_task.dir/featurePoints/detectPoints.cpp.obj"
-  "CMakeFiles/little_task.dir/main.cpp.obj"
+  "CMakeFiles/little_task.dir/featurePoints/detectPoints.cc.obj"
+  "CMakeFiles/little_task.dir/main.cc.obj"
   "little_task.exe"
   "little_task.exe.manifest"
   "little_task.lib"
