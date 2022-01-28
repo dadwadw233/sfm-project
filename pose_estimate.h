@@ -7,7 +7,6 @@
 #include <ceres/ceres.h>
 #include <iostream>
 #include <opencv2/opencv.hpp>
-#include <ceres/rotation.h>
 namespace sfmProject {
 class pose_estimate {
  private:
