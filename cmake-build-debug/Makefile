@@ -118,29 +118,29 @@ sfm_project\fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\sfm_project.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\sfm_project.dir\build
 .PHONY : sfm_project\fast
 
-featurePoints\detectPoints.obj: featurePoints\detectPoints.cc.obj
-.PHONY : featurePoints\detectPoints.obj
+feature_points\detect_points.obj: feature_points\detect_points.cc.obj
+.PHONY : feature_points\detect_points.obj
 
 # target to build an object file
-featurePoints\detectPoints.cc.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sfm_project.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\sfm_project.dir\featurePoints\detectPoints.cc.obj
-.PHONY : featurePoints\detectPoints.cc.obj
+feature_points\detect_points.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sfm_project.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\sfm_project.dir\feature_points\detect_points.cc.obj
+.PHONY : feature_points\detect_points.cc.obj
 
-featurePoints\detectPoints.i: featurePoints\detectPoints.cc.i
-.PHONY : featurePoints\detectPoints.i
+feature_points\detect_points.i: feature_points\detect_points.cc.i
+.PHONY : feature_points\detect_points.i
 
 # target to preprocess a source file
-featurePoints\detectPoints.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sfm_project.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\sfm_project.dir\featurePoints\detectPoints.cc.i
-.PHONY : featurePoints\detectPoints.cc.i
+feature_points\detect_points.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sfm_project.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\sfm_project.dir\feature_points\detect_points.cc.i
+.PHONY : feature_points\detect_points.cc.i
 
-featurePoints\detectPoints.s: featurePoints\detectPoints.cc.s
-.PHONY : featurePoints\detectPoints.s
+feature_points\detect_points.s: feature_points\detect_points.cc.s
+.PHONY : feature_points\detect_points.s
 
 # target to generate assembly for a file
-featurePoints\detectPoints.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sfm_project.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\sfm_project.dir\featurePoints\detectPoints.cc.s
-.PHONY : featurePoints\detectPoints.cc.s
+feature_points\detect_points.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sfm_project.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\sfm_project.dir\feature_points\detect_points.cc.s
+.PHONY : feature_points\detect_points.cc.s
 
 main.obj: main.cc.obj
 .PHONY : main.obj
@@ -199,9 +199,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... sfm_project
-	@echo ... featurePoints/detectPoints.obj
-	@echo ... featurePoints/detectPoints.i
-	@echo ... featurePoints/detectPoints.s
+	@echo ... feature_points/detect_points.obj
+	@echo ... feature_points/detect_points.i
+	@echo ... feature_points/detect_points.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

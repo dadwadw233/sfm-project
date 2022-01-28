@@ -74,23 +74,23 @@ CMakeFiles\sfm_project.dir\main.cc.s: cmake_force
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\sfm_project.dir\main.cc.s /c "G:\code\C or C++\little-task\main.cc"
 <<
 
-CMakeFiles\sfm_project.dir\featurePoints\detectPoints.cc.obj: CMakeFiles\sfm_project.dir\flags.make
-CMakeFiles\sfm_project.dir\featurePoints\detectPoints.cc.obj: ..\featurePoints\detectPoints.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="G:\code\C or C++\little-task\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/sfm_project.dir/featurePoints/detectPoints.cc.obj"
+CMakeFiles\sfm_project.dir\feature_points\detect_points.cc.obj: CMakeFiles\sfm_project.dir\flags.make
+CMakeFiles\sfm_project.dir\feature_points\detect_points.cc.obj: ..\feature_points\detect_points.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="G:\code\C or C++\little-task\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/sfm_project.dir/feature_points/detect_points.cc.obj"
 	G:\2019\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\sfm_project.dir\featurePoints\detectPoints.cc.obj /FdCMakeFiles\sfm_project.dir\ /FS -c "G:\code\C or C++\little-task\featurePoints\detectPoints.cc"
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\sfm_project.dir\feature_points\detect_points.cc.obj /FdCMakeFiles\sfm_project.dir\ /FS -c "G:\code\C or C++\little-task\feature_points\detect_points.cc"
 <<
 
-CMakeFiles\sfm_project.dir\featurePoints\detectPoints.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sfm_project.dir/featurePoints/detectPoints.cc.i"
-	G:\2019\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe > CMakeFiles\sfm_project.dir\featurePoints\detectPoints.cc.i @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "G:\code\C or C++\little-task\featurePoints\detectPoints.cc"
+CMakeFiles\sfm_project.dir\feature_points\detect_points.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sfm_project.dir/feature_points/detect_points.cc.i"
+	G:\2019\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe > CMakeFiles\sfm_project.dir\feature_points\detect_points.cc.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "G:\code\C or C++\little-task\feature_points\detect_points.cc"
 <<
 
-CMakeFiles\sfm_project.dir\featurePoints\detectPoints.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sfm_project.dir/featurePoints/detectPoints.cc.s"
+CMakeFiles\sfm_project.dir\feature_points\detect_points.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sfm_project.dir/feature_points/detect_points.cc.s"
 	G:\2019\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\sfm_project.dir\featurePoints\detectPoints.cc.s /c "G:\code\C or C++\little-task\featurePoints\detectPoints.cc"
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\sfm_project.dir\feature_points\detect_points.cc.s /c "G:\code\C or C++\little-task\feature_points\detect_points.cc"
 <<
 
 CMakeFiles\sfm_project.dir\pose_estimate.cc.obj: CMakeFiles\sfm_project.dir\flags.make
@@ -115,14 +115,14 @@ CMakeFiles\sfm_project.dir\pose_estimate.cc.s: cmake_force
 # Object files for target sfm_project
 sfm_project_OBJECTS = \
 "CMakeFiles\sfm_project.dir\main.cc.obj" \
-"CMakeFiles\sfm_project.dir\featurePoints\detectPoints.cc.obj" \
+"CMakeFiles\sfm_project.dir\feature_points\detect_points.cc.obj" \
 "CMakeFiles\sfm_project.dir\pose_estimate.cc.obj"
 
 # External object files for target sfm_project
 sfm_project_EXTERNAL_OBJECTS =
 
 sfm_project.exe: CMakeFiles\sfm_project.dir\main.cc.obj
-sfm_project.exe: CMakeFiles\sfm_project.dir\featurePoints\detectPoints.cc.obj
+sfm_project.exe: CMakeFiles\sfm_project.dir\feature_points\detect_points.cc.obj
 sfm_project.exe: CMakeFiles\sfm_project.dir\pose_estimate.cc.obj
 sfm_project.exe: CMakeFiles\sfm_project.dir\build.make
 sfm_project.exe: E:\src\vcpkg\installed\x86-windows\debug\lib\opencv_highguid.lib

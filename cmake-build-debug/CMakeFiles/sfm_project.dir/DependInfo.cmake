@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "G:/code/C or C++/little-task/featurePoints/detectPoints.cc" "G:/code/C or C++/little-task/cmake-build-debug/CMakeFiles/sfm_project.dir/featurePoints/detectPoints.cc.obj"
+  "G:/code/C or C++/little-task/feature_points/detect_points.cc" "G:/code/C or C++/little-task/cmake-build-debug/CMakeFiles/sfm_project.dir/feature_points/detect_points.cc.obj"
   "G:/code/C or C++/little-task/main.cc" "G:/code/C or C++/little-task/cmake-build-debug/CMakeFiles/sfm_project.dir/main.cc.obj"
   "G:/code/C or C++/little-task/pose_estimate.cc" "G:/code/C or C++/little-task/cmake-build-debug/CMakeFiles/sfm_project.dir/pose_estimate.cc.obj"
   )

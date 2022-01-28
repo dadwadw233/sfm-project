@@ -9,7 +9,7 @@ find_package(Eigen3 CONFIG REQUIRED)
 
 include_directories(${OpenCV_INCLUDE_DIRS})
 
-add_executable(sfm_project main.cc featurePoints/detectPoints.cc featurePoints/detectPoints.h pose_estimate.cc pose_estimate.h)
+add_executable(sfm_project main.cc feature_points/detect_points.cc feature_points/detect_points.h pose_estimate.cc pose_estimate.h)
 
 target_link_libraries(sfm_project
                         ${OpenCV_LIBS}
