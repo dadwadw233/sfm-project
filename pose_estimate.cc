@@ -29,4 +29,12 @@ ceres::CostFunction *pose_estimate::PnPCeres::Create(const cv::Point2f &uv,
   return (
       new ceres::AutoDiffCostFunction<PnPCeres, 2, 6>(new PnPCeres(uv, xyz)));
 }
+void pose_estimate::constructProblem() {
+  for (int i = 0; i < pts_2d.size();
+       ++i)  // add residualblock based on the number of 2d point
+  {
+    ceres::CostFunction *cost_function = PnPCeres::Create(pts_2d[i], pts_3d[i]);
+    problem.AddResidualBlock(cost_function, NULL /* squared loss */, camera);
+  }
+}
 }  // namespace sfmProject
