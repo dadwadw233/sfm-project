@@ -7,6 +7,8 @@
 #include <ceres/ceres.h>
 #include <iostream>
 #include <opencv2/opencv.hpp>
+#include <Eigen/Dense>
+#include <opencv2/core/eigen.hpp>
 #include <vector>
 namespace sfmProject {
 class pose_estimate {
@@ -16,6 +18,8 @@ class pose_estimate {
   ceres::Problem problem;
   std::vector<cv::Point3f> pts_3d;
   std::vector<cv::Point2f> pts_2d;
+  ceres::Solver::Options options;
+  ceres::Solver::Summary summary;
 
  public:
   explicit pose_estimate();
@@ -38,6 +42,7 @@ class pose_estimate {
   };
   void initialize();
   void constructProblem();
+  void solveBA();
 };
 }  // namespace sfmProject
 #endif  // SFM_PROJECT__POSE_ESTIMATE_H_
