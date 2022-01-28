@@ -101,6 +101,12 @@
 		<Unit filename="/home/yyh/little-task/main.cc">
 			<Option target="little_task"/>
 		</Unit>
+		<Unit filename="/home/yyh/little-task/pose_estimate.cc">
+			<Option target="little_task"/>
+		</Unit>
+		<Unit filename="/home/yyh/little-task/pose_estimate.h">
+			<Option target="little_task"/>
+		</Unit>
 		<Unit filename="/home/yyh/little-task/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

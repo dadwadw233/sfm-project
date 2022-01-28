@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/little_task.dir/featurePoints/detectPoints.cc.o"
   "CMakeFiles/little_task.dir/main.cc.o"
+  "CMakeFiles/little_task.dir/pose_estimate.cc.o"
   "little_task"
   "little_task.pdb"
 )

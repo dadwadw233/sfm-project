@@ -196,6 +196,33 @@ main.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/little_task.dir/build.make CMakeFiles/little_task.dir/main.cc.s
 .PHONY : main.cc.s
 
+pose_estimate.o: pose_estimate.cc.o
+
+.PHONY : pose_estimate.o
+
+# target to build an object file
+pose_estimate.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/little_task.dir/build.make CMakeFiles/little_task.dir/pose_estimate.cc.o
+.PHONY : pose_estimate.cc.o
+
+pose_estimate.i: pose_estimate.cc.i
+
+.PHONY : pose_estimate.i
+
+# target to preprocess a source file
+pose_estimate.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/little_task.dir/build.make CMakeFiles/little_task.dir/pose_estimate.cc.i
+.PHONY : pose_estimate.cc.i
+
+pose_estimate.s: pose_estimate.cc.s
+
+.PHONY : pose_estimate.s
+
+# target to generate assembly for a file
+pose_estimate.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/little_task.dir/build.make CMakeFiles/little_task.dir/pose_estimate.cc.s
+.PHONY : pose_estimate.cc.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -211,6 +238,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... pose_estimate.o"
+	@echo "... pose_estimate.i"
+	@echo "... pose_estimate.s"
 .PHONY : help
 
 

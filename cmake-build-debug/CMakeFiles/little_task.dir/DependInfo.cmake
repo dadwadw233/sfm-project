@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/yyh/little-task/featurePoints/detectPoints.cc" "/home/yyh/little-task/cmake-build-debug/CMakeFiles/little_task.dir/featurePoints/detectPoints.cc.o"
   "/home/yyh/little-task/main.cc" "/home/yyh/little-task/cmake-build-debug/CMakeFiles/little_task.dir/main.cc.o"
+  "/home/yyh/little-task/pose_estimate.cc" "/home/yyh/little-task/cmake-build-debug/CMakeFiles/little_task.dir/pose_estimate.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
