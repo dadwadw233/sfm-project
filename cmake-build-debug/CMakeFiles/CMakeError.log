@@ -1,41 +1,65 @@
-Detecting C compiler ABI info failed to compile with the following output:
-Change Dir: G:/code/C or C++/little-task/cmake-build-debug/CMakeFiles/CMakeTmp
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/yyh/little-task/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):nmake -f Makefile /nologo cmTC_9ded9\fast && 	G:\2019\VC\Tools\MSVC\14.29.30133\bin\HostX86\x86\nmake.exe  -f CMakeFiles\cmTC_9ded9.dir\build.make /nologo -L                  CMakeFiles\cmTC_9ded9.dir\build
-Building C object CMakeFiles/cmTC_9ded9.dir/CMakeCCompilerABI.c.obj
-	"G:\IDE\Clion\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\cmTC_9ded9.dir\CMakeCCompilerABI.c.obj.d --working-dir="G:\code\C or C++\little-task\cmake-build-debug\CMakeFiles\CMakeTmp" --filter-prefix="" -- G:\2019\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe @C:\Users\lenovo\AppData\Local\Temp\nm3FDB.tmp
-NMAKE : fatal error U1077: “"G:\IDE\Clion\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe"”: 返回代码“0xc0000409”
-Stop.
-NMAKE : fatal error U1077: “G:\2019\VC\Tools\MSVC\14.29.30133\bin\HostX86\x86\nmake.exe”: 返回代码“0x2”
-Stop.
-
-
-
-
-Detecting CXX compiler ABI info failed to compile with the following output:
-Change Dir: G:/code/C or C++/little-task/cmake-build-debug/CMakeFiles/CMakeTmp
-
-Run Build Command(s):nmake -f Makefile /nologo cmTC_82191\fast && 	G:\2019\VC\Tools\MSVC\14.29.30133\bin\HostX86\x86\nmake.exe  -f CMakeFiles\cmTC_82191.dir\build.make /nologo -L                  CMakeFiles\cmTC_82191.dir\build
-Building CXX object CMakeFiles/cmTC_82191.dir/CMakeCXXCompilerABI.cpp.obj
-	"G:\IDE\Clion\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\cmTC_82191.dir\CMakeCXXCompilerABI.cpp.obj.d --working-dir="G:\code\C or C++\little-task\cmake-build-debug\CMakeFiles\CMakeTmp" --filter-prefix="" -- G:\2019\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe @C:\Users\lenovo\AppData\Local\Temp\nm477C.tmp
-NMAKE : fatal error U1077: “"G:\IDE\Clion\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe"”: 返回代码“0xc0000409”
-Stop.
-NMAKE : fatal error U1077: “G:\2019\VC\Tools\MSVC\14.29.30133\bin\HostX86\x86\nmake.exe”: 返回代码“0x2”
-Stop.
+Run Build Command(s):/usr/bin/make cmTC_c5022/fast && /usr/bin/make  -f CMakeFiles/cmTC_c5022.dir/build.make CMakeFiles/cmTC_c5022.dir/build
+make[1]: 进入目录“/home/yyh/little-task/cmake-build-debug/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_c5022.dir/src.c.o
+/usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_c5022.dir/src.c.o -c /home/yyh/little-task/cmake-build-debug/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_c5022
+/home/yyh/clion/clion-2021.1/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c5022.dir/link.txt --verbose=1
+/usr/bin/cc CMakeFiles/cmTC_c5022.dir/src.c.o -o cmTC_c5022 
+CMakeFiles/cmTC_c5022.dir/src.c.o：在函数‘main’中：
+src.c:(.text+0x3e)：对‘pthread_create’未定义的引用
+src.c:(.text+0x4a)：对‘pthread_detach’未定义的引用
+src.c:(.text+0x56)：对‘pthread_cancel’未定义的引用
+src.c:(.text+0x67)：对‘pthread_join’未定义的引用
+src.c:(.text+0x7b)：对‘pthread_atfork’未定义的引用
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_c5022.dir/build.make:105: recipe for target 'cmTC_c5022' failed
+make[1]: *** [cmTC_c5022] Error 1
+make[1]: 离开目录“/home/yyh/little-task/cmake-build-debug/CMakeFiles/CMakeTmp”
+Makefile:140: recipe for target 'cmTC_c5022/fast' failed
+make: *** [cmTC_c5022/fast] Error 2
 
 
+Source file was:
+#include <pthread.h>
 
+static void* test_func(void* data)
+{
+  return data;
+}
 
-Determining if the include file pthread.h exists failed with the following output:
-Change Dir: G:/code/C or C++/little-task/cmake-build-debug/CMakeFiles/CMakeTmp
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
 
-Run Build Command(s):nmake -f Makefile /nologo cmTC_25413\fast && 	G:\2019\VC\Tools\MSVC\14.29.30133\bin\HostX86\x86\nmake.exe  -f CMakeFiles\cmTC_25413.dir\build.make /nologo -L                  CMakeFiles\cmTC_25413.dir\build
-Building C object CMakeFiles/cmTC_25413.dir/CheckIncludeFile.c.obj
-	"G:\IDE\Clion\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\cmTC_25413.dir\CheckIncludeFile.c.obj.d --working-dir="G:\code\C or C++\little-task\cmake-build-debug\CMakeFiles\CMakeTmp" --filter-prefix="" -- G:\2019\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe @C:\Users\lenovo\AppData\Local\Temp\nm4C9C.tmp
-NMAKE : fatal error U1077: “"G:\IDE\Clion\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe"”: 返回代码“0xc0000409”
-Stop.
-NMAKE : fatal error U1077: “G:\2019\VC\Tools\MSVC\14.29.30133\bin\HostX86\x86\nmake.exe”: 返回代码“0x2”
-Stop.
+  return 0;
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/yyh/little-task/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_3795f/fast && /usr/bin/make  -f CMakeFiles/cmTC_3795f.dir/build.make CMakeFiles/cmTC_3795f.dir/build
+make[1]: 进入目录“/home/yyh/little-task/cmake-build-debug/CMakeFiles/CMakeTmp”
+Building C object CMakeFiles/cmTC_3795f.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create -o CMakeFiles/cmTC_3795f.dir/CheckFunctionExists.c.o -c /home/yyh/clion/clion-2021.1/bin/cmake/linux/share/cmake-3.19/Modules/CheckFunctionExists.c
+Linking C executable cmTC_3795f
+/home/yyh/clion/clion-2021.1/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3795f.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create CMakeFiles/cmTC_3795f.dir/CheckFunctionExists.c.o -o cmTC_3795f  -lpthreads 
+/usr/bin/ld: 找不到 -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_3795f.dir/build.make:105: recipe for target 'cmTC_3795f' failed
+make[1]: *** [cmTC_3795f] Error 1
+make[1]: 离开目录“/home/yyh/little-task/cmake-build-debug/CMakeFiles/CMakeTmp”
+Makefile:140: recipe for target 'cmTC_3795f/fast' failed
+make: *** [cmTC_3795f/fast] Error 2
 
 
 
