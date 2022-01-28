@@ -19,16 +19,17 @@ class pose_estimate {
   pose_estimate& operator=(const pose_estimate&) = delete;
   ~pose_estimate();
   // 代价函数的计算模型
-  struct ICPCeres
-  {
-    ICPCeres ( cv::Point3f uvw,cv::Point3f xyz ) : _uvw(uvw),_xyz(xyz) {}
+  struct PnPCeres {
+    PnPCeres(const cv::Point2f& uv, const cv::Point3f& xyz)
+        : _uv(uv), _xyz(xyz) {}
     // 残差的计算
     template <typename T>
-    bool operator() (
-        const T* const camera,     // 模型参数，有4维
-        T* residual ) const;     // 残差
-    static ceres::CostFunction* Create(const cv::Point3f &uvw,const cv::Point3f &xyz);
-    const cv::Point3f _uvw;
+    bool operator()(const T* const camera,  // 位姿参数，有6维
+                    T* residual) const;     // 残差
+
+    static ceres::CostFunction* Create(const cv::Point2f& uv,
+                                       const cv::Point3f& xyz);
+    const cv::Point2f _uv;
     const cv::Point3f _xyz;
   };
   void initialize();

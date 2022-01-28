@@ -5,10 +5,11 @@
 #include "pose_estimate.h"
 namespace sfmProject {
 template <typename T>
-bool pose_estimate::ICPCeres::operator()(const T *const camera,
-                                         T *residual) const     {
+bool pose_estimate::PnPCeres::operator()(const T *const camera,
+                                         T *residual) const {
   T p[3];
   T point[3];
+<<<<<<< HEAD
   point[0]=T(_xyz.x);
   point[1]=T(_xyz.y);
   point[2]=T(_xyz.z);
@@ -19,8 +20,9 @@ bool pose_estimate::ICPCeres::operator()(const T *const camera,
   residual[2] = T(_uvw.z)-p[2];
   return true;
 }
-ceres::CostFunction *pose_estimate::ICPCeres::Create(const cv::Point3f &uvw,const cv::Point3f &xyz) {
-  return (new ceres::AutoDiffCostFunction<ICPCeres, 3, 6>(
-      new ICPCeres(uvw,xyz)));
+ceres::CostFunction *pose_estimate::PnPCeres::Create(const cv::Point2f &uv,
+                                                     const cv::Point3f &xyz) {
+  return (
+      new ceres::AutoDiffCostFunction<PnPCeres, 2, 6>(new PnPCeres(uv, xyz)));
 }
 }  // namespace sfmProject
