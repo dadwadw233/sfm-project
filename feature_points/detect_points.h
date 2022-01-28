@@ -2,13 +2,13 @@
 // Created by dcr on 2022/1/23.
 //
 
-#ifndef SFM_PROJECT_DETECTPOINTS_H
-#define SFM_PROJECT_DETECTPOINTS_H
+#ifndef SFM_PROJECT_DETECT_POINTS_H
+#define SFM_PROJECT_DETECT_POINTS_H
 #include "cmath"
 #include "opencv2/opencv.hpp"
 #include "vector"
 
-class detectPoints {
+class detect_points {
  private:
   std::vector<cv::Mat> images;
   std::vector<std::vector<cv::KeyPoint>> key_points;
@@ -17,11 +17,11 @@ class detectPoints {
   std::vector<std::vector<cv::DMatch>> good_matches;
 
  public:
-  ~detectPoints() = delete;
-  explicit detectPoints() = delete;
-  detectPoints(std::vector<cv::Mat> &input_images);
+  ~detect_points() = delete;
+  explicit detect_points() = delete;
+  detect_points(std::vector<cv::Mat> &input_images);
   void find_feature_points();
   void matchFeaturePoints();
 };
 
-#endif  // SFM_PROJECT_DETECTPOINTS_H
+#endif  // SFM_PROJECT_DETECT_POINTS_H
