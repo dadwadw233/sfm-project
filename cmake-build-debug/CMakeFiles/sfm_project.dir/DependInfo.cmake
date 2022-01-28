@@ -4,9 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/yyh/little-task/featurePoints/detectPoints.cc" "/home/yyh/little-task/cmake-build-debug/CMakeFiles/little_task.dir/featurePoints/detectPoints.cc.o"
-  "/home/yyh/little-task/main.cc" "/home/yyh/little-task/cmake-build-debug/CMakeFiles/little_task.dir/main.cc.o"
-  "/home/yyh/little-task/pose_estimate.cc" "/home/yyh/little-task/cmake-build-debug/CMakeFiles/little_task.dir/pose_estimate.cc.o"
+  "/home/yyh/sfm-project/featurePoints/detectPoints.cc" "/home/yyh/sfm-project/cmake-build-debug/CMakeFiles/sfm_project.dir/featurePoints/detectPoints.cc.o"
+  "/home/yyh/sfm-project/main.cc" "/home/yyh/sfm-project/cmake-build-debug/CMakeFiles/sfm_project.dir/main.cc.o"
+  "/home/yyh/sfm-project/pose_estimate.cc" "/home/yyh/sfm-project/cmake-build-debug/CMakeFiles/sfm_project.dir/pose_estimate.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

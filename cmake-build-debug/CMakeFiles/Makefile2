@@ -63,16 +63,16 @@ RM = /home/yyh/clion/clion-2021.1/bin/cmake/linux/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/yyh/little-task
+CMAKE_SOURCE_DIR = /home/yyh/sfm-project
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/yyh/little-task/cmake-build-debug
+CMAKE_BINARY_DIR = /home/yyh/sfm-project/cmake-build-debug
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/little_task.dir/all
+all: CMakeFiles/sfm_project.dir/all
 
 .PHONY : all
 
@@ -82,36 +82,36 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/little_task.dir/clean
+clean: CMakeFiles/sfm_project.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/little_task.dir
+# Target rules for target CMakeFiles/sfm_project.dir
 
 # All Build rule for target.
-CMakeFiles/little_task.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/little_task.dir/build.make CMakeFiles/little_task.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/little_task.dir/build.make CMakeFiles/little_task.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yyh/little-task/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4 "Built target little_task"
-.PHONY : CMakeFiles/little_task.dir/all
+CMakeFiles/sfm_project.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sfm_project.dir/build.make CMakeFiles/sfm_project.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sfm_project.dir/build.make CMakeFiles/sfm_project.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yyh/sfm-project/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4 "Built target sfm_project"
+.PHONY : CMakeFiles/sfm_project.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/little_task.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/yyh/little-task/cmake-build-debug/CMakeFiles 4
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/little_task.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/yyh/little-task/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/little_task.dir/rule
+CMakeFiles/sfm_project.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yyh/sfm-project/cmake-build-debug/CMakeFiles 4
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/sfm_project.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yyh/sfm-project/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/sfm_project.dir/rule
 
 # Convenience name for target.
-little_task: CMakeFiles/little_task.dir/rule
+sfm_project: CMakeFiles/sfm_project.dir/rule
 
-.PHONY : little_task
+.PHONY : sfm_project
 
 # clean rule for target.
-CMakeFiles/little_task.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/little_task.dir/build.make CMakeFiles/little_task.dir/clean
-.PHONY : CMakeFiles/little_task.dir/clean
+CMakeFiles/sfm_project.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sfm_project.dir/build.make CMakeFiles/sfm_project.dir/clean
+.PHONY : CMakeFiles/sfm_project.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

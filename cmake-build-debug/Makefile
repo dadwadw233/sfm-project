@@ -67,24 +67,13 @@ RM = /home/yyh/clion/clion-2021.1/bin/cmake/linux/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/yyh/little-task
+CMAKE_SOURCE_DIR = /home/yyh/sfm-project
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/yyh/little-task/cmake-build-debug
+CMAKE_BINARY_DIR = /home/yyh/sfm-project/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/home/yyh/clion/clion-2021.1/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
 
 # Special rule for the target rebuild_cache
 rebuild_cache:
@@ -97,11 +86,22 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/home/yyh/clion/clion-2021.1/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
+
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/yyh/little-task/cmake-build-debug/CMakeFiles /home/yyh/little-task/cmake-build-debug//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yyh/sfm-project/cmake-build-debug/CMakeFiles /home/yyh/sfm-project/cmake-build-debug//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/yyh/little-task/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yyh/sfm-project/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -130,17 +130,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named little_task
+# Target rules for targets named sfm_project
 
 # Build rule for target.
-little_task: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 little_task
-.PHONY : little_task
+sfm_project: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 sfm_project
+.PHONY : sfm_project
 
 # fast build rule for target.
-little_task/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/little_task.dir/build.make CMakeFiles/little_task.dir/build
-.PHONY : little_task/fast
+sfm_project/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sfm_project.dir/build.make CMakeFiles/sfm_project.dir/build
+.PHONY : sfm_project/fast
 
 featurePoints/detectPoints.o: featurePoints/detectPoints.cc.o
 
@@ -148,7 +148,7 @@ featurePoints/detectPoints.o: featurePoints/detectPoints.cc.o
 
 # target to build an object file
 featurePoints/detectPoints.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/little_task.dir/build.make CMakeFiles/little_task.dir/featurePoints/detectPoints.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sfm_project.dir/build.make CMakeFiles/sfm_project.dir/featurePoints/detectPoints.cc.o
 .PHONY : featurePoints/detectPoints.cc.o
 
 featurePoints/detectPoints.i: featurePoints/detectPoints.cc.i
@@ -157,7 +157,7 @@ featurePoints/detectPoints.i: featurePoints/detectPoints.cc.i
 
 # target to preprocess a source file
 featurePoints/detectPoints.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/little_task.dir/build.make CMakeFiles/little_task.dir/featurePoints/detectPoints.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sfm_project.dir/build.make CMakeFiles/sfm_project.dir/featurePoints/detectPoints.cc.i
 .PHONY : featurePoints/detectPoints.cc.i
 
 featurePoints/detectPoints.s: featurePoints/detectPoints.cc.s
@@ -166,7 +166,7 @@ featurePoints/detectPoints.s: featurePoints/detectPoints.cc.s
 
 # target to generate assembly for a file
 featurePoints/detectPoints.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/little_task.dir/build.make CMakeFiles/little_task.dir/featurePoints/detectPoints.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sfm_project.dir/build.make CMakeFiles/sfm_project.dir/featurePoints/detectPoints.cc.s
 .PHONY : featurePoints/detectPoints.cc.s
 
 main.o: main.cc.o
@@ -175,7 +175,7 @@ main.o: main.cc.o
 
 # target to build an object file
 main.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/little_task.dir/build.make CMakeFiles/little_task.dir/main.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sfm_project.dir/build.make CMakeFiles/sfm_project.dir/main.cc.o
 .PHONY : main.cc.o
 
 main.i: main.cc.i
@@ -184,7 +184,7 @@ main.i: main.cc.i
 
 # target to preprocess a source file
 main.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/little_task.dir/build.make CMakeFiles/little_task.dir/main.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sfm_project.dir/build.make CMakeFiles/sfm_project.dir/main.cc.i
 .PHONY : main.cc.i
 
 main.s: main.cc.s
@@ -193,7 +193,7 @@ main.s: main.cc.s
 
 # target to generate assembly for a file
 main.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/little_task.dir/build.make CMakeFiles/little_task.dir/main.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sfm_project.dir/build.make CMakeFiles/sfm_project.dir/main.cc.s
 .PHONY : main.cc.s
 
 pose_estimate.o: pose_estimate.cc.o
@@ -202,7 +202,7 @@ pose_estimate.o: pose_estimate.cc.o
 
 # target to build an object file
 pose_estimate.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/little_task.dir/build.make CMakeFiles/little_task.dir/pose_estimate.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sfm_project.dir/build.make CMakeFiles/sfm_project.dir/pose_estimate.cc.o
 .PHONY : pose_estimate.cc.o
 
 pose_estimate.i: pose_estimate.cc.i
@@ -211,7 +211,7 @@ pose_estimate.i: pose_estimate.cc.i
 
 # target to preprocess a source file
 pose_estimate.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/little_task.dir/build.make CMakeFiles/little_task.dir/pose_estimate.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sfm_project.dir/build.make CMakeFiles/sfm_project.dir/pose_estimate.cc.i
 .PHONY : pose_estimate.cc.i
 
 pose_estimate.s: pose_estimate.cc.s
@@ -220,7 +220,7 @@ pose_estimate.s: pose_estimate.cc.s
 
 # target to generate assembly for a file
 pose_estimate.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/little_task.dir/build.make CMakeFiles/little_task.dir/pose_estimate.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sfm_project.dir/build.make CMakeFiles/sfm_project.dir/pose_estimate.cc.s
 .PHONY : pose_estimate.cc.s
 
 # Help Target
@@ -231,7 +231,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... little_task"
+	@echo "... sfm_project"
 	@echo "... featurePoints/detectPoints.o"
 	@echo "... featurePoints/detectPoints.i"
 	@echo "... featurePoints/detectPoints.s"

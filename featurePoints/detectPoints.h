@@ -2,8 +2,8 @@
 // Created by dcr on 2022/1/23.
 //
 
-#ifndef LITTLE_TASK_DETECTPOINTS_H
-#define LITTLE_TASK_DETECTPOINTS_H
+#ifndef SFM_PROJECT_DETECTPOINTS_H
+#define SFM_PROJECT_DETECTPOINTS_H
 #include "opencv2/opencv.hpp"
 #include "vector"
 #include "cmath"
@@ -25,4 +25,4 @@ public:
 };
 
 
-#endif //LITTLE_TASK_DETECTPOINTS_H
+#endif //SFM_PROJECT_DETECTPOINTS_H
