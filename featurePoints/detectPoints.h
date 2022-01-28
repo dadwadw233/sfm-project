@@ -9,6 +9,7 @@
 #include "vector"
 
 class detectPoints {
+ private:
   std::vector<cv::Mat> imgs;
   std::vector<std::vector<cv::KeyPoint>> keyPoints;
   std::vector<std::vector<cv::Mat>> descriptors;
@@ -16,8 +17,8 @@ class detectPoints {
   std::vector<std::vector<cv::DMatch>> goodMatches;
 
  public:
-  ~detectPoints() = default;
-  detectPoints() = default;
+  ~detectPoints() = delete;
+  detectPoints() = delete;
   detectPoints(std::vector<cv::Mat> inputImgs);
   void findFeaturePoints();
   void matchFeaturePoints();

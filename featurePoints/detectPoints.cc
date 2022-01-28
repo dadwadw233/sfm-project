@@ -14,6 +14,9 @@ detectPoints::detectPoints(std::vector<cv::Mat> inputImgs) {
     goodMatches.resize(imgs.size());
 }
 
+/**
+ * ues orb to detect the feature points from the input images
+ */
 void detectPoints::findFeaturePoints() {
     cv::Ptr<cv::ORB> orb = cv::ORB::create();
     for (unsigned int i = 0; i < imgs.size(); ++i) {
@@ -22,6 +25,10 @@ void detectPoints::findFeaturePoints() {
     }
 }
 
+/**
+ * after find all the feature points.
+ * match them between images for other uses
+ */
 void detectPoints::matchFeaturePoints() {
     findFeaturePoints();
     cv::BFMatcher matcher(cv::NORM_HAMMING);
@@ -36,7 +43,7 @@ void detectPoints::matchFeaturePoints() {
             maxDis = maxDis > dist ? maxDis : dist;
         }
     }
-
+    // reduce the mismatch feature points improve the result
     for (unsigned int i = 0; i < keyPoints.size(); ++i) {
         std::vector<cv::DMatch> tempGoodMatches;
         for (int j = 0; j < descriptors[0][0].rows; ++j) {
