@@ -4,201 +4,153 @@
 	<Project>
 		<Option title="little_task"/>
 		<Option makefile_is_custom="1"/>
-		<Option compiler="msvc8"/>
-		<Option virtualFolders="CMake Files\;CMake Files\src\;CMake Files\src\vcpkg\;CMake Files\src\vcpkg\scripts\;CMake Files\src\vcpkg\scripts\buildsystems\;CMake Files\src\vcpkg\installed\;CMake Files\src\vcpkg\installed\x86-windows\;CMake Files\src\vcpkg\installed\x86-windows\share\;CMake Files\src\vcpkg\installed\x86-windows\share\opencv\;CMake Files\src\vcpkg\installed\x86-windows\share\ceres\;CMake Files\src\vcpkg\installed\x86-windows\share\eigen3\;CMake Files\src\vcpkg\installed\x86-windows\share\glog\;CMake Files\src\vcpkg\installed\x86-windows\share\gflags\;CMake Files\src\vcpkg\installed\x86-windows\share\g2o\;"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\usr\;CMake Files\..\..\..\usr\share\;CMake Files\..\..\..\usr\share\OpenCV\;CMake Files\..\..\..\usr\local\;CMake Files\..\..\..\usr\local\lib\;CMake Files\..\..\..\usr\local\lib\cmake\;CMake Files\..\..\..\usr\local\lib\cmake\Ceres\;CMake Files\..\..\..\usr\lib\;CMake Files\..\..\..\usr\lib\cmake\;CMake Files\..\..\..\usr\lib\cmake\eigen3\;CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\gflags\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="G:/code/C or C++/little-task/cmake-build-debug"/>
+				<Option working_dir="/home/yyh/little-task/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f &quot;G:\code\C or C++\little-task\cmake-build-debug\Makefile&quot; VERBOSE=1 all"/>
-					<CompileFile command="nmake /NOLOGO /f &quot;G:\code\C or C++\little-task\cmake-build-debug\Makefile&quot; VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f &quot;G:\code\C or C++\little-task\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f &quot;G:\code\C or C++\little-task\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="little_task">
-				<Option output="G:/code/C or C++/little-task/cmake-build-debug/little_task.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="G:/code/C or C++/little-task/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="msvc8"/>
-				<Compiler>
-					<Add option="-DGLOG_NO_ABBREVIATED_SEVERITIES"/>
-					<Add option="-DGOOGLE_GLOG_DLL_DECL=__declspec(dllimport)"/>
-					<Add option="-DGOOGLE_GLOG_DLL_DECL_FOR_UNITTESTS=__declspec(dllimport)"/>
-					<Add option="-DGFLAGS_IS_A_DLL=1"/>
-					<Add directory="E:/src/vcpkg/installed/x86-windows/include"/>
-					<Add directory="E:/src/vcpkg/installed/x86-windows/share/eigen3/../../include/eigen3"/>
-					<Add directory="E:/src/vcpkg/installed/x86-windows/share/g2o/../../include"/>
-					<Add directory="G:\2019\VC\Tools\MSVC\14.29.30133\ATLMFC\include"/>
-					<Add directory="G:\2019\VC\Tools\MSVC\14.29.30133\include"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="nmake /NOLOGO /f &quot;G:\code\C or C++\little-task\cmake-build-debug\Makefile&quot; VERBOSE=1 little_task"/>
-					<CompileFile command="nmake /NOLOGO /f &quot;G:\code\C or C++\little-task\cmake-build-debug\Makefile&quot; VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f &quot;G:\code\C or C++\little-task\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f &quot;G:\code\C or C++\little-task\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="little_task/fast">
-				<Option output="G:/code/C or C++/little-task/cmake-build-debug/little_task.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="G:/code/C or C++/little-task/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="msvc8"/>
-				<Compiler>
-					<Add option="-DGLOG_NO_ABBREVIATED_SEVERITIES"/>
-					<Add option="-DGOOGLE_GLOG_DLL_DECL=__declspec(dllimport)"/>
-					<Add option="-DGOOGLE_GLOG_DLL_DECL_FOR_UNITTESTS=__declspec(dllimport)"/>
-					<Add option="-DGFLAGS_IS_A_DLL=1"/>
-					<Add directory="E:/src/vcpkg/installed/x86-windows/include"/>
-					<Add directory="E:/src/vcpkg/installed/x86-windows/share/eigen3/../../include/eigen3"/>
-					<Add directory="E:/src/vcpkg/installed/x86-windows/share/g2o/../../include"/>
-					<Add directory="G:\2019\VC\Tools\MSVC\14.29.30133\ATLMFC\include"/>
-					<Add directory="G:\2019\VC\Tools\MSVC\14.29.30133\include"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="nmake /NOLOGO /f &quot;G:\code\C or C++\little-task\cmake-build-debug\Makefile&quot; VERBOSE=1 little_task/fast"/>
-					<CompileFile command="nmake /NOLOGO /f &quot;G:\code\C or C++\little-task\cmake-build-debug\Makefile&quot; VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f &quot;G:\code\C or C++\little-task\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f &quot;G:\code\C or C++\little-task\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j16 -f &quot;/home/yyh/little-task/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/home/yyh/little-task/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/home/yyh/little-task/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/home/yyh/little-task/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="G:/code/C or C++/little-task/cmake-build-debug"/>
+				<Option working_dir="/home/yyh/little-task/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f &quot;G:\code\C or C++\little-task\cmake-build-debug\Makefile&quot; VERBOSE=1 edit_cache"/>
-					<CompileFile command="nmake /NOLOGO /f &quot;G:\code\C or C++\little-task\cmake-build-debug\Makefile&quot; VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f &quot;G:\code\C or C++\little-task\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f &quot;G:\code\C or C++\little-task\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j16 -f &quot;/home/yyh/little-task/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/home/yyh/little-task/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/home/yyh/little-task/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/home/yyh/little-task/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="G:/code/C or C++/little-task/cmake-build-debug"/>
+				<Option working_dir="/home/yyh/little-task/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f &quot;G:\code\C or C++\little-task\cmake-build-debug\Makefile&quot; VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="nmake /NOLOGO /f &quot;G:\code\C or C++\little-task\cmake-build-debug\Makefile&quot; VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f &quot;G:\code\C or C++\little-task\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f &quot;G:\code\C or C++\little-task\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j16 -f &quot;/home/yyh/little-task/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/home/yyh/little-task/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/home/yyh/little-task/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/home/yyh/little-task/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="little_task">
+				<Option output="/home/yyh/little-task/cmake-build-debug/little_task" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/yyh/little-task/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DCERES_EXPORT_INTERNAL_SYMBOLS"/>
+					<Add option="-DGFLAGS_IS_A_DLL=0"/>
+					<Add directory="/usr/include/opencv"/>
+					<Add directory="/usr/include/eigen3"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/home/yyh/little-task/cmake-build-debug/Makefile&quot;  VERBOSE=1 little_task"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/home/yyh/little-task/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/home/yyh/little-task/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/home/yyh/little-task/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="little_task/fast">
+				<Option output="/home/yyh/little-task/cmake-build-debug/little_task" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/yyh/little-task/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DCERES_EXPORT_INTERNAL_SYMBOLS"/>
+					<Add option="-DGFLAGS_IS_A_DLL=0"/>
+					<Add directory="/usr/include/opencv"/>
+					<Add directory="/usr/include/eigen3"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/home/yyh/little-task/cmake-build-debug/Makefile&quot;  VERBOSE=1 little_task/fast"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/home/yyh/little-task/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/home/yyh/little-task/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/home/yyh/little-task/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="G:/code/C or C++/little-task/featurePoints/detectPoints.cpp">
+		<Unit filename="/home/yyh/little-task/featurePoints/detectPoints.cpp">
 			<Option target="little_task"/>
 		</Unit>
-		<Unit filename="G:/code/C or C++/little-task/featurePoints/detectPoints.h">
+		<Unit filename="/home/yyh/little-task/featurePoints/detectPoints.h">
 			<Option target="little_task"/>
 		</Unit>
-		<Unit filename="G:/code/C or C++/little-task/main.cpp">
+		<Unit filename="/home/yyh/little-task/main.cpp">
 			<Option target="little_task"/>
 		</Unit>
-		<Unit filename="G:/code/C or C++/little-task/CMakeLists.txt">
+		<Unit filename="/home/yyh/little-task/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
-		<Unit filename="G:/code/C or C++/little-task/src/vcpkg/scripts/buildsystems/vcpkg.cmake">
-			<Option virtualFolder="CMake Files\src\vcpkg\scripts\buildsystems\"/>
+		<Unit filename="/home/yyh/little-task/../../../usr/share/OpenCV/OpenCVConfig-version.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\share\OpenCV\"/>
 		</Unit>
-		<Unit filename="G:/code/C or C++/little-task/src/vcpkg/installed/x86-windows/share/opencv/OpenCVConfig-version.cmake">
-			<Option virtualFolder="CMake Files\src\vcpkg\installed\x86-windows\share\opencv\"/>
+		<Unit filename="/home/yyh/little-task/../../../usr/share/OpenCV/OpenCVConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\share\OpenCV\"/>
 		</Unit>
-		<Unit filename="G:/code/C or C++/little-task/src/vcpkg/installed/x86-windows/share/opencv/OpenCVConfig.cmake">
-			<Option virtualFolder="CMake Files\src\vcpkg\installed\x86-windows\share\opencv\"/>
+		<Unit filename="/home/yyh/little-task/../../../usr/share/OpenCV/OpenCVModules-release.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\share\OpenCV\"/>
 		</Unit>
-		<Unit filename="G:/code/C or C++/little-task/src/vcpkg/installed/x86-windows/share/opencv/OpenCVModules-debug.cmake">
-			<Option virtualFolder="CMake Files\src\vcpkg\installed\x86-windows\share\opencv\"/>
+		<Unit filename="/home/yyh/little-task/../../../usr/share/OpenCV/OpenCVModules.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\share\OpenCV\"/>
 		</Unit>
-		<Unit filename="G:/code/C or C++/little-task/src/vcpkg/installed/x86-windows/share/opencv/OpenCVModules-release.cmake">
-			<Option virtualFolder="CMake Files\src\vcpkg\installed\x86-windows\share\opencv\"/>
+		<Unit filename="/home/yyh/little-task/../../../usr/local/lib/cmake/Ceres/CeresConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\local\lib\cmake\Ceres\"/>
 		</Unit>
-		<Unit filename="G:/code/C or C++/little-task/src/vcpkg/installed/x86-windows/share/opencv/OpenCVModules.cmake">
-			<Option virtualFolder="CMake Files\src\vcpkg\installed\x86-windows\share\opencv\"/>
+		<Unit filename="/home/yyh/little-task/../../../usr/local/lib/cmake/Ceres/CeresConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\local\lib\cmake\Ceres\"/>
 		</Unit>
-		<Unit filename="G:/code/C or C++/little-task/src/vcpkg/installed/x86-windows/share/ceres/CeresConfig.cmake">
-			<Option virtualFolder="CMake Files\src\vcpkg\installed\x86-windows\share\ceres\"/>
+		<Unit filename="/home/yyh/little-task/../../../usr/local/lib/cmake/Ceres/CeresTargets-release.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\local\lib\cmake\Ceres\"/>
 		</Unit>
-		<Unit filename="G:/code/C or C++/little-task/src/vcpkg/installed/x86-windows/share/ceres/CeresConfigVersion.cmake">
-			<Option virtualFolder="CMake Files\src\vcpkg\installed\x86-windows\share\ceres\"/>
+		<Unit filename="/home/yyh/little-task/../../../usr/local/lib/cmake/Ceres/CeresTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\local\lib\cmake\Ceres\"/>
 		</Unit>
-		<Unit filename="G:/code/C or C++/little-task/src/vcpkg/installed/x86-windows/share/ceres/CeresTargets-debug.cmake">
-			<Option virtualFolder="CMake Files\src\vcpkg\installed\x86-windows\share\ceres\"/>
+		<Unit filename="/home/yyh/little-task/../../../usr/local/lib/cmake/Ceres/FindGlog.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\local\lib\cmake\Ceres\"/>
 		</Unit>
-		<Unit filename="G:/code/C or C++/little-task/src/vcpkg/installed/x86-windows/share/ceres/CeresTargets-release.cmake">
-			<Option virtualFolder="CMake Files\src\vcpkg\installed\x86-windows\share\ceres\"/>
+		<Unit filename="/home/yyh/little-task/../../../usr/lib/cmake/eigen3/Eigen3Config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\cmake\eigen3\"/>
 		</Unit>
-		<Unit filename="G:/code/C or C++/little-task/src/vcpkg/installed/x86-windows/share/ceres/CeresTargets.cmake">
-			<Option virtualFolder="CMake Files\src\vcpkg\installed\x86-windows\share\ceres\"/>
+		<Unit filename="/home/yyh/little-task/../../../usr/lib/cmake/eigen3/Eigen3ConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\cmake\eigen3\"/>
 		</Unit>
-		<Unit filename="G:/code/C or C++/little-task/src/vcpkg/installed/x86-windows/share/eigen3/Eigen3Config.cmake">
-			<Option virtualFolder="CMake Files\src\vcpkg\installed\x86-windows\share\eigen3\"/>
+		<Unit filename="/home/yyh/little-task/../../../usr/lib/cmake/eigen3/Eigen3Targets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\cmake\eigen3\"/>
 		</Unit>
-		<Unit filename="G:/code/C or C++/little-task/src/vcpkg/installed/x86-windows/share/eigen3/Eigen3ConfigVersion.cmake">
-			<Option virtualFolder="CMake Files\src\vcpkg\installed\x86-windows\share\eigen3\"/>
+		<Unit filename="/home/yyh/little-task/../../../usr/lib/x86_64-linux-gnu/cmake/gflags/gflags-config-version.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\gflags\"/>
 		</Unit>
-		<Unit filename="G:/code/C or C++/little-task/src/vcpkg/installed/x86-windows/share/eigen3/Eigen3Targets.cmake">
-			<Option virtualFolder="CMake Files\src\vcpkg\installed\x86-windows\share\eigen3\"/>
+		<Unit filename="/home/yyh/little-task/../../../usr/lib/x86_64-linux-gnu/cmake/gflags/gflags-config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\gflags\"/>
 		</Unit>
-		<Unit filename="G:/code/C or C++/little-task/src/vcpkg/installed/x86-windows/share/glog/glog-config-version.cmake">
-			<Option virtualFolder="CMake Files\src\vcpkg\installed\x86-windows\share\glog\"/>
+		<Unit filename="/home/yyh/little-task/../../../usr/lib/x86_64-linux-gnu/cmake/gflags/gflags-targets-release.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\gflags\"/>
 		</Unit>
-		<Unit filename="G:/code/C or C++/little-task/src/vcpkg/installed/x86-windows/share/glog/glog-config.cmake">
-			<Option virtualFolder="CMake Files\src\vcpkg\installed\x86-windows\share\glog\"/>
-		</Unit>
-		<Unit filename="G:/code/C or C++/little-task/src/vcpkg/installed/x86-windows/share/glog/glog-targets-debug.cmake">
-			<Option virtualFolder="CMake Files\src\vcpkg\installed\x86-windows\share\glog\"/>
-		</Unit>
-		<Unit filename="G:/code/C or C++/little-task/src/vcpkg/installed/x86-windows/share/glog/glog-targets-release.cmake">
-			<Option virtualFolder="CMake Files\src\vcpkg\installed\x86-windows\share\glog\"/>
-		</Unit>
-		<Unit filename="G:/code/C or C++/little-task/src/vcpkg/installed/x86-windows/share/glog/glog-targets.cmake">
-			<Option virtualFolder="CMake Files\src\vcpkg\installed\x86-windows\share\glog\"/>
-		</Unit>
-		<Unit filename="G:/code/C or C++/little-task/src/vcpkg/installed/x86-windows/share/gflags/gflags-config-version.cmake">
-			<Option virtualFolder="CMake Files\src\vcpkg\installed\x86-windows\share\gflags\"/>
-		</Unit>
-		<Unit filename="G:/code/C or C++/little-task/src/vcpkg/installed/x86-windows/share/gflags/gflags-config.cmake">
-			<Option virtualFolder="CMake Files\src\vcpkg\installed\x86-windows\share\gflags\"/>
-		</Unit>
-		<Unit filename="G:/code/C or C++/little-task/src/vcpkg/installed/x86-windows/share/gflags/gflags-targets-debug.cmake">
-			<Option virtualFolder="CMake Files\src\vcpkg\installed\x86-windows\share\gflags\"/>
-		</Unit>
-		<Unit filename="G:/code/C or C++/little-task/src/vcpkg/installed/x86-windows/share/gflags/gflags-targets-release.cmake">
-			<Option virtualFolder="CMake Files\src\vcpkg\installed\x86-windows\share\gflags\"/>
-		</Unit>
-		<Unit filename="G:/code/C or C++/little-task/src/vcpkg/installed/x86-windows/share/gflags/gflags-targets.cmake">
-			<Option virtualFolder="CMake Files\src\vcpkg\installed\x86-windows\share\gflags\"/>
-		</Unit>
-		<Unit filename="G:/code/C or C++/little-task/src/vcpkg/installed/x86-windows/share/gflags/vcpkg-cmake-wrapper.cmake">
-			<Option virtualFolder="CMake Files\src\vcpkg\installed\x86-windows\share\gflags\"/>
-		</Unit>
-		<Unit filename="G:/code/C or C++/little-task/src/vcpkg/installed/x86-windows/share/g2o/g2oConfig.cmake">
-			<Option virtualFolder="CMake Files\src\vcpkg\installed\x86-windows\share\g2o\"/>
-		</Unit>
-		<Unit filename="G:/code/C or C++/little-task/src/vcpkg/installed/x86-windows/share/g2o/g2oConfigVersion.cmake">
-			<Option virtualFolder="CMake Files\src\vcpkg\installed\x86-windows\share\g2o\"/>
-		</Unit>
-		<Unit filename="G:/code/C or C++/little-task/src/vcpkg/installed/x86-windows/share/g2o/g2oTargets-debug.cmake">
-			<Option virtualFolder="CMake Files\src\vcpkg\installed\x86-windows\share\g2o\"/>
-		</Unit>
-		<Unit filename="G:/code/C or C++/little-task/src/vcpkg/installed/x86-windows/share/g2o/g2oTargets-release.cmake">
-			<Option virtualFolder="CMake Files\src\vcpkg\installed\x86-windows\share\g2o\"/>
-		</Unit>
-		<Unit filename="G:/code/C or C++/little-task/src/vcpkg/installed/x86-windows/share/g2o/g2oTargets.cmake">
-			<Option virtualFolder="CMake Files\src\vcpkg\installed\x86-windows\share\g2o\"/>
+		<Unit filename="/home/yyh/little-task/../../../usr/lib/x86_64-linux-gnu/cmake/gflags/gflags-targets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\usr\lib\x86_64-linux-gnu\cmake\gflags\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>
