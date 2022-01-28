@@ -39,19 +39,19 @@ CMAKE_COLOR_MAKEFILE:BOOL=ON
 CMAKE_CXX_COMPILER:FILEPATH=G:/2019/VC/Tools/MSVC/14.29.30133/bin/Hostx86/x86/cl.exe
 
 //Flags used by the CXX compiler during all build types.
-CMAKE_CXX_FLAGS:STRING=/DWIN32 /D_WINDOWS /EHsc
+CMAKE_CXX_FLAGS:STRING=/DWIN32 /D_WINDOWS /W3 /GR /EHsc
 
 //Flags used by the CXX compiler during DEBUG builds.
-CMAKE_CXX_FLAGS_DEBUG:STRING=/Zi /Ob0 /Od /RTC1
+CMAKE_CXX_FLAGS_DEBUG:STRING=/MDd /Zi /Ob0 /Od /RTC1
 
 //Flags used by the CXX compiler during MINSIZEREL builds.
-CMAKE_CXX_FLAGS_MINSIZEREL:STRING=/O1 /Ob1 /DNDEBUG
+CMAKE_CXX_FLAGS_MINSIZEREL:STRING=/MD /O1 /Ob1 /DNDEBUG
 
 //Flags used by the CXX compiler during RELEASE builds.
-CMAKE_CXX_FLAGS_RELEASE:STRING=/O2 /Ob2 /DNDEBUG
+CMAKE_CXX_FLAGS_RELEASE:STRING=/MD /O2 /Ob2 /DNDEBUG
 
 //Flags used by the CXX compiler during RELWITHDEBINFO builds.
-CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=/Zi /O2 /Ob1 /DNDEBUG
+CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=/MD /Zi /O2 /Ob1 /DNDEBUG
 
 //Libraries linked by default with all C++ applications.
 CMAKE_CXX_STANDARD_LIBRARIES:STRING=kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
@@ -60,19 +60,19 @@ CMAKE_CXX_STANDARD_LIBRARIES:STRING=kernel32.lib user32.lib gdi32.lib winspool.l
 CMAKE_C_COMPILER:FILEPATH=G:/2019/VC/Tools/MSVC/14.29.30133/bin/Hostx86/x86/cl.exe
 
 //Flags used by the C compiler during all build types.
-CMAKE_C_FLAGS:STRING=/DWIN32 /D_WINDOWS
+CMAKE_C_FLAGS:STRING=/DWIN32 /D_WINDOWS /W3
 
 //Flags used by the C compiler during DEBUG builds.
-CMAKE_C_FLAGS_DEBUG:STRING=/Zi /Ob0 /Od /RTC1
+CMAKE_C_FLAGS_DEBUG:STRING=/MDd /Zi /Ob0 /Od /RTC1
 
 //Flags used by the C compiler during MINSIZEREL builds.
-CMAKE_C_FLAGS_MINSIZEREL:STRING=/O1 /Ob1 /DNDEBUG
+CMAKE_C_FLAGS_MINSIZEREL:STRING=/MD /O1 /Ob1 /DNDEBUG
 
 //Flags used by the C compiler during RELEASE builds.
-CMAKE_C_FLAGS_RELEASE:STRING=/O2 /Ob2 /DNDEBUG
+CMAKE_C_FLAGS_RELEASE:STRING=/MD /O2 /Ob2 /DNDEBUG
 
 //Flags used by the C compiler during RELWITHDEBINFO builds.
-CMAKE_C_FLAGS_RELWITHDEBINFO:STRING=/Zi /O2 /Ob1 /DNDEBUG
+CMAKE_C_FLAGS_RELWITHDEBINFO:STRING=/MD /Zi /O2 /Ob1 /DNDEBUG
 
 //Libraries linked by default with all C applications.
 CMAKE_C_STANDARD_LIBRARIES:STRING=kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
@@ -201,8 +201,8 @@ CMAKE_STATIC_LINKER_FLAGS_RELEASE:STRING=
 // during RELWITHDEBINFO builds.
 CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 
-//No help, variable specified on the command line.
-CMAKE_TOOLCHAIN_FILE:UNINITIALIZED=E:/src/vcpkg/scripts/buildsystems/vcpkg.cmake
+//The CMake toolchain file
+CMAKE_TOOLCHAIN_FILE:FILEPATH=E:/src/vcpkg/scripts/buildsystems/vcpkg.cmake
 
 //If this value is on, makefiles will be generated without the
 // .SILENT directive, and all commands will be echoed to the console
@@ -215,12 +215,6 @@ Ceres_DIR:PATH=E:/src/vcpkg/installed/x86-windows/share/ceres
 
 //The directory containing a CMake configuration file for Eigen3.
 Eigen3_DIR:PATH=E:/src/vcpkg/installed/x86-windows/share/eigen3
-
-//OpenGL library for win32
-OPENGL_gl_LIBRARY:STRING=opengl32
-
-//GLU library for win32
-OPENGL_glu_LIBRARY:STRING=glu32
 
 //The directory containing a CMake configuration file for OpenCV.
 OpenCV_DIR:PATH=E:/src/vcpkg/installed/x86-windows/share/opencv
@@ -270,9 +264,6 @@ Z_VCPKG_PWSH_PATH:FILEPATH=Z_VCPKG_PWSH_PATH-NOTFOUND
 //The directory which contains the installed libraries for each
 // triplet
 _VCPKG_INSTALLED_DIR:PATH=E:/src/vcpkg/installed
-
-//The directory containing a CMake configuration file for g2o.
-g2o_DIR:PATH=E:/src/vcpkg/installed/x86-windows/share/g2o
 
 //The directory containing a CMake configuration file for gflags.
 gflags_DIR:PATH=E:/src/vcpkg/installed/x86-windows/share/gflags
@@ -435,14 +426,8 @@ CMAKE_TOOLCHAIN_FILE-ADVANCED:INTERNAL=1
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Details about finding OpenCV
 FIND_PACKAGE_MESSAGE_DETAILS_OpenCV:INTERNAL=[E:/src/vcpkg/installed/x86-windows][v4.5.4()]
-//Details about finding OpenGL
-FIND_PACKAGE_MESSAGE_DETAILS_OpenGL:INTERNAL=[opengl32][c ][v()]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
-//ADVANCED property for variable: OPENGL_gl_LIBRARY
-OPENGL_gl_LIBRARY-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: OPENGL_glu_LIBRARY
-OPENGL_glu_LIBRARY-ADVANCED:INTERNAL=1
 //Install the dependencies listed in your manifest:
 //\n    If this is off, you will have to manually install your dependencies.
 //\n    See https://github.com/microsoft/vcpkg/tree/master/docs/specifications/manifests.md

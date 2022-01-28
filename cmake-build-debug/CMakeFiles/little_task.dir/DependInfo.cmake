@@ -25,7 +25,6 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "E:/src/vcpkg/installed/x86-windows/include"
   "E:/src/vcpkg/installed/x86-windows/share/eigen3/../../include/eigen3"
-  "E:/src/vcpkg/installed/x86-windows/share/g2o/../../include"
   )
 
 # The set of dependency files which are needed:

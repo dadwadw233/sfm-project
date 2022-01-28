@@ -50,24 +50,24 @@ The CXX compiler identification is MSVC, found in "G:/code/C or C++/little-task/
 Determining if the C compiler works passed with the following output:
 Change Dir: G:/code/C or C++/little-task/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):nmake -f Makefile /nologo cmTC_66916\fast && 	G:\2019\VC\Tools\MSVC\14.29.30133\bin\HostX86\x86\nmake.exe  -f CMakeFiles\cmTC_66916.dir\build.make /nologo -L                  CMakeFiles\cmTC_66916.dir\build
-Building C object CMakeFiles/cmTC_66916.dir/testCCompiler.c.obj
-	"G:\IDE\Clion\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\cmTC_66916.dir\testCCompiler.c.obj.d --working-dir="G:\code\C or C++\little-task\cmake-build-debug\CMakeFiles\CMakeTmp" --filter-prefix="" -- G:\2019\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe @C:\Users\lenovo\AppData\Local\Temp\nm3BEF.tmp
-Linking C executable cmTC_66916.exe
-	"G:\IDE\Clion\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_66916.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x86\mt.exe --manifests -- G:\2019\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_66916.dir\objects1.rsp @C:\Users\lenovo\AppData\Local\Temp\nm3CAB.tmp
-	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file E:/src/vcpkg/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary "G:/code/C or C++/little-task/cmake-build-debug/CMakeFiles/CMakeTmp/cmTC_66916.exe" -installedDir E:/src/vcpkg/installed/x86-windows/debug/bin -OutVariable out
+Run Build Command(s):nmake -f Makefile /nologo cmTC_f7b59\fast && 	G:\2019\VC\Tools\MSVC\14.29.30133\bin\HostX86\x86\nmake.exe  -f CMakeFiles\cmTC_f7b59.dir\build.make /nologo -L                  CMakeFiles\cmTC_f7b59.dir\build
+Building C object CMakeFiles/cmTC_f7b59.dir/testCCompiler.c.obj
+	"G:\IDE\Clion\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\cmTC_f7b59.dir\testCCompiler.c.obj.d --working-dir="G:\code\C or C++\little-task\cmake-build-debug\CMakeFiles\CMakeTmp" --filter-prefix="" -- G:\2019\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe @C:\Users\lenovo\AppData\Local\Temp\nm426B.tmp
+Linking C executable cmTC_f7b59.exe
+	"G:\IDE\Clion\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_f7b59.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x86\mt.exe --manifests -- G:\2019\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_f7b59.dir\objects1.rsp @C:\Users\lenovo\AppData\Local\Temp\nm4318.tmp
+	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file E:/src/vcpkg/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary "G:/code/C or C++/little-task/cmake-build-debug/CMakeFiles/CMakeTmp/cmTC_f7b59.exe" -installedDir E:/src/vcpkg/installed/x86-windows/debug/bin -OutVariable out
 
 
 
 Determining if the CXX compiler works passed with the following output:
 Change Dir: G:/code/C or C++/little-task/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):nmake -f Makefile /nologo cmTC_7ec67\fast && 	G:\2019\VC\Tools\MSVC\14.29.30133\bin\HostX86\x86\nmake.exe  -f CMakeFiles\cmTC_7ec67.dir\build.make /nologo -L                  CMakeFiles\cmTC_7ec67.dir\build
-Building CXX object CMakeFiles/cmTC_7ec67.dir/testCXXCompiler.cxx.obj
-	"G:\IDE\Clion\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\cmTC_7ec67.dir\testCXXCompiler.cxx.obj.d --working-dir="G:\code\C or C++\little-task\cmake-build-debug\CMakeFiles\CMakeTmp" --filter-prefix="" -- G:\2019\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe @C:\Users\lenovo\AppData\Local\Temp\nm414E.tmp
-Linking CXX executable cmTC_7ec67.exe
-	"G:\IDE\Clion\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_7ec67.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x86\mt.exe --manifests -- G:\2019\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_7ec67.dir\objects1.rsp @C:\Users\lenovo\AppData\Local\Temp\nm420A.tmp
-	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file E:/src/vcpkg/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary "G:/code/C or C++/little-task/cmake-build-debug/CMakeFiles/CMakeTmp/cmTC_7ec67.exe" -installedDir E:/src/vcpkg/installed/x86-windows/debug/bin -OutVariable out
+Run Build Command(s):nmake -f Makefile /nologo cmTC_cca0a\fast && 	G:\2019\VC\Tools\MSVC\14.29.30133\bin\HostX86\x86\nmake.exe  -f CMakeFiles\cmTC_cca0a.dir\build.make /nologo -L                  CMakeFiles\cmTC_cca0a.dir\build
+Building CXX object CMakeFiles/cmTC_cca0a.dir/testCXXCompiler.cxx.obj
+	"G:\IDE\Clion\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\cmTC_cca0a.dir\testCXXCompiler.cxx.obj.d --working-dir="G:\code\C or C++\little-task\cmake-build-debug\CMakeFiles\CMakeTmp" --filter-prefix="" -- G:\2019\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe @C:\Users\lenovo\AppData\Local\Temp\nm48F3.tmp
+Linking CXX executable cmTC_cca0a.exe
+	"G:\IDE\Clion\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_cca0a.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x86\mt.exe --manifests -- G:\2019\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_cca0a.dir\objects1.rsp @C:\Users\lenovo\AppData\Local\Temp\nm4990.tmp
+	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file E:/src/vcpkg/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary "G:/code/C or C++/little-task/cmake-build-debug/CMakeFiles/CMakeTmp/cmTC_cca0a.exe" -installedDir E:/src/vcpkg/installed/x86-windows/debug/bin -OutVariable out
 
 
 

@@ -5,7 +5,7 @@
 		<Option title="little_task"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="msvc8"/>
-		<Option virtualFolders="CMake Files\;CMake Files\src\;CMake Files\src\vcpkg\;CMake Files\src\vcpkg\scripts\;CMake Files\src\vcpkg\scripts\buildsystems\;CMake Files\src\vcpkg\installed\;CMake Files\src\vcpkg\installed\x86-windows\;CMake Files\src\vcpkg\installed\x86-windows\share\;CMake Files\src\vcpkg\installed\x86-windows\share\opencv\;CMake Files\src\vcpkg\installed\x86-windows\share\ceres\;CMake Files\src\vcpkg\installed\x86-windows\share\eigen3\;CMake Files\src\vcpkg\installed\x86-windows\share\glog\;CMake Files\src\vcpkg\installed\x86-windows\share\gflags\;CMake Files\src\vcpkg\installed\x86-windows\share\g2o\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\src\;CMake Files\src\vcpkg\;CMake Files\src\vcpkg\scripts\;CMake Files\src\vcpkg\scripts\buildsystems\;CMake Files\src\vcpkg\installed\;CMake Files\src\vcpkg\installed\x86-windows\;CMake Files\src\vcpkg\installed\x86-windows\share\;CMake Files\src\vcpkg\installed\x86-windows\share\opencv\;CMake Files\src\vcpkg\installed\x86-windows\share\ceres\;CMake Files\src\vcpkg\installed\x86-windows\share\eigen3\;CMake Files\src\vcpkg\installed\x86-windows\share\glog\;CMake Files\src\vcpkg\installed\x86-windows\share\gflags\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="G:/code/C or C++/little-task/cmake-build-debug"/>
@@ -30,7 +30,6 @@
 					<Add option="-DGFLAGS_IS_A_DLL=1"/>
 					<Add directory="E:/src/vcpkg/installed/x86-windows/include"/>
 					<Add directory="E:/src/vcpkg/installed/x86-windows/share/eigen3/../../include/eigen3"/>
-					<Add directory="E:/src/vcpkg/installed/x86-windows/share/g2o/../../include"/>
 					<Add directory="G:\2019\VC\Tools\MSVC\14.29.30133\ATLMFC\include"/>
 					<Add directory="G:\2019\VC\Tools\MSVC\14.29.30133\include"/>
 					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um"/>
@@ -60,7 +59,6 @@
 					<Add option="-DGFLAGS_IS_A_DLL=1"/>
 					<Add directory="E:/src/vcpkg/installed/x86-windows/include"/>
 					<Add directory="E:/src/vcpkg/installed/x86-windows/share/eigen3/../../include/eigen3"/>
-					<Add directory="E:/src/vcpkg/installed/x86-windows/share/g2o/../../include"/>
 					<Add directory="G:\2019\VC\Tools\MSVC\14.29.30133\ATLMFC\include"/>
 					<Add directory="G:\2019\VC\Tools\MSVC\14.29.30133\include"/>
 					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um"/>
@@ -184,21 +182,6 @@
 		</Unit>
 		<Unit filename="G:/code/C or C++/little-task/src/vcpkg/installed/x86-windows/share/gflags/vcpkg-cmake-wrapper.cmake">
 			<Option virtualFolder="CMake Files\src\vcpkg\installed\x86-windows\share\gflags\"/>
-		</Unit>
-		<Unit filename="G:/code/C or C++/little-task/src/vcpkg/installed/x86-windows/share/g2o/g2oConfig.cmake">
-			<Option virtualFolder="CMake Files\src\vcpkg\installed\x86-windows\share\g2o\"/>
-		</Unit>
-		<Unit filename="G:/code/C or C++/little-task/src/vcpkg/installed/x86-windows/share/g2o/g2oConfigVersion.cmake">
-			<Option virtualFolder="CMake Files\src\vcpkg\installed\x86-windows\share\g2o\"/>
-		</Unit>
-		<Unit filename="G:/code/C or C++/little-task/src/vcpkg/installed/x86-windows/share/g2o/g2oTargets-debug.cmake">
-			<Option virtualFolder="CMake Files\src\vcpkg\installed\x86-windows\share\g2o\"/>
-		</Unit>
-		<Unit filename="G:/code/C or C++/little-task/src/vcpkg/installed/x86-windows/share/g2o/g2oTargets-release.cmake">
-			<Option virtualFolder="CMake Files\src\vcpkg\installed\x86-windows\share\g2o\"/>
-		</Unit>
-		<Unit filename="G:/code/C or C++/little-task/src/vcpkg/installed/x86-windows/share/g2o/g2oTargets.cmake">
-			<Option virtualFolder="CMake Files\src\vcpkg\installed\x86-windows\share\g2o\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>
