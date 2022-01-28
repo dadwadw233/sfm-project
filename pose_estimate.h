@@ -4,5 +4,5 @@
 
 #ifndef SFM_PROJECT__POSE_ESTIMATE_H_
 #define SFM_PROJECT__POSE_ESTIMATE_H_
-
-#endif //SFM_PROJECT__POSE_ESTIMATE_H_
+class pose_estimate {};
+#endif  // SFM_PROJECT__POSE_ESTIMATE_H_
