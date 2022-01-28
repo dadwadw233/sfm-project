@@ -10,17 +10,17 @@
 
 class detectPoints {
  private:
-  std::vector<cv::Mat> imgs;
-  std::vector<std::vector<cv::KeyPoint>> keyPoints;
+  std::vector<cv::Mat> images;
+  std::vector<std::vector<cv::KeyPoint>> key_points;
   std::vector<std::vector<cv::Mat>> descriptors;
   std::vector<std::vector<cv::DMatch>> matches;
-  std::vector<std::vector<cv::DMatch>> goodMatches;
+  std::vector<std::vector<cv::DMatch>> good_matches;
 
  public:
   ~detectPoints() = delete;
-  detectPoints() = delete;
-  detectPoints(std::vector<cv::Mat> inputImgs);
-  void findFeaturePoints();
+  explicit detectPoints() = delete;
+  detectPoints(std::vector<cv::Mat> &input_images);
+  void find_feature_points();
   void matchFeaturePoints();
 };
 
