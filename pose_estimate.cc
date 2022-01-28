@@ -38,23 +38,23 @@ void pose_estimate::constructProblem() {
   }
 }
 void pose_estimate::solveBA() {
-
   options.linear_solver_type = ceres::DENSE_SCHUR;
   options.minimizer_progress_to_stdout = true;
 
   ceres::Solve(options, &problem, &summary);
   std::cout << summary.FullReport() << "\n";
-  cv::Mat R_vec = (cv::Mat_<double>(3,1) << camera[0],camera[1],camera[2]);//数组转cv向量
+  cv::Mat R_vec = (cv::Mat_<double>(3, 1) << camera[0], camera[1],
+                   camera[2]);  //数组转cv向量
   cv::Mat R_cvest;
-  Rodrigues(R_vec,R_cvest);//罗德里格斯公式，旋转向量转旋转矩阵
-  std::cout<<"R_cvest="<<R_cvest<<std::endl;
+  Rodrigues(R_vec, R_cvest);  //罗德里格斯公式，旋转向量转旋转矩阵
+  std::cout << "R_cvest=" << R_cvest << std::endl;
   Eigen::Matrix3d R_est;
-  cv::cv2eigen(R_cvest,R_est);//cv矩阵转eigen矩阵
-  std::cout<<"R_est="<<R_est<<std::endl;
-  Eigen::Vector3d t_est(camera[3],camera[4],camera[5]);
-  std::cout<<"t_est="<<t_est<<std::endl;
-  Eigen::Isometry3d T(R_est);//构造变换矩阵与输出
+  cv::cv2eigen(R_cvest, R_est);  // cv矩阵转eigen矩阵
+  std::cout << "R_est=" << R_est << std::endl;
+  Eigen::Vector3d t_est(camera[3], camera[4], camera[5]);
+  std::cout << "t_est=" << t_est << std::endl;
+  Eigen::Isometry3d T(R_est);  //构造变换矩阵与输出
   T.pretranslate(t_est);
-  std::cout<<T.matrix()<<std::endl;
+  std::cout << T.matrix() << std::endl;
 }
 }  // namespace sfmProject

@@ -5,10 +5,10 @@
 #ifndef SFM_PROJECT__POSE_ESTIMATE_H_
 #define SFM_PROJECT__POSE_ESTIMATE_H_
 #include <ceres/ceres.h>
-#include <iostream>
-#include <opencv2/opencv.hpp>
 #include <Eigen/Dense>
+#include <iostream>
 #include <opencv2/core/eigen.hpp>
+#include <opencv2/opencv.hpp>
 #include <vector>
 namespace sfmProject {
 class pose_estimate {
