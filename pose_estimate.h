@@ -7,6 +7,7 @@
 #include <ceres/ceres.h>
 #include <iostream>
 #include <opencv2/opencv.hpp>
+#include "ceres/rotation.h"
 #include "feature_points/detect_points.h"
 
 namespace sfmProject {
@@ -19,14 +20,15 @@ class pose_estimate {
   pose_estimate(const pose_estimate&) = delete;
   pose_estimate& operator=(const pose_estimate&) = delete;
   ~pose_estimate();
-  // 代价函数的计算模型
+  // the module of costFunction//
   struct PnPCeres {
     PnPCeres(const cv::Point2f& uv, const cv::Point3f& xyz)
         : _uv(uv), _xyz(xyz) {}
-    // 残差的计算
+    // compute the residuals
     template <typename T>
-    bool operator()(const T* const camera,  // 位姿参数，有6维
-                    T* residual) const;     // 残差
+    bool operator()(
+        const T* const camera,  // Posture parameters, 6 dimensions//
+        T* residual) const;     // residuals//
 
     static ceres::CostFunction* Create(const cv::Point2f& uv,
                                        const cv::Point3f& xyz);
@@ -38,4 +40,4 @@ class pose_estimate {
                             std::vector<cv::Mat>& t);
 };
 }  // namespace sfmProject
-#endif  // SFM_PROJECT__POSE_ESTIMATE_H_
+#endif  // SFM_PROJECT__POSE_ESTIMATE_H_//

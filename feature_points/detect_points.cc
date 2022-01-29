@@ -7,12 +7,26 @@
 #include <utility>
 namespace sfmProject {
 detectPoints::detectPoints(std::vector<cv::Mat> &input_images) {
-  std::copy(input_images.begin(), input_images.end(), &images.front());
+  std::copy(input_images.begin(), input_images.end(), images.begin());
   image_number = input_images.size();
-  key_points.resize(images.size());
-  descriptors.resize(images.size());
-  matches.resize(images.size());
-  good_matches.resize(images.size());
+  key_points.resize(image_number);
+  descriptors.resize(image_number);
+  matches.resize(image_number);
+  good_matches.resize(image_number);
+}
+
+detectPoints::detectPoints(const std::string &image_file_names) {
+  std::ifstream file(image_file_names);
+  std::string image_file;
+  cv::Mat temp;
+  while (std::getline(file, image_file)) {
+    image_file = R"(./images/)" + image_file;
+    std::cout<<"now the file location is "<<image_file<<std::endl;
+    temp = cv::imread(image_file);
+    images.push_back(temp);
+  }
+  std::cout << "all images have been read" << std::endl
+            << "the number of the images is " << images.size();
 }
 
 /**

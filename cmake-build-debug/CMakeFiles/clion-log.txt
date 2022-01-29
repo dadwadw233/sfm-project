@@ -1,4 +1,4 @@
-"G:\IDE\Clion\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=E:/src/vcpkg/scripts/buildsystems/vcpkg.cmake -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - NMake Makefiles" "G:\code\C or C++\little-task"
+"G:\IDE\Clion\CLion 2021.3.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=E:/src/vcpkg/scripts/buildsystems/vcpkg.cmake -G "CodeBlocks - NMake Makefiles" "G:\code\C or C++\little-task"
 -- Found required Ceres dependency: Eigen version 3.3.9 in E:/src/vcpkg/installed/x86-windows/include/eigen3
 -- Found Ceres version: 2.0.0 installed in: E:/src/vcpkg/installed/x86-windows/share with components: [SchurSpecializations, Multithreading]
 -- Configuring done
