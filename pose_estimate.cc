@@ -29,11 +29,15 @@ ceres::CostFunction *pose_estimate::PnPCeres::Create(const cv::Point2f &uv,
   return (
       new ceres::AutoDiffCostFunction<PnPCeres, 2, 6>(new PnPCeres(uv, xyz)));
 }
+/**
+ * compute the movement between pictures
+ * @param points
+ * @param R
+ * @param t
+ */
 void pose_estimate::pose_estimation_2d2d(detectPoints points,
                                          std::vector<cv::Mat> &R,
                                          std::vector<cv::Mat> &t) {
-//  K = (cv::Mat_<double>(3, 3) << 951.43, 0.0, 652.39, 0.0, 959.55, 412.55, 0.0,
-//       0.0, 1.0);
   int focal_length = 521;
   int image_number = points.get_image_number();
   cv::Mat fundamental_matrix;
