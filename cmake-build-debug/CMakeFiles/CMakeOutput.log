@@ -71,3 +71,76 @@ Linking CXX executable cmTC_57ed1.exe
 
 
 
+The system is: Windows - 10.0.19042 - AMD64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: G:/2019/VC/Tools/MSVC/14.29.30133/bin/Hostx86/x86/cl.exe 
+Build flags: /DWIN32;/D_WINDOWS;/W3
+Id flags:  
+
+The output was:
+0
+用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.29.30133 版
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+CMakeCCompilerId.c
+Microsoft (R) Incremental Linker Version 14.29.30133.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+/out:CMakeCCompilerId.exe 
+CMakeCCompilerId.obj 
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.exe"
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.obj"
+
+The C compiler identification is MSVC, found in "G:/code/C or C++/little-task/cmake-build-debug/CMakeFiles/3.21.1/CompilerIdC/CMakeCCompilerId.exe"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: G:/2019/VC/Tools/MSVC/14.29.30133/bin/Hostx86/x86/cl.exe 
+Build flags: /DWIN32;/D_WINDOWS;/W3;/GR;/EHsc
+Id flags:  
+
+The output was:
+0
+用于 x86 的 Microsoft (R) C/C++ 优化编译器 19.29.30133 版
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+CMakeCXXCompilerId.cpp
+Microsoft (R) Incremental Linker Version 14.29.30133.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+/out:CMakeCXXCompilerId.exe 
+CMakeCXXCompilerId.obj 
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.exe"
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.obj"
+
+The CXX compiler identification is MSVC, found in "G:/code/C or C++/little-task/cmake-build-debug/CMakeFiles/3.21.1/CompilerIdCXX/CMakeCXXCompilerId.exe"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: G:/code/C or C++/little-task/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):nmake -f Makefile /nologo cmTC_5946b\fast && 	G:\2019\VC\Tools\MSVC\14.29.30133\bin\HostX86\x86\nmake.exe  -f CMakeFiles\cmTC_5946b.dir\build.make /nologo -L                  CMakeFiles\cmTC_5946b.dir\build
+Building C object CMakeFiles/cmTC_5946b.dir/testCCompiler.c.obj
+	"G:\IDE\Clion\CLion 2021.3.2\bin\cmake\win\bin\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\cmTC_5946b.dir\testCCompiler.c.obj.d --working-dir="G:\code\C or C++\little-task\cmake-build-debug\CMakeFiles\CMakeTmp" --filter-prefix="" -- G:\2019\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe @C:\Users\lenovo\AppData\Local\Temp\nm8E97.tmp
+Linking C executable cmTC_5946b.exe
+	"G:\IDE\Clion\CLion 2021.3.2\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_5946b.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x86\mt.exe --manifests -- G:\2019\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_5946b.dir\objects1.rsp @C:\Users\lenovo\AppData\Local\Temp\nm8F34.tmp
+	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file E:/src/vcpkg/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary "G:/code/C or C++/little-task/cmake-build-debug/CMakeFiles/CMakeTmp/cmTC_5946b.exe" -installedDir E:/src/vcpkg/installed/x86-windows/debug/bin -OutVariable out
+
+
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: G:/code/C or C++/little-task/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):nmake -f Makefile /nologo cmTC_aed8e\fast && 	G:\2019\VC\Tools\MSVC\14.29.30133\bin\HostX86\x86\nmake.exe  -f CMakeFiles\cmTC_aed8e.dir\build.make /nologo -L                  CMakeFiles\cmTC_aed8e.dir\build
+Building CXX object CMakeFiles/cmTC_aed8e.dir/testCXXCompiler.cxx.obj
+	"G:\IDE\Clion\CLion 2021.3.2\bin\cmake\win\bin\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\cmTC_aed8e.dir\testCXXCompiler.cxx.obj.d --working-dir="G:\code\C or C++\little-task\cmake-build-debug\CMakeFiles\CMakeTmp" --filter-prefix="" -- G:\2019\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe @C:\Users\lenovo\AppData\Local\Temp\nm9379.tmp
+Linking CXX executable cmTC_aed8e.exe
+	"G:\IDE\Clion\CLion 2021.3.2\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_aed8e.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x86\mt.exe --manifests -- G:\2019\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_aed8e.dir\objects1.rsp @C:\Users\lenovo\AppData\Local\Temp\nm9416.tmp
+	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file E:/src/vcpkg/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary "G:/code/C or C++/little-task/cmake-build-debug/CMakeFiles/CMakeTmp/cmTC_aed8e.exe" -installedDir E:/src/vcpkg/installed/x86-windows/debug/bin -OutVariable out
+
+
+

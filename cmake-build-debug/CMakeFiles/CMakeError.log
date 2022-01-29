@@ -39,3 +39,31 @@ Stop.
 
 
 
+Detecting C compiler ABI info failed to compile with the following output:
+Change Dir: G:/code/C or C++/little-task/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):nmake -f Makefile /nologo cmTC_8c2eb\fast && 	G:\2019\VC\Tools\MSVC\14.29.30133\bin\HostX86\x86\nmake.exe  -f CMakeFiles\cmTC_8c2eb.dir\build.make /nologo -L                  CMakeFiles\cmTC_8c2eb.dir\build
+Building C object CMakeFiles/cmTC_8c2eb.dir/CMakeCCompilerABI.c.obj
+	"G:\IDE\Clion\CLion 2021.3.2\bin\cmake\win\bin\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\cmTC_8c2eb.dir\CMakeCCompilerABI.c.obj.d --working-dir="G:\code\C or C++\little-task\cmake-build-debug\CMakeFiles\CMakeTmp" --filter-prefix="" -- G:\2019\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe @C:\Users\lenovo\AppData\Local\Temp\nm8C45.tmp
+NMAKE : fatal error U1077: “"G:\IDE\Clion\CLion 2021.3.2\bin\cmake\win\bin\cmake.exe"”: 返回代码“0xc0000409”
+Stop.
+NMAKE : fatal error U1077: “G:\2019\VC\Tools\MSVC\14.29.30133\bin\HostX86\x86\nmake.exe”: 返回代码“0x2”
+Stop.
+
+
+
+
+Detecting CXX compiler ABI info failed to compile with the following output:
+Change Dir: G:/code/C or C++/little-task/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):nmake -f Makefile /nologo cmTC_07011\fast && 	G:\2019\VC\Tools\MSVC\14.29.30133\bin\HostX86\x86\nmake.exe  -f CMakeFiles\cmTC_07011.dir\build.make /nologo -L                  CMakeFiles\cmTC_07011.dir\build
+Building CXX object CMakeFiles/cmTC_07011.dir/CMakeCXXCompilerABI.cpp.obj
+	"G:\IDE\Clion\CLion 2021.3.2\bin\cmake\win\bin\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\cmTC_07011.dir\CMakeCXXCompilerABI.cpp.obj.d --working-dir="G:\code\C or C++\little-task\cmake-build-debug\CMakeFiles\CMakeTmp" --filter-prefix="" -- G:\2019\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe @C:\Users\lenovo\AppData\Local\Temp\nm9240.tmp
+NMAKE : fatal error U1077: “"G:\IDE\Clion\CLion 2021.3.2\bin\cmake\win\bin\cmake.exe"”: 返回代码“0xc0000409”
+Stop.
+NMAKE : fatal error U1077: “G:\2019\VC\Tools\MSVC\14.29.30133\bin\HostX86\x86\nmake.exe”: 返回代码“0x2”
+Stop.
+
+
+
+
