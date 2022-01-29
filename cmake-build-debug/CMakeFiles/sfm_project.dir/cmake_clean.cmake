@@ -1,10 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/sfm_project.dir/feature_points/detect_points.cc.obj"
-  "CMakeFiles/sfm_project.dir/main.cc.obj"
-  "CMakeFiles/sfm_project.dir/pose_estimate.cc.obj"
-  "sfm_project.exe"
-  "sfm_project.exe.manifest"
-  "sfm_project.lib"
+  "CMakeFiles/sfm_project.dir/feature_points/detect_points.cc.o"
+  "CMakeFiles/sfm_project.dir/main.cc.o"
+  "CMakeFiles/sfm_project.dir/pose_estimate.cc.o"
+  "sfm_project"
   "sfm_project.pdb"
 )
 

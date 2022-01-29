@@ -5,12 +5,21 @@
 #ifndef SFM_PROJECT__POSE_ESTIMATE_H_
 #define SFM_PROJECT__POSE_ESTIMATE_H_
 #include <ceres/ceres.h>
+#include <Eigen/Dense>
 #include <iostream>
+#include <opencv2/core/eigen.hpp>
 #include <opencv2/opencv.hpp>
+#include <vector>
 namespace sfmProject {
 class pose_estimate {
  private:
   static cv::Mat K;
+  double camera[6];
+  ceres::Problem problem;
+  std::vector<cv::Point3f> pts_3d;
+  std::vector<cv::Point2f> pts_2d;
+  ceres::Solver::Options options;
+  ceres::Solver::Summary summary;
 
  public:
   explicit pose_estimate();
@@ -32,6 +41,8 @@ class pose_estimate {
     const cv::Point3f _xyz;
   };
   void initialize();
+  void constructProblem();
+  void solveBA();
 };
 }  // namespace sfmProject
 #endif  // SFM_PROJECT__POSE_ESTIMATE_H_
