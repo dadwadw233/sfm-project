@@ -75,6 +75,54 @@
 					<DistClean command="nmake /NOLOGO /f &quot;G:\code\C or C++\little-task\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="detect_points">
+				<Option output="G:/code/C or C++/little-task/cmake-build-debug/detect_points.lib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="G:/code/C or C++/little-task/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="E:/src/vcpkg/installed/x86-windows/include"/>
+					<Add directory="G:\2019\VC\Tools\MSVC\14.29.30133\ATLMFC\include"/>
+					<Add directory="G:\2019\VC\Tools\MSVC\14.29.30133\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f &quot;G:\code\C or C++\little-task\cmake-build-debug\Makefile&quot; VERBOSE=1 detect_points"/>
+					<CompileFile command="nmake /NOLOGO /f &quot;G:\code\C or C++\little-task\cmake-build-debug\Makefile&quot; VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f &quot;G:\code\C or C++\little-task\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f &quot;G:\code\C or C++\little-task\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="detect_points/fast">
+				<Option output="G:/code/C or C++/little-task/cmake-build-debug/detect_points.lib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="G:/code/C or C++/little-task/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="msvc8"/>
+				<Compiler>
+					<Add directory="E:/src/vcpkg/installed/x86-windows/include"/>
+					<Add directory="G:\2019\VC\Tools\MSVC\14.29.30133\ATLMFC\include"/>
+					<Add directory="G:\2019\VC\Tools\MSVC\14.29.30133\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f &quot;G:\code\C or C++\little-task\cmake-build-debug\Makefile&quot; VERBOSE=1 detect_points/fast"/>
+					<CompileFile command="nmake /NOLOGO /f &quot;G:\code\C or C++\little-task\cmake-build-debug\Makefile&quot; VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f &quot;G:\code\C or C++\little-task\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f &quot;G:\code\C or C++\little-task\cmake-build-debug\Makefile&quot; VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 			<Target title="edit_cache">
 				<Option working_dir="G:/code/C or C++/little-task/cmake-build-debug"/>
 				<Option type="4"/>
@@ -98,6 +146,7 @@
 		</Build>
 		<Unit filename="G:/code/C or C++/little-task/feature_points/detect_points.cc">
 			<Option target="sfm_project"/>
+			<Option target="detect_points"/>
 		</Unit>
 		<Unit filename="G:/code/C or C++/little-task/feature_points/detect_points.h">
 			<Option target="sfm_project"/>

@@ -53,6 +53,7 @@ CMAKE_BINARY_DIR = "G:\code\C or C++\little-task\cmake-build-debug"
 
 # The main recursive "all" target.
 all: CMakeFiles\sfm_project.dir\all
+all: CMakeFiles\detect_points.dir\all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -61,6 +62,7 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles\sfm_project.dir\clean
+clean: CMakeFiles\detect_points.dir\clean
 .PHONY : clean
 
 #=============================================================================
@@ -70,7 +72,7 @@ clean: CMakeFiles\sfm_project.dir\clean
 CMakeFiles\sfm_project.dir\all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\sfm_project.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\sfm_project.dir\depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\sfm_project.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\sfm_project.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="G:\code\C or C++\little-task\cmake-build-debug\CMakeFiles" --progress-num=1,2,3,4 "Built target sfm_project"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="G:\code\C or C++\little-task\cmake-build-debug\CMakeFiles" --progress-num=3,4,5,6 "Built target sfm_project"
 .PHONY : CMakeFiles\sfm_project.dir\all
 
 # Build rule for subdir invocation for target.
@@ -88,6 +90,32 @@ sfm_project: CMakeFiles\sfm_project.dir\rule
 CMakeFiles\sfm_project.dir\clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\sfm_project.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\sfm_project.dir\clean
 .PHONY : CMakeFiles\sfm_project.dir\clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/detect_points.dir
+
+# All Build rule for target.
+CMakeFiles\detect_points.dir\all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\detect_points.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\detect_points.dir\depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\detect_points.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\detect_points.dir\build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="G:\code\C or C++\little-task\cmake-build-debug\CMakeFiles" --progress-num=1,2 "Built target detect_points"
+.PHONY : CMakeFiles\detect_points.dir\all
+
+# Build rule for subdir invocation for target.
+CMakeFiles\detect_points.dir\rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "G:\code\C or C++\little-task\cmake-build-debug\CMakeFiles" 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\detect_points.dir\all
+	$(CMAKE_COMMAND) -E cmake_progress_start "G:\code\C or C++\little-task\cmake-build-debug\CMakeFiles" 0
+.PHONY : CMakeFiles\detect_points.dir\rule
+
+# Convenience name for target.
+detect_points: CMakeFiles\detect_points.dir\rule
+.PHONY : detect_points
+
+# clean rule for target.
+CMakeFiles\detect_points.dir\clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\detect_points.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\detect_points.dir\clean
+.PHONY : CMakeFiles\detect_points.dir\clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

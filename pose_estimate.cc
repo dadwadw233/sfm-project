@@ -29,4 +29,31 @@ ceres::CostFunction *pose_estimate::PnPCeres::Create(const cv::Point2f &uv,
   return (
       new ceres::AutoDiffCostFunction<PnPCeres, 2, 6>(new PnPCeres(uv, xyz)));
 }
+void pose_estimate::pose_estimation_2d2d(detectPoints points,
+                                         std::vector<cv::Mat> &R,
+                                         std::vector<cv::Mat> &t) {
+  K = (cv::Mat_<double>(3, 3) << 951.43, 0.0, 652.39, 0.0, 959.55, 412.55, 0.0,
+       0.0, 1.0);
+  int focal_length = 521;
+  int image_number = detectPoints::get_image_number();
+  cv::Mat fundamental_matrix;
+  cv::Mat essential_matrix;
+  cv::Mat homography_matrix;
+
+  std::vector<cv::Point2f> first_image_points;
+  std::vector<cv::Point2f> now_image_points;
+  cv::Point2d principal_point(640, 360);
+
+  detectPoints::copy_key_points(first_image_points, 0);
+
+  for (int i = 1; i < image_number; ++i) {
+    detectPoints::copy_key_points(now_image_points, i);
+    fundamental_matrix = cv::findFundamentalMat(
+        first_image_points, now_image_points, cv::FM_8POINT);
+    essential_matrix =
+        cv::findEssentialMat(first_image_points, now_image_points, focal_length,
+                             principal_point, cv::RANSAC);
+    cv::recoverPose(essential_matrix, first_image_points, now_image_points, R[i], t[i], focal_length, principal_point);
+  }
+}
 }  // namespace sfmProject

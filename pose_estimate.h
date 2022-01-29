@@ -7,6 +7,8 @@
 #include <ceres/ceres.h>
 #include <iostream>
 #include <opencv2/opencv.hpp>
+#include "feature_points/detect_points.h"
+
 namespace sfmProject {
 class pose_estimate {
  private:
@@ -32,6 +34,8 @@ class pose_estimate {
     const cv::Point3f _xyz;
   };
   void initialize();
+  void pose_estimation_2d2d(detectPoints points, std::vector<cv::Mat>& R,
+                            std::vector<cv::Mat>& t);
 };
 }  // namespace sfmProject
 #endif  // SFM_PROJECT__POSE_ESTIMATE_H_
