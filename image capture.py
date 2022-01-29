@@ -1,3 +1,5 @@
+#!/user/bin/python
+# -*- coding: UTF-8 -*-
 import pyrealsense2 as rs
 import numpy as np
 import cv2
@@ -22,7 +24,7 @@ align = rs.align(align_to)
 
 # 按照日期创建文件夹
 save_path = os.path.join(os.getcwd(), "out", time.strftime("%Y_%m_%d_%H_%M_%S", time.localtime()))
-os.mkdir(save_path)
+os.makedirs(save_path)
 os.mkdir(os.path.join(save_path, "color"))
 os.mkdir(os.path.join(save_path, "depth"))
 
