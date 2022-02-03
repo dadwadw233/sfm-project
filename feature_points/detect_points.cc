@@ -15,14 +15,14 @@ detect_points::detect_points(std::vector<cv::Mat> &input_images) {
   good_matches.resize(image_number);
 }
 
-detect_points::detect_points(const std::string &image_file_names) {
-  std::ifstream file(image_file_names);
-  std::string image_file;
+detect_points::detect_points(const std::string &image_file_name) {
+  std::ifstream file(image_file_name);
+  std::string image;
   cv::Mat temp;
-  while (std::getline(file, image_file)) {
-    image_file = R"(./images/)" + image_file;
-    std::cout<<"now the file location is "<<image_file<<std::endl;
-    temp = cv::imread(image_file);
+  while (std::getline(file, image)) {
+    image = image_file_name + '\\' + image;
+    std::cout << "now the file location is " << image << std::endl;
+    temp = cv::imread(image);
     images.push_back(temp);
   }
   std::cout << "all images have been read" << std::endl
@@ -78,7 +78,7 @@ int detect_points::get_image_number() { return image_number; }
  * @param image_index
  */
 void detect_points::copy_key_points(std::vector<cv::Point2f> &points,
-                                   const int image_index) {
+                                    const int image_index) {
   points.clear();
   for (int i = 0; i < (int)good_matches[image_index].size(); ++i) {
     points.push_back(

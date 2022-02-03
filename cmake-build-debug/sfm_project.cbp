@@ -154,12 +154,6 @@
 		<Unit filename="G:/code/C or C++/sfm-project/main.cc">
 			<Option target="sfm_project"/>
 		</Unit>
-		<Unit filename="G:/code/C or C++/sfm-project/pose_estimate.cc">
-			<Option target="sfm_project"/>
-		</Unit>
-		<Unit filename="G:/code/C or C++/sfm-project/pose_estimate.h">
-			<Option target="sfm_project"/>
-		</Unit>
 		<Unit filename="G:/code/C or C++/sfm-project/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

@@ -5,10 +5,10 @@
 #ifndef SFM_PROJECT_DETECT_POINTS_H
 #define SFM_PROJECT_DETECT_POINTS_H
 #include "cmath"
-#include "io.h"
 #include "vector"
 #include "string"
 #include "fstream"
+#include "io.h"
 #include "opencv2/opencv.hpp"
 
 namespace sfmProject {
@@ -28,7 +28,7 @@ class detect_points {
 
   detect_points(std::vector<cv::Mat> &input_images);
 
-  detect_points(const std::string &image_file_names);
+  detect_points(const std::string &image_file_name);
 
   void find_feature_points();
 

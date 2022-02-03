@@ -10,7 +10,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "G:/code/C or C++/sfm-project/feature_points/detect_points.cc" "CMakeFiles/sfm_project.dir/feature_points/detect_points.cc.obj" "msvc" "CMakeFiles/sfm_project.dir/feature_points/detect_points.cc.obj.d"
   "G:/code/C or C++/sfm-project/main.cc" "CMakeFiles/sfm_project.dir/main.cc.obj" "msvc" "CMakeFiles/sfm_project.dir/main.cc.obj.d"
-  "G:/code/C or C++/sfm-project/pose_estimate.cc" "CMakeFiles/sfm_project.dir/pose_estimate.cc.obj" "msvc" "CMakeFiles/sfm_project.dir/pose_estimate.cc.obj.d"
   )
 
 # Targets to which this target links.
