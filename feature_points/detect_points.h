@@ -5,23 +5,38 @@
 #ifndef SFM_PROJECT_DETECT_POINTS_H
 #define SFM_PROJECT_DETECT_POINTS_H
 #include "cmath"
-#include "opencv2/opencv.hpp"
+#include "io.h"
 #include "vector"
+#include "string"
+#include "fstream"
+#include "opencv2/opencv.hpp"
 
+namespace sfmProject {
 class detect_points {
  private:
+  int image_number{};
   std::vector<cv::Mat> images;
-  std::vector<std::vector<cv::KeyPoint>> key_points;
   std::vector<std::vector<cv::Mat>> descriptors;
   std::vector<std::vector<cv::DMatch>> matches;
+  std::vector<std::vector<cv::KeyPoint>> key_points;
   std::vector<std::vector<cv::DMatch>> good_matches;
 
  public:
-  ~detect_points() = delete;
-  explicit detect_points() = delete;
-  detect_points(std::vector<cv::Mat> &input_images);
-  void find_feature_points();
-  void matchFeaturePoints();
-};
+  ~detect_points() = default;
 
-#endif  // SFM_PROJECT_DETECT_POINTS_H
+  explicit detect_points() = delete;
+
+  detect_points(std::vector<cv::Mat> &input_images);
+
+  detect_points(const std::string &image_file_names);
+
+  void find_feature_points();
+
+  void matchFeaturePoints();
+
+  int get_image_number();
+
+  void copy_key_points(std::vector<cv::Point2f> &points, int image_index);
+};
+}  // namespace sfmProject
+#endif  // SFM_PROJECT_DETECT_POINTS_H//

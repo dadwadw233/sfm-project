@@ -12,12 +12,12 @@ bool pose_estimate::PnPCeres::operator()(const T *const camera,
   point[0] = T(_xyz.x);
   point[1] = T(_xyz.y);
   point[2] = T(_xyz.z);
-  AngleAxisRotatePoint(camera, point, p);  //è®¡ç®—RP
+  AngleAxisRotatePoint(camera, point, p);  //¼ÆËãRP
   p[0] += camera[3];
   p[1] += camera[4];
   p[2] += camera[5];
   T xp = p[0] / p[2];
-  T yp = p[1] / p[2];  // xp,ypæ˜¯å½’ä¸€åŒ–åæ ‡ï¼Œæ·±åº¦ä¸ºp[2]
+  T yp = p[1] / p[2];  // xp,ypÊÇ¹éÒ»»¯×ø±ê£¬Éî¶ÈÎªp[2]
   T u_ = xp * K.at<double>(0, 0) + K.at<double>(0, 2);
   T v_ = yp * K.at<double>(1, 1) + K.at<double>(1, 2);
   residual[0] = T(_uv.x) - u_;
@@ -44,17 +44,44 @@ void pose_estimate::solveBA() {
   ceres::Solve(options, &problem, &summary);
   std::cout << summary.FullReport() << "\n";
   cv::Mat R_vec = (cv::Mat_<double>(3, 1) << camera[0], camera[1],
-                   camera[2]);  //æ•°ç»„è½¬cvå‘é‡
+                   camera[2]);  //Êı×é×ªcvÏòÁ¿
   cv::Mat R_cvest;
-  Rodrigues(R_vec, R_cvest);  //ç½—å¾·é‡Œæ ¼æ–¯å…¬å¼ï¼Œæ—‹è½¬å‘é‡è½¬æ—‹è½¬çŸ©é˜µ
+  Rodrigues(R_vec, R_cvest);  //ÂŞµÂÀï¸ñË¹¹«Ê½£¬Ğı×ªÏòÁ¿×ªĞı×ª¾ØÕó
   std::cout << "R_cvest=" << R_cvest << std::endl;
   Eigen::Matrix3d R_est;
-  cv::cv2eigen(R_cvest, R_est);  // cvçŸ©é˜µè½¬eigençŸ©é˜µ
+  cv::cv2eigen(R_cvest, R_est);  // cv¾ØÕó×ªeigen¾ØÕó
   std::cout << "R_est=" << R_est << std::endl;
   Eigen::Vector3d t_est(camera[3], camera[4], camera[5]);
   std::cout << "t_est=" << t_est << std::endl;
-  Eigen::Isometry3d T(R_est);  //æ„é€ å˜æ¢çŸ©é˜µä¸è¾“å‡º
+  Eigen::Isometry3d T(R_est);  //¹¹Ôì±ä»»¾ØÕóÓëÊä³ö
   T.pretranslate(t_est);
   std::cout << T.matrix() << std::endl;
+}
+
+void pose_estimate::pose_estimation_2d2d(detect_points points,
+                                         std::vector<cv::Mat> &R,
+                                         std::vector<cv::Mat> &t) {
+  int focal_length = 521;
+  int image_number = points.get_image_number();
+  cv::Mat fundamental_matrix;
+  cv::Mat essential_matrix;
+  cv::Mat homography_matrix;
+
+  std::vector<cv::Point2f> first_image_points;
+  std::vector<cv::Point2f> now_image_points;
+  cv::Point2d principal_point(640, 360);
+
+  points.copy_key_points(first_image_points, 0);
+
+  for (int i = 1; i < image_number; ++i) {
+    points.copy_key_points(now_image_points, i);
+    fundamental_matrix = cv::findFundamentalMat(
+        first_image_points, now_image_points, cv::FM_8POINT);
+    essential_matrix =
+        cv::findEssentialMat(first_image_points, now_image_points, focal_length,
+                             principal_point, cv::RANSAC);
+    cv::recoverPose(essential_matrix, first_image_points, now_image_points,
+                    R[i], t[i], focal_length, principal_point);
+  }
 }
 }  // namespace sfmProject

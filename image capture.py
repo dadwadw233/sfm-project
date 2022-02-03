@@ -8,7 +8,7 @@ import os
 
 pipeline = rs.pipeline()
 
-#Create a config并配置要流​​式传输的管道
+# Create a config并配置要流​​式传输的管道
 config = rs.config()
 config.enable_stream(rs.stream.depth, 640, 480, rs.format.z16, 30)
 config.enable_stream(rs.stream.color, 640, 480, rs.format.bgr8, 30)
@@ -17,7 +17,7 @@ profile = pipeline.start(config)
 
 depth_sensor = profile.get_device().first_depth_sensor()
 depth_scale = depth_sensor.get_depth_scale()
-print("Depth Scale is: " , depth_scale)
+print("Depth Scale is: ", depth_scale)
 
 align_to = rs.stream.color
 align = rs.align(align_to)
@@ -31,7 +31,7 @@ os.mkdir(os.path.join(save_path, "depth"))
 # 保存的图片和实时的图片界面
 cv2.namedWindow("live", cv2.WINDOW_AUTOSIZE)
 cv2.namedWindow("save", cv2.WINDOW_AUTOSIZE)
-saved_color_image = None # 保存的临时图片
+saved_color_image = None  # 保存的临时图片
 saved_depth_mapped_image = None
 saved_count = 0
 
@@ -64,7 +64,7 @@ try:
             cv2.imwrite(os.path.join((save_path), "color", "{}.png".format(saved_count)), saved_color_image)
             # 深度信息由采集到的float16直接保存为npy格式
             np.save(os.path.join((save_path), "depth", "{}".format(saved_count)), depth_data)
-            saved_count+=1
+            saved_count += 1
             cv2.imshow("save", np.hstack((saved_color_image, saved_depth_mapped_image)))
 
         # q 退出

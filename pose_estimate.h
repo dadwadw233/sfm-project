@@ -10,6 +10,7 @@
 #include <opencv2/core/eigen.hpp>
 #include <opencv2/opencv.hpp>
 #include <vector>
+#include "feature_points/detect_points.h"
 namespace sfmProject {
 class pose_estimate {
  private:
@@ -26,14 +27,14 @@ class pose_estimate {
   pose_estimate(const pose_estimate&) = delete;
   pose_estimate& operator=(const pose_estimate&) = delete;
   ~pose_estimate();
-  // ä»£ä»·å‡½æ•°çš„è®¡ç®—æ¨¡å‹
+  // ´ú¼Ûº¯ÊıµÄ¼ÆËãÄ£ĞÍ
   struct PnPCeres {
     PnPCeres(const cv::Point2f& uv, const cv::Point3f& xyz)
         : _uv(uv), _xyz(xyz) {}
-    // æ®‹å·®çš„è®¡ç®—
+    // ²Ğ²îµÄ¼ÆËã
     template <typename T>
-    bool operator()(const T* const camera,  // ä½å§¿å‚æ•°ï¼Œæœ‰6ç»´
-                    T* residual) const;     // æ®‹å·®
+    bool operator()(const T* const camera,  // Î»×Ë²ÎÊı£¬ÓĞ6Î¬
+                    T* residual) const;     // ²Ğ²î
 
     static ceres::CostFunction* Create(const cv::Point2f& uv,
                                        const cv::Point3f& xyz);
@@ -43,6 +44,8 @@ class pose_estimate {
   void initialize();
   void constructProblem();
   void solveBA();
+  void pose_estimation_2d2d(detect_points points, std::vector<cv::Mat>& R,
+                            std::vector<cv::Mat>& t);
 };
 }  // namespace sfmProject
 #endif  // SFM_PROJECT__POSE_ESTIMATE_H_
