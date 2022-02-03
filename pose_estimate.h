@@ -52,9 +52,6 @@ class pose_estimate {
   void constructProblem();
 
   void solveBA();
-
-  void pose_estimation_2d2d(detect_points points, std::vector<cv::Mat>& R,
-                            std::vector<cv::Mat>& t);
 };
 }  // namespace sfmProject
 #endif  // SFM_PROJECT__POSE_ESTIMATE_H_

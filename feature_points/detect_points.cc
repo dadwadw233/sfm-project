@@ -85,4 +85,31 @@ void detect_points::copy_key_points(std::vector<cv::Point2f> &points,
         key_points[image_index][good_matches[image_index][i].queryIdx].pt);
   }
 }
+
+void detect_points::pose_estimation_2d2d(detect_points points,
+                                         std::vector<cv::Mat> &R,
+                                         std::vector<cv::Mat> &t) {
+  int focal_length = 521;
+  int image_number = points.get_image_number();
+  cv::Mat fundamental_matrix;
+  cv::Mat essential_matrix;
+  cv::Mat homography_matrix;
+
+  std::vector<cv::Point2f> first_image_points;
+  std::vector<cv::Point2f> now_image_points;
+  cv::Point2d principal_point(640, 360);
+
+  points.copy_key_points(first_image_points, 0);
+
+  for (int i = 1; i < image_number; ++i) {
+    points.copy_key_points(now_image_points, i);
+    fundamental_matrix = cv::findFundamentalMat(
+        first_image_points, now_image_points, cv::FM_8POINT);
+    essential_matrix =
+        cv::findEssentialMat(first_image_points, now_image_points, focal_length,
+                             principal_point, cv::RANSAC);
+    cv::recoverPose(essential_matrix, first_image_points, now_image_points,
+                    R[i], t[i], focal_length, principal_point);
+  }
+}
 }  // namespace sfmProject

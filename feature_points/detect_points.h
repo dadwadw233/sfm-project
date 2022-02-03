@@ -37,6 +37,9 @@ class detect_points {
   int get_image_number();
 
   void copy_key_points(std::vector<cv::Point2f> &points, int image_index);
+
+  void pose_estimation_2d2d(detect_points points, std::vector<cv::Mat>& R,
+                            std::vector<cv::Mat>& t);
 };
 }  // namespace sfmProject
 #endif  // SFM_PROJECT_DETECT_POINTS_H//
