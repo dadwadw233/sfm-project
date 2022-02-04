@@ -53,5 +53,6 @@ class pose_estimate {
 
   void solveBA();
 };
+cv::Mat pose_estimate::K;
 }  // namespace sfmProject
 #endif  // SFM_PROJECT__POSE_ESTIMATE_H_

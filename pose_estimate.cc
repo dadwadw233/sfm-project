@@ -17,6 +17,8 @@ void pose_estimate::initialize() {}
  * @return
  */
 template <typename T>
+
+
 bool pose_estimate::PnPCeres::operator()(const T *const camera,
                                          T *residual) const {
   T p[3];
