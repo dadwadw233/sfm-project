@@ -5,13 +5,13 @@
 #ifndef SFM_PROJECT_DETECT_POINTS_H
 #define SFM_PROJECT_DETECT_POINTS_H
 #include "cmath"
-#include "vector"
-#include "string"
+#include "cstring"
 #include "fstream"
 #include "io.h"
-#include "thread"
-#include "cstring"
 #include "opencv2/opencv.hpp"
+#include "string"
+#include "thread"
+#include "vector"
 
 namespace sfmProject {
 class detect_points {
@@ -38,10 +38,10 @@ class detect_points {
 
   int get_image_number();
 
-  void copy_key_points(std::vector<cv::Point2f> &points, int image_index);
+  void copy_key_points(std::vector<cv::Point2f> &points1, std::vector<cv::Point2f> &points2, int image_index);
 
-  void pose_estimation_2d2d(detect_points points, std::vector<cv::Mat>& R,
-                            std::vector<cv::Mat>& t);
+  void pose_estimation_2d2d(detect_points points, std::vector<cv::Mat> &R,
+                            std::vector<cv::Mat> &t);
 };
 }  // namespace sfmProject
 #endif  // SFM_PROJECT_DETECT_POINTS_H//
