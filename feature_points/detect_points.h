@@ -3,11 +3,10 @@
 //
 
 #ifndef SFM_PROJECT_DETECT_POINTS_H
-#define SFM_PROJECT_DETECT_POINTS_H
 #include "cmath"
 #include "cstring"
+#include <io.h>
 #include "fstream"
-#include "io.h"
 #include "opencv2/opencv.hpp"
 #include "string"
 #include "thread"
