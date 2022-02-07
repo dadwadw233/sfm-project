@@ -19,8 +19,8 @@ class detect_points {
   int image_number{};
   std::vector<cv::Mat> images;
   std::vector<cv::Mat> descriptors;
-  std::vector<std::vector<cv::DMatch>> matches;
   std::vector<std::vector<cv::KeyPoint>> key_points;
+  std::vector<std::vector<cv::DMatch>> matches;
   std::vector<std::vector<cv::DMatch>> good_matches;
 
  public:
@@ -40,7 +40,7 @@ class detect_points {
 
   void copy_key_points(std::vector<cv::Point2f> &points1, std::vector<cv::Point2f> &points2, int image_index);
 
-  void pose_estimation_2d2d(detect_points points, std::vector<cv::Mat> &R,
+  friend void pose_estimation_2d2d(detect_points points, std::vector<cv::Mat> &R,
                             std::vector<cv::Mat> &t);
 };
 }  // namespace sfmProject

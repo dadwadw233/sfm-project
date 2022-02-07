@@ -15,7 +15,7 @@ int main() {
   R.resize(image_number), t.resize(image_number);
 
   points.matchFeaturePoints();
-  points.pose_estimation_2d2d(points, R, t);
 
+  pose_estimation_2d2d(points, R, t);
   return 0;
 }
