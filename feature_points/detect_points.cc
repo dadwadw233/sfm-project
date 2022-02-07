@@ -18,7 +18,7 @@ detect_points::detect_points(std::vector<cv::Mat> &input_images) {
 
 detect_points::detect_points(std::string &location) {
   intptr_t file_handle = 0;
-  _finddata32_t file_infor;
+  _finddata32_t file_infor{};
   cv::Mat temp;
   char *file_path = new char[location.size() + 1];
   strcpy_s(file_path, location.size() + 1, location.c_str());
@@ -26,16 +26,14 @@ detect_points::detect_points(std::string &location) {
   file_handle = _findfirst32(file_path, &file_infor);
 
   if (file_handle == -1) {
-    std::cout << "error occurred can not find the target file" << std::endl;
+    std::cout << "error occurred!!! can not find the target file" << std::endl;
   } else {
     temp = cv::imread(target + file_infor.name);
     images.push_back(temp);
-    std::cout<<"the index of "<<images.size() - 1<<" is "<<file_infor.name<<std::endl;
 
     while (_findnext32(file_handle, &file_infor) != -1) {
       temp = cv::imread(target + file_infor.name);
       images.push_back(temp);
-      std::cout<<"the index of "<<images.size() - 1<<" is "<<file_infor.name<<std::endl;
     }
 
     image_number = images.size();
@@ -58,7 +56,6 @@ void detect_points::find_feature_points() {
   for (unsigned int i = 0; i < images.size(); ++i) {
     orb->detect(images[i], key_points[i]);
     orb->compute(images[i], key_points[i], descriptors[i]);
-    std::cout<<"the size of the descriptors "<<i<<" is "<<descriptors[i].size<<std::endl;
   }
   std::cout<<"have successfully found all the feature points"<<std::endl;
 }
@@ -98,8 +95,9 @@ void detect_points::matchFeaturePoints() {
 }
 int detect_points::get_image_number() { return image_number; }
 /**
- * copy the points1 in order to compute the R and t between two images
+ *
  * @param points1
+ * @param points2
  * @param image_index
  */
 void detect_points::copy_key_points(std::vector<cv::Point2f> &points1,
@@ -110,7 +108,7 @@ void detect_points::copy_key_points(std::vector<cv::Point2f> &points1,
   for (int i = 0; i < (int)matches[image_index].size(); ++i) {
     points1.push_back(key_points[0][matches[image_index][i].queryIdx].pt);
     points2.push_back(
-        key_points[image_index][matches[image_index][i].queryIdx].pt);
+        key_points[image_index][matches[image_index][i].trainIdx].pt);
   }
 }
 
@@ -130,15 +128,12 @@ void detect_points::pose_estimation_2d2d(detect_points points,
 
   for (int i = 1; i < image_number; ++i) {
     points.copy_key_points(first_image_points, now_image_points, i);
-    fundamental_matrix = cv::findFundamentalMat(
-        first_image_points, now_image_points, cv::FM_8POINT);
-    //    fundamental_matrix = cv::findFundamentalMat(first_image_points,
-    //    now_image_points, cv::FM_8POINT);
     essential_matrix =
         cv::findEssentialMat(first_image_points, now_image_points, focal_length,
                              principal_point, cv::RANSAC);
     cv::recoverPose(essential_matrix, first_image_points, now_image_points,
                     R[i], t[i], focal_length, principal_point);
   }
+  std::cout<<"have successfully computed all the R and t"<<std::endl;
 }
 }  // namespace sfmProject
