@@ -13,20 +13,32 @@ detect_points::detect_points(std::vector<cv::Mat> &input_images) {
   descriptors.resize(image_number);
   matches.resize(image_number);
   good_matches.resize(image_number);
+  return;
 }
 
-detect_points::detect_points(const std::string &image_file_name) {
-  std::ifstream file(image_file_name);
-  std::string image;
+detect_points::detect_points(std::string &location) {
+  intptr_t file_handle = 0;
+  _finddata32_t file_infor;
   cv::Mat temp;
-  while (std::getline(file, image)) {
-    image = image_file_name + '\\' + image;
-    std::cout << "now the file location is " << image << std::endl;
-    temp = cv::imread(image);
-    images.push_back(temp);
+  const char *file_path = location.c_str();
+  file_handle = _findfirst32(file_path, &file_infor);
+
+  if (file_handle == -1) {
+    std::cout << "error occurred can not find the target file" << std::endl;
+  } else {
+    std::cout << "successfully find the target file" << std::endl;
+    temp = cv::imread(location + '/' + file_infor.name);
+    while (_findnext32(file_handle, &file_infor) != -1) {
+      images.push_back(temp);
+    }
+    std::cout << "have successfully read " << images.size() << " images"<<std::endl;
+    image_number = images.size();
+    key_points.resize(image_number);
+    descriptors.resize(image_number);
+    matches.resize(image_number);
+    good_matches.resize(image_number);
   }
-  std::cout << "all images have been read" << std::endl
-            << "the number of the images is " << images.size();
+  _findclose(file_handle);
 }
 
 /**
@@ -52,16 +64,15 @@ void detect_points::matchFeaturePoints() {
   for (unsigned int i = 0; i < key_points.size(); ++i) {
     min_distance = 100000, max_distance = 0;
     matcher.match(images[0], images[i], matches[i]);
-    for (int j = 0; j < descriptors[0][0].rows; ++j) {
+    for (int j = 0; j < descriptors[0].rows; ++j) {
       double distance = matches[0][i].distance;
       min_distance = min_distance < distance ? min_distance : distance;
       max_distance = max_distance > distance ? max_distance : distance;
     }
   }
-  // reduce the mismatch feature points improve the result
   for (unsigned int i = 0; i < key_points.size(); ++i) {
     std::vector<cv::DMatch> temp_good_matches;
-    for (int j = 0; j < descriptors[0][0].rows; ++j) {
+    for (int j = 0; j < descriptors[0].rows; ++j) {
       if (matches[i][j].distance <= fmax(2 * min_distance, 10.0)) {
         temp_good_matches.push_back(matches[i][j]);
       }

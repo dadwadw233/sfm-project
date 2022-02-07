@@ -9,6 +9,8 @@
 #include "string"
 #include "fstream"
 #include "io.h"
+#include "thread"
+#include "cstring"
 #include "opencv2/opencv.hpp"
 
 namespace sfmProject {
@@ -16,7 +18,7 @@ class detect_points {
  private:
   int image_number{};
   std::vector<cv::Mat> images;
-  std::vector<std::vector<cv::Mat>> descriptors;
+  std::vector<cv::Mat> descriptors;
   std::vector<std::vector<cv::DMatch>> matches;
   std::vector<std::vector<cv::KeyPoint>> key_points;
   std::vector<std::vector<cv::DMatch>> good_matches;
@@ -26,9 +28,9 @@ class detect_points {
 
   explicit detect_points() = delete;
 
-  detect_points(std::vector<cv::Mat> &input_images);
+  explicit detect_points(std::vector<cv::Mat> &input_images);
 
-  detect_points(const std::string &image_file_name);
+  explicit detect_points(std::string &location);
 
   void find_feature_points();
 
