@@ -147,20 +147,10 @@
 		<Unit filename="/home/yyh/sfm-project/feature_points/detect_points.h">
 			<Option target="sfm_project"/>
 		</Unit>
-<<<<<<< HEAD
-		<Unit filename="G:/code/C or C++/sfm-project/CMakeLists.txt">
-=======
 		<Unit filename="/home/yyh/sfm-project/main.cc">
 			<Option target="sfm_project"/>
 		</Unit>
-		<Unit filename="/home/yyh/sfm-project/pose_estimate.cc">
-			<Option target="sfm_project"/>
-		</Unit>
-		<Unit filename="/home/yyh/sfm-project/pose_estimate.h">
-			<Option target="sfm_project"/>
-		</Unit>
 		<Unit filename="/home/yyh/sfm-project/CMakeLists.txt">
->>>>>>> ff68c3af2278c89e23a1873a771421a28e8984c3
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 		<Unit filename="/home/yyh/sfm-project/../../../usr/share/OpenCV/OpenCVConfig-version.cmake">

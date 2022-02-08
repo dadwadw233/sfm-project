@@ -102,66 +102,16 @@ CMakeFiles/sfm_project.dir/feature_points/detect_points.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sfm_project.dir/feature_points/detect_points.cc.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yyh/sfm-project/feature_points/detect_points.cc -o CMakeFiles/sfm_project.dir/feature_points/detect_points.cc.s
 
-<<<<<<< HEAD
-# Object files for target sfm_project
-sfm_project_OBJECTS = \
-"CMakeFiles\sfm_project.dir\main.cc.obj" \
-"CMakeFiles\sfm_project.dir\feature_points\detect_points.cc.obj"
-=======
-CMakeFiles/sfm_project.dir/pose_estimate.cc.o: CMakeFiles/sfm_project.dir/flags.make
-CMakeFiles/sfm_project.dir/pose_estimate.cc.o: ../pose_estimate.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yyh/sfm-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/sfm_project.dir/pose_estimate.cc.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sfm_project.dir/pose_estimate.cc.o -c /home/yyh/sfm-project/pose_estimate.cc
-
-CMakeFiles/sfm_project.dir/pose_estimate.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sfm_project.dir/pose_estimate.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yyh/sfm-project/pose_estimate.cc > CMakeFiles/sfm_project.dir/pose_estimate.cc.i
-
-CMakeFiles/sfm_project.dir/pose_estimate.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sfm_project.dir/pose_estimate.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yyh/sfm-project/pose_estimate.cc -o CMakeFiles/sfm_project.dir/pose_estimate.cc.s
-
 # Object files for target sfm_project
 sfm_project_OBJECTS = \
 "CMakeFiles/sfm_project.dir/main.cc.o" \
-"CMakeFiles/sfm_project.dir/feature_points/detect_points.cc.o" \
-"CMakeFiles/sfm_project.dir/pose_estimate.cc.o"
->>>>>>> ff68c3af2278c89e23a1873a771421a28e8984c3
+"CMakeFiles/sfm_project.dir/feature_points/detect_points.cc.o"
 
 # External object files for target sfm_project
 sfm_project_EXTERNAL_OBJECTS =
 
-<<<<<<< HEAD
-sfm_project.exe: CMakeFiles\sfm_project.dir\main.cc.obj
-sfm_project.exe: CMakeFiles\sfm_project.dir\feature_points\detect_points.cc.obj
-sfm_project.exe: CMakeFiles\sfm_project.dir\build.make
-sfm_project.exe: E:\src\vcpkg\installed\x86-windows\debug\lib\opencv_highguid.lib
-sfm_project.exe: E:\src\vcpkg\installed\x86-windows\debug\lib\opencv_mld.lib
-sfm_project.exe: E:\src\vcpkg\installed\x86-windows\debug\lib\opencv_objdetectd.lib
-sfm_project.exe: E:\src\vcpkg\installed\x86-windows\debug\lib\opencv_photod.lib
-sfm_project.exe: E:\src\vcpkg\installed\x86-windows\debug\lib\opencv_stitchingd.lib
-sfm_project.exe: E:\src\vcpkg\installed\x86-windows\debug\lib\opencv_videod.lib
-sfm_project.exe: E:\src\vcpkg\installed\x86-windows\debug\lib\opencv_videoiod.lib
-sfm_project.exe: E:\src\vcpkg\installed\x86-windows\debug\lib\ceres-debug.lib
-sfm_project.exe: E:\src\vcpkg\installed\x86-windows\debug\lib\opencv_imgcodecsd.lib
-sfm_project.exe: E:\src\vcpkg\installed\x86-windows\debug\lib\opencv_calib3dd.lib
-sfm_project.exe: E:\src\vcpkg\installed\x86-windows\debug\lib\opencv_dnnd.lib
-sfm_project.exe: E:\src\vcpkg\installed\x86-windows\debug\lib\opencv_features2dd.lib
-sfm_project.exe: E:\src\vcpkg\installed\x86-windows\debug\lib\opencv_flannd.lib
-sfm_project.exe: E:\src\vcpkg\installed\x86-windows\debug\lib\opencv_imgprocd.lib
-sfm_project.exe: E:\src\vcpkg\installed\x86-windows\debug\lib\opencv_cored.lib
-sfm_project.exe: E:\src\vcpkg\installed\x86-windows\debug\lib\glog.lib
-sfm_project.exe: E:\src\vcpkg\installed\x86-windows\debug\lib\gflags_debug.lib
-sfm_project.exe: CMakeFiles\sfm_project.dir\objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="G:\code\C or C++\sfm-project\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable sfm_project.exe"
-	"G:\IDE\Clion\CLion 2021.3.2\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\sfm_project.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x86\mt.exe --manifests -- G:\2019\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\sfm_project.dir\objects1.rsp @<<
- /out:sfm_project.exe /implib:sfm_project.lib /pdb:"G:\code\C or C++\sfm-project\cmake-build-debug\sfm_project.pdb" /version:0.0 /machine:X86 /debug /INCREMENTAL /subsystem:console  E:\src\vcpkg\installed\x86-windows\debug\lib\opencv_highguid.lib E:\src\vcpkg\installed\x86-windows\debug\lib\opencv_mld.lib E:\src\vcpkg\installed\x86-windows\debug\lib\opencv_objdetectd.lib E:\src\vcpkg\installed\x86-windows\debug\lib\opencv_photod.lib E:\src\vcpkg\installed\x86-windows\debug\lib\opencv_stitchingd.lib E:\src\vcpkg\installed\x86-windows\debug\lib\opencv_videod.lib E:\src\vcpkg\installed\x86-windows\debug\lib\opencv_videoiod.lib E:\src\vcpkg\installed\x86-windows\debug\lib\ceres-debug.lib E:\src\vcpkg\installed\x86-windows\debug\lib\opencv_imgcodecsd.lib E:\src\vcpkg\installed\x86-windows\debug\lib\opencv_calib3dd.lib E:\src\vcpkg\installed\x86-windows\debug\lib\opencv_dnnd.lib E:\src\vcpkg\installed\x86-windows\debug\lib\opencv_features2dd.lib E:\src\vcpkg\installed\x86-windows\debug\lib\opencv_flannd.lib E:\src\vcpkg\installed\x86-windows\debug\lib\opencv_imgprocd.lib E:\src\vcpkg\installed\x86-windows\debug\lib\opencv_cored.lib E:\src\vcpkg\installed\x86-windows\debug\lib\glog.lib E:\src\vcpkg\installed\x86-windows\debug\lib\gflags_debug.lib shlwapi.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib 
-<<
-	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file E:/src/vcpkg/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary "G:/code/C or C++/sfm-project/cmake-build-debug/sfm_project.exe" -installedDir E:/src/vcpkg/installed/x86-windows/debug/bin -OutVariable out
-=======
 sfm_project: CMakeFiles/sfm_project.dir/main.cc.o
 sfm_project: CMakeFiles/sfm_project.dir/feature_points/detect_points.cc.o
-sfm_project: CMakeFiles/sfm_project.dir/pose_estimate.cc.o
 sfm_project: CMakeFiles/sfm_project.dir/build.make
 sfm_project: /usr/lib/x86_64-linux-gnu/libopencv_shape.so.3.2.0
 sfm_project: /usr/lib/x86_64-linux-gnu/libopencv_stitching.so.3.2.0
@@ -227,9 +177,8 @@ sfm_project: /usr/lib/x86_64-linux-gnu/libsuitesparseconfig.so
 sfm_project: /usr/lib/x86_64-linux-gnu/librt.so
 sfm_project: /usr/lib/x86_64-linux-gnu/libcxsparse.so
 sfm_project: CMakeFiles/sfm_project.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/yyh/sfm-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable sfm_project"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/yyh/sfm-project/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable sfm_project"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sfm_project.dir/link.txt --verbose=$(VERBOSE)
->>>>>>> ff68c3af2278c89e23a1873a771421a28e8984c3
 
 # Rule to build all files generated by this target.
 CMakeFiles/sfm_project.dir/build: sfm_project

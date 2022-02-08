@@ -212,51 +212,6 @@ main.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sfm_project.dir/build.make CMakeFiles/sfm_project.dir/main.cc.s
 .PHONY : main.cc.s
 
-<<<<<<< HEAD
-# Help Target
-help:
-	@echo The following are some of the valid targets for this Makefile:
-	@echo ... all (the default if no target is provided)
-	@echo ... clean
-	@echo ... depend
-	@echo ... edit_cache
-	@echo ... rebuild_cache
-	@echo ... detect_points
-	@echo ... sfm_project
-	@echo ... feature_points/detect_points.obj
-	@echo ... feature_points/detect_points.i
-	@echo ... feature_points/detect_points.s
-	@echo ... main.obj
-	@echo ... main.i
-	@echo ... main.s
-=======
-pose_estimate.o: pose_estimate.cc.o
-
-.PHONY : pose_estimate.o
-
-# target to build an object file
-pose_estimate.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sfm_project.dir/build.make CMakeFiles/sfm_project.dir/pose_estimate.cc.o
-.PHONY : pose_estimate.cc.o
-
-pose_estimate.i: pose_estimate.cc.i
-
-.PHONY : pose_estimate.i
-
-# target to preprocess a source file
-pose_estimate.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sfm_project.dir/build.make CMakeFiles/sfm_project.dir/pose_estimate.cc.i
-.PHONY : pose_estimate.cc.i
-
-pose_estimate.s: pose_estimate.cc.s
-
-.PHONY : pose_estimate.s
-
-# target to generate assembly for a file
-pose_estimate.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sfm_project.dir/build.make CMakeFiles/sfm_project.dir/pose_estimate.cc.s
-.PHONY : pose_estimate.cc.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -273,10 +228,6 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... pose_estimate.o"
-	@echo "... pose_estimate.i"
-	@echo "... pose_estimate.s"
->>>>>>> ff68c3af2278c89e23a1873a771421a28e8984c3
 .PHONY : help
 
 
