@@ -22,36 +22,74 @@ detect_points::detect_points(std::vector<cv::Mat> &input_images) {
   return;
 }
 
-detect_points::detect_points(std::string &location) {
-  intptr_t file_handle = 0;
-  _finddata32_t file_infor{};
-  cv::Mat temp;
-  char *file_path = new char[location.size() + 1];
-  strcpy_s(file_path, location.size() + 1, location.c_str());
-  std::string target(location, 0, location.size() - 5);
-  file_handle = _findfirst32(file_path, &file_infor);
+detect_points::detect_points(const std::string &location) {
+  //intptr_t file_handle = 0;
+  DIR *pDir;
+  struct dirent *ptr;
 
-  if (file_handle == -1) {
-    std::cout << "error occurred!!! can not find the target file" << std::endl;
-  } else {
-    temp = cv::imread(target + file_infor.name);
-    images.push_back(temp);
+  if (!(pDir = opendir(location.c_str()))) {
+      std::cout<<"the root is "<<location<<std::endl;
+      std::cout<<"can not get the file ptr , check the dir location";
+        return;
+  }
 
-    while (_findnext32(file_handle, &file_infor) != -1) {
-      temp = cv::imread(target + file_infor.name);
-      images.push_back(temp);
-    }
-
+  while ((ptr = readdir(pDir)) != nullptr) {
+        // 这里我理解他的指针应该是自动会指向到下一个文件，所以不用写指针的移动
+        std::string sub_file = location + "/" + ptr->d_name; // 当前指针指向的文件名
+        if (ptr->d_type != 8 && ptr->d_type != 4) { // 递归出口，当不是普通文件（8）和文件夹（4）时退出递归
+            return;
+        }
+      cv::Mat temp;
+      // 普通文件直接加入到files
+      if (ptr->d_type == 8) {
+          // 相当于将命令下使用ls展示出来的文件中除了. 和 ..全部保存在files中
+          // 当然下面可以写各种字符串的筛选逻辑，比如只要后缀有.jpg图片
+          if (strcmp(ptr->d_name, ".") != 0 && strcmp(ptr->d_name, "..") != 0) {
+              if (strstr(ptr->d_name, ".png")) {
+                  temp = cv::imread(location+ptr->d_name);
+                  std::cout<<ptr->d_name<<" ";
+                  images.push_back(temp);
+              }
+          }
+      }
+  }
+  std::cout<<std::endl;
     image_number = images.size();
     key_points.resize(image_number);
     descriptors.resize(image_number);
     matches.resize(image_number);
     good_matches.resize(image_number);
-  }
-  std::cout << "have successfully read " << images.size() << " images"
-            << std::endl;
-  _findclose(file_handle);
+    std::cout << "have successfully read " << images.size() << " images"
+              << std::endl;
+    // 关闭根目录
+    std::cout<<"test: "<<images[0].size<<std::endl;
+    closedir(pDir);
+    //_finddata32_t file_infor{};
+    //cv::Mat temp;
+    /*char *file_path = new char[location.size() + 1];
+    strcpy_s(file_path, location.size() + 1, location.c_str());
+    std::string target(location, 0, location.size() - 5);
+    file_handle = _findfirst32(file_path, &file_infor);
+
+    if (file_handle == -1) {
+      std::cout << "error occurred!!! can not find the target file" << std::endl;
+    } else {
+      temp = cv::imread(target + file_infor.name);
+      images.push_back(temp);
+
+      while (_findnext32(file_handle, &file_infor) != -1) {
+        temp = cv::imread(target + file_infor.name);
+        images.push_back(temp);
+      }*/
+
+
+    //_findclose(file_handle);
 }
+
+
+
+
+
 
 /**
  * ues orb to detect the feature points from the input images

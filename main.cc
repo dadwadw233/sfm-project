@@ -5,7 +5,7 @@ using namespace sfmProject;
 
 void get_file_names(std::string path, std::vector<std::string> &file_names) {}
 int main() {
-  std::string path = R"(.\out\2022_01_29_21_10_10\color\*.png)";
+  std::string path = "/home/yyh/sfm-project/out/2022_01_29_21_10_10/color/";
   detect_points points(path);
 
   int image_number = points.get_image_number();

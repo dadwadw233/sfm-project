@@ -11,6 +11,7 @@
 #include "string"
 #include "thread"
 #include "vector"
+#include <dirent.h>
 
 namespace sfmProject {
 class detect_points {
@@ -29,7 +30,7 @@ class detect_points {
 
   explicit detect_points(std::vector<cv::Mat> &input_images);
 
-  explicit detect_points(std::string &location);
+  explicit detect_points(const std::string &location);
 
   void find_feature_points();
 
