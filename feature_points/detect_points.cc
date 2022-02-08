@@ -23,73 +23,70 @@ detect_points::detect_points(std::vector<cv::Mat> &input_images) {
 }
 
 detect_points::detect_points(const std::string &location) {
-  //intptr_t file_handle = 0;
+  // intptr_t file_handle = 0;
   DIR *pDir;
   struct dirent *ptr;
 
   if (!(pDir = opendir(location.c_str()))) {
-      std::cout<<"the root is "<<location<<std::endl;
-      std::cout<<"can not get the file ptr , check the dir location";
-        return;
+    std::cout << "the root is " << location << std::endl;
+    std::cout << "can not get the file ptr , check the dir location";
+    return;
   }
 
   while ((ptr = readdir(pDir)) != nullptr) {
-        // 这里我理解他的指针应该是自动会指向到下一个文件，所以不用写指针的移动
-        std::string sub_file = location + "/" + ptr->d_name; // 当前指针指向的文件名
-        if (ptr->d_type != 8 && ptr->d_type != 4) { // 递归出口，当不是普通文件（8）和文件夹（4）时退出递归
-            return;
+    // 这里我理解他的指针应该是自动会指向到下一个文件，所以不用写指针的移动
+    std::string sub_file =
+        location + "/" + ptr->d_name;  // 当前指针指向的文件名
+    if (ptr->d_type != 8 &&
+        ptr->d_type !=
+            4) {  // 递归出口，当不是普通文件（8）和文件夹（4）时退出递归
+      return;
+    }
+    cv::Mat temp;
+    // 普通文件直接加入到files
+    if (ptr->d_type == 8) {
+      // 相当于将命令下使用ls展示出来的文件中除了. 和 ..全部保存在files中
+      // 当然下面可以写各种字符串的筛选逻辑，比如只要后缀有.jpg图片
+      if (strcmp(ptr->d_name, ".") != 0 && strcmp(ptr->d_name, "..") != 0) {
+        if (strstr(ptr->d_name, ".png")) {
+          temp = cv::imread(location + ptr->d_name);
+          std::cout << ptr->d_name << " ";
+          images.push_back(temp);
         }
-      cv::Mat temp;
-      // 普通文件直接加入到files
-      if (ptr->d_type == 8) {
-          // 相当于将命令下使用ls展示出来的文件中除了. 和 ..全部保存在files中
-          // 当然下面可以写各种字符串的筛选逻辑，比如只要后缀有.jpg图片
-          if (strcmp(ptr->d_name, ".") != 0 && strcmp(ptr->d_name, "..") != 0) {
-              if (strstr(ptr->d_name, ".png")) {
-                  temp = cv::imread(location+ptr->d_name);
-                  std::cout<<ptr->d_name<<" ";
-                  images.push_back(temp);
-              }
-          }
       }
+    }
   }
-  std::cout<<std::endl;
-    image_number = images.size();
-    key_points.resize(image_number);
-    descriptors.resize(image_number);
-    matches.resize(image_number);
-    good_matches.resize(image_number);
-    std::cout << "have successfully read " << images.size() << " images"
-              << std::endl;
-    // 关闭根目录
-    std::cout<<"test: "<<images[0].size<<std::endl;
-    closedir(pDir);
-    //_finddata32_t file_infor{};
-    //cv::Mat temp;
-    /*char *file_path = new char[location.size() + 1];
-    strcpy_s(file_path, location.size() + 1, location.c_str());
-    std::string target(location, 0, location.size() - 5);
-    file_handle = _findfirst32(file_path, &file_infor);
+  std::cout << std::endl;
+  image_number = images.size();
+  key_points.resize(image_number);
+  descriptors.resize(image_number);
+  matches.resize(image_number);
+  good_matches.resize(image_number);
+  std::cout << "have successfully read " << images.size() << " images"
+            << std::endl;
+  // 关闭根目录
+  std::cout << "test: " << images[0].size << std::endl;
+  closedir(pDir);
+  //_finddata32_t file_infor{};
+  // cv::Mat temp;
+  /*char *file_path = new char[location.size() + 1];
+  strcpy_s(file_path, location.size() + 1, location.c_str());
+  std::string target(location, 0, location.size() - 5);
+  file_handle = _findfirst32(file_path, &file_infor);
 
-    if (file_handle == -1) {
-      std::cout << "error occurred!!! can not find the target file" << std::endl;
-    } else {
+  if (file_handle == -1) {
+    std::cout << "error occurred!!! can not find the target file" << std::endl;
+  } else {
+    temp = cv::imread(target + file_infor.name);
+    images.push_back(temp);
+
+    while (_findnext32(file_handle, &file_infor) != -1) {
       temp = cv::imread(target + file_infor.name);
       images.push_back(temp);
+    }*/
 
-      while (_findnext32(file_handle, &file_infor) != -1) {
-        temp = cv::imread(target + file_infor.name);
-        images.push_back(temp);
-      }*/
-
-
-    //_findclose(file_handle);
+  //_findclose(file_handle);
 }
-
-
-
-
-
 
 /**
  * ues orb to detect the feature points from the input images
@@ -123,17 +120,17 @@ void detect_points::matchFeaturePoints() {
     //      max_distance = max_distance > distance ? max_distance : distance;
     //    }
   }
-//  std::cout << "have successfully found all the match points" << std::endl;
+  //  std::cout << "have successfully found all the match points" << std::endl;
 
-//  for (unsigned int i = 0; i < key_points.size(); ++i) {
-//    std::vector<cv::DMatch> temp_good_matches;
-//    for (int j = 0; j < descriptors[0].rows; ++j) {
-//      if (matches[i][j].distance <= fmax(2 * min_distance, 10.0)) {
-//        temp_good_matches.push_back(matches[i][j]);
-//      }
-//    }
-//    good_matches.push_back(temp_good_matches);
-//  }
+  //  for (unsigned int i = 0; i < key_points.size(); ++i) {
+  //    std::vector<cv::DMatch> temp_good_matches;
+  //    for (int j = 0; j < descriptors[0].rows; ++j) {
+  //      if (matches[i][j].distance <= fmax(2 * min_distance, 10.0)) {
+  //        temp_good_matches.push_back(matches[i][j]);
+  //      }
+  //    }
+  //    good_matches.push_back(temp_good_matches);
+  //  }
   std::cout << "have successfully matched all the feature points" << std::endl;
 }
 int detect_points::get_image_number() { return image_number; }
@@ -155,9 +152,8 @@ void detect_points::copy_key_points(std::vector<cv::Point2f> &points1,
   }
 }
 
-void pose_estimation_2d2d(detect_points points,
-                                         std::vector<cv::Mat> &R,
-                                         std::vector<cv::Mat> &t) {
+void pose_estimation_2d2d(detect_points points, std::vector<cv::Mat> &R,
+                          std::vector<cv::Mat> &t) {
   cv::Mat k = (cv::Mat_<double>(3, 3) << 951.432064, 0.000000, 652.394558,
                0.000000, 959.549543, 412.655670, 0.000000, 0.000000, 1.000000);
   double focal_length = 1395.12;
@@ -181,7 +177,7 @@ void pose_estimation_2d2d(detect_points points,
     cv::recoverPose(essential_matrix, first_image_points, now_image_points,
                     R[i], t[i], focal_length, principal_point);
 
-    std::cout<<R[i].size<<' '<<t[i].size<<std::endl;
+    std::cout << R[i].size << ' ' << t[i].size << std::endl;
 
     // verify the R and t
     /*for (int j = 0; j < points.matches[i].size(); ++j) {
