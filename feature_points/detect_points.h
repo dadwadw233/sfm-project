@@ -11,7 +11,7 @@
 #include "string"
 #include "thread"
 #include "vector"
-#include <dirent.h>
+#include "direct.h"
 
 namespace sfmProject {
 class detect_points {
