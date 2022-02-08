@@ -199,6 +199,7 @@ compile_commands.json
 CTestTestfile.cmake
 _deps
 
+.idea/
 # User ================================
 # 用户自定义的其他忽略文件
 
