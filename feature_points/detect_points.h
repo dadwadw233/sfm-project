@@ -3,9 +3,9 @@
 //
 
 #ifndef SFM_PROJECT_DETECT_POINTS_H
-//#include "dirent.h"
-#include "direct.h"
-#include "io.h"
+#include "dirent.h"
+//#include "direct.h"
+//#include "io.h"
 #include "cmath"
 #include "cstring"
 #include "fstream"
