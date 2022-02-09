@@ -143,7 +143,7 @@ void pose_estimation_2d2d(detect_points points,
     cv::recoverPose(essential_matrix, first_image_points, now_image_points,
                     R[i], t[i], focal_length, principal_point);
 
-    std::cout<<R[i].size<<' '<<t[i].size<<std::endl;
+//    std::cout<<R[i].size<<' '<<t[i].size<<std::endl;
 
     // verify the R and t
     /*for (int j = 0; j < points.matches[i].size(); ++j) {
