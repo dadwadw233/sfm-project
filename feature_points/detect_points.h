@@ -13,6 +13,7 @@
 #include "string"
 #include "thread"
 #include "vector"
+#include "dirent.h"
 
 namespace sfmProject {
     class detect_points {
