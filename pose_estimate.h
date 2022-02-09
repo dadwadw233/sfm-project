@@ -12,6 +12,7 @@
 #include <vector>
 #include "ceres/rotation.h"
 #include "feature_points/detect_points.h"
+
 namespace sfmProject {
 class pose_estimate {
  private:
@@ -52,6 +53,8 @@ class pose_estimate {
   void constructProblem();
 
   void solveBA();
+
+  void poseGeneration(const std::vector<cv::Mat>R, const std::vector<cv::Mat>t);
 };
 cv::Mat pose_estimate::K;
 }  // namespace sfmProject

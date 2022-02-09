@@ -84,4 +84,7 @@ void pose_estimate::solveBA() {
   T.pretranslate(t_est);
   std::cout << T.matrix() << std::endl;
 }
+void  pose_estimate::poseGeneration(const std::vector<cv::Mat> R, const std::vector<cv::Mat> t) {
+
+}
 }  // namespace sfmProject
