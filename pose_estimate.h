@@ -23,7 +23,7 @@ class pose_estimate {
   std::vector<cv::Point2f> pts_2d;
   ceres::Solver::Options options;
   ceres::Solver::Summary summary;
-  std::vector<std::pair<cv::Mat, cv::Mat>>poseList;
+  std::vector<std::pair<cv::Mat, cv::Mat>> poseList;
 
  public:
   explicit pose_estimate();
@@ -55,7 +55,8 @@ class pose_estimate {
 
   void solveBA();
 
-  void poseGeneration(const std::vector<cv::Mat>R, const std::vector<cv::Mat>t);
+  void poseGeneration(const std::vector<cv::Mat> R,
+                      const std::vector<cv::Mat> t);
 };
 
 }  // namespace sfmProject

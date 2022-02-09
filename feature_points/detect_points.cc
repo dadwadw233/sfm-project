@@ -178,7 +178,7 @@ void pose_estimation_2d2d(detect_points points, std::vector<cv::Mat> &R,
                     R[i], t[i], focal_length, principal_point);
 
     std::cout << R[i] << ' ' << t[i] << std::endl;
-    std::cout<<t[i].cols<<" "<<t[i].rows;
+    std::cout << t[i].cols << " " << t[i].rows;
 
     // verify the R and t
     /*for (int j = 0; j < points.matches[i].size(); ++j) {

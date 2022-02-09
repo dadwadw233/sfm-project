@@ -1,10 +1,9 @@
 #include <iostream>
 #include "feature_points/detect_points.h"
-#include "thread"
 #include "pose_estimate.h"
+#include "thread"
 using namespace sfmProject;
-cv::Mat pose_estimate::K;// init the static var
-
+cv::Mat pose_estimate::K;  // init the static var
 
 void get_file_names(std::string path, std::vector<std::string> &file_names) {}
 int main() {
@@ -22,7 +21,7 @@ int main() {
   pose_estimation_2d2d(points, R, t);
   pose_estimate P;
 
-  P.poseGeneration(R,t);
+  P.poseGeneration(R, t);
 
   return 0;
 }
