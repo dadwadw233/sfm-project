@@ -1,4 +1,0 @@
-G:/code/C or C++/sfm-project/cmake-build-debug/CMakeFiles/sfm_project.dir
-G:/code/C or C++/sfm-project/cmake-build-debug/CMakeFiles/detect_points.dir
-G:/code/C or C++/sfm-project/cmake-build-debug/CMakeFiles/edit_cache.dir
-G:/code/C or C++/sfm-project/cmake-build-debug/CMakeFiles/rebuild_cache.dir
