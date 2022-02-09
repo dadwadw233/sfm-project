@@ -85,16 +85,22 @@ void pose_estimate::solveBA() {
   std::cout << T.matrix() << std::endl;
 }
 void  pose_estimate::poseGeneration(const std::vector<cv::Mat> R, const std::vector<cv::Mat> t) {
-  cv::Point2f p(0,0);
-  cv::Vec2d v(1,0);
-  std::pair <cv::Point2f, cv::Vec2d> initPoint(p,v);
+  cv::Mat initLoc (3,1,CV_64F);
+  cv::Mat initOrientation(3,1,CV_64F);
+  for(auto i = 0; i < initLoc.rows;i++){
+    initLoc.at<float>(i,0) = 0;
+  }
+  for(auto i = 0; i < initOrientation.rows;i++){
+    initOrientation.at<float>(i,0)=(i==0)?1:0;
+  }
+  std::pair <cv::Mat, cv::Mat> initPoint(initLoc,initOrientation);
   this->poseList.push_back(initPoint);
-  for(size_t i = 0;i<R.size();i++){
-    //cv::Point2f np; // poseList.front().first+t[i];
-    //cv::Vec2d nv = poseList.front().second*R[i];
-    //std::pair <cv::Point2f, cv::Vec2d> nextPoint(np,nv);
+  for(size_t i = 1;i<R.size();i++){
+    cv:: Mat nL = initLoc+t[i];
+    cv::Mat nO = R[i]*initOrientation;
+    std::pair <cv::Mat, cv::Mat> nextPoint(nL,nO);
     this->poseList.push_back(nextPoint);
-    std::cout<<np<<" "<<nv<<std::endl;
+    std::cout<<nL<<" "<<nO<<std::endl;
   }
   return;
 }
