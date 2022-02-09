@@ -11,7 +11,8 @@
 #include <opencv2/opencv.hpp>
 #include <vector>
 #include "ceres/rotation.h"
-#include "feature_points/detect_points.h"
+//#include "feature_points/detect_points.h"
+
 namespace sfmProject {
 class pose_estimate {
  private:
@@ -22,6 +23,7 @@ class pose_estimate {
   std::vector<cv::Point2f> pts_2d;
   ceres::Solver::Options options;
   ceres::Solver::Summary summary;
+  std::vector<std::pair<cv::Mat, cv::Mat>> poseList;
 
  public:
   explicit pose_estimate();
@@ -52,7 +54,10 @@ class pose_estimate {
   void constructProblem();
 
   void solveBA();
+
+  void poseGeneration(const std::vector<cv::Mat> R,
+                      const std::vector<cv::Mat> t);
 };
-cv::Mat pose_estimate::K;
+
 }  // namespace sfmProject
 #endif  // SFM_PROJECT__POSE_ESTIMATE_H_

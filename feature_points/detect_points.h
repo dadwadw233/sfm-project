@@ -3,16 +3,16 @@
 //
 
 #ifndef SFM_PROJECT_DETECT_POINTS_H
-
+//#include "dirent.h"
+#include "direct.h"
+#include "io.h"
 #include "cmath"
 #include "cstring"
-#include <io.h>
 #include "fstream"
 #include "opencv2/opencv.hpp"
 #include "string"
 #include "thread"
 #include "vector"
-#include "direct.h"
 
 namespace sfmProject {
     class detect_points {

@@ -182,7 +182,6 @@ namespace sfmProject {
                                      principal_point, cv::RANSAC);
         cv::recoverPose(essential_matrix, first_image_points, now_image_points,
                         R, t, focal_length, principal_point);
-//    std::cout<<R[i].size<<' '<<t[i].size<<std::endl;
 
         // verify the R and t
         /*for (int j = 0; j < points.matches[i].size(); ++j) {
@@ -196,7 +195,6 @@ namespace sfmProject {
               pixel2cam(points.key_points[i][points.matches[i][j].trainIdx].pt, k);
           cv::Mat y1 = (cv::Mat_<double>(3, 1) << point1.x, point1.y, 1);
           cv::Mat y2 = (cv::Mat_<double>(3, 1) << point2.x, point2.y, 1);
-
           cv::Mat d = y2.t() * t_x * R[i] * y1;
         }*/
     }
