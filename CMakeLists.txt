@@ -10,7 +10,7 @@ find_package(catkin REQUIRED)
 
 include_directories(${OpenCV_INCLUDE_DIRS})
 include_directories("/usr/include/eigen3")
-include_directories(${catkin_INCLUDE_DIRS})
+include_directories(include ${catkin_INCLUDE_DIRS})
 
 add_executable(sfm_project main.cc feature_points/detect_points.cc feature_points/detect_points.h pose_estimate.h pose_estimate.cc)
 

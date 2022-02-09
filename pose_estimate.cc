@@ -85,6 +85,17 @@ void pose_estimate::solveBA() {
   std::cout << T.matrix() << std::endl;
 }
 void  pose_estimate::poseGeneration(const std::vector<cv::Mat> R, const std::vector<cv::Mat> t) {
-
+  cv::Point2f p(0,0);
+  cv::Vec2d v(1,0);
+  std::pair <cv::Point2f, cv::Vec2d> initPoint(p,v);
+  this->poseList.push_back(initPoint);
+  for(size_t i = 0;i<R.size();i++){
+    cv::Point2f np = poseList.front().first*t[i];
+    cv::Vec2d nv = poseList.front().second*R[i];
+    std::pair <cv::Point2f, cv::Vec2d> nextPoint(np,nv);
+    this->poseList.push_back(nextPoint);
+    std::cout<<np<<" "<<nv<<std::endl;
+  }
+  return;
 }
 }  // namespace sfmProject
