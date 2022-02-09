@@ -156,14 +156,14 @@ void pose_estimation_2d2d(detect_points points, std::vector<cv::Mat> &R,
                           std::vector<cv::Mat> &t) {
   cv::Mat k = (cv::Mat_<double>(3, 3) << 951.432064, 0.000000, 652.394558,
                0.000000, 959.549543, 412.655670, 0.000000, 0.000000, 1.000000);
-  double focal_length = 1395.12;
+  double focal_length = 951.432;
   cv::Mat fundamental_matrix;
   cv::Mat essential_matrix;
   cv::Mat homography_matrix;
 
   std::vector<cv::Point2f> first_image_points;
   std::vector<cv::Point2f> now_image_points;
-  cv::Point2d principal_point(640, 360);
+  cv::Point2d principal_point(966.617, 532.934);
 
   for (int i = 1; i < points.image_number; ++i) {
     points.copy_key_points(first_image_points, now_image_points, i);
