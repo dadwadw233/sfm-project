@@ -23,7 +23,7 @@ class pose_estimate {
   std::vector<cv::Point2f> pts_2d;
   ceres::Solver::Options options;
   ceres::Solver::Summary summary;
-  std::vector<std::pair<cv::Point2f, cv::Vec2d>>poseList
+  std::vector<std::pair<cv::Point2f, cv::Vec2d>>poseList;
 
  public:
   explicit pose_estimate();
