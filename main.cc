@@ -11,7 +11,8 @@ int main() {
   a = clock();
   std::string path = R"(.\out\2022_01_29_21_10_10\color\*.png)";
   std::string path2 = "/home/yyh/sfm-project/out/2022_01_29_21_10_10/color/";
-  detect_points points(path);
+  std::string path3 = "/home/dcr/sfm-project/out/2022_01_29_21_10_10/color/";
+  detect_points points(path3);
 
   int image_number = points.get_image_number();
 

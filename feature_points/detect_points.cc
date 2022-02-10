@@ -58,6 +58,11 @@ detect_points::detect_points(const std::string &location) {
       }
     }
   }
+  begin_image = images[0].clone();
+  cv::Ptr<cv::ORB> orb =
+      cv::ORB::create(500, 1.2f, 8, 31, 0, 2, cv::ORB::HARRIS_SCORE, 31, 20);
+  orb->detect(begin_image, begin_image_key_points);
+  orb->compute(begin_image, begin_image_key_points, begin_image_descriptors);
   std::cout << std::endl;
   image_number = images.size();
   key_points.resize(image_number);
@@ -221,7 +226,7 @@ void get_R_t(detect_points &points, std::vector<cv::Mat> &R,
   for (int i = 0; i < points.image_number; ++i) {
     all_threads.push_back(
         std::thread{fuc, std::ref(points), std::ref(R), std::ref(t), i});
-    std::cout << i << std::endl;
+    //    std::cout << i << std::endl;
   }
   std::for_each(all_threads.begin(), all_threads.end(),
                 std::mem_fn(&std::thread::join));
