@@ -4,7 +4,10 @@
 
 #include "detect_points.h"
 
+#include <functional>
 #include <utility>
+#include <functional>
+
 namespace sfmProject {
 
 cv::Point2d pixel2cam(const cv::Point2d &p, cv::Mat K) {
@@ -23,7 +26,7 @@ detect_points::detect_points(std::vector<cv::Mat> &input_images) {
 }
 
 detect_points::detect_points(const std::string &location) {
-  // intptr_t file_handle = 0;
+  // Linux edition
   DIR *pDir;
   struct dirent *ptr;
 
@@ -56,6 +59,11 @@ detect_points::detect_points(const std::string &location) {
       }
     }
   }
+  begin_image = images[0].clone();
+  cv::Ptr<cv::ORB> orb =
+      cv::ORB::create(500, 1.2f, 8, 31, 0, 2, cv::ORB::HARRIS_SCORE, 31, 20);
+  orb->detect(begin_image, begin_image_key_points);
+  orb->compute(begin_image, begin_image_key_points, begin_image_descriptors);
   std::cout << std::endl;
   image_number = images.size();
   key_points.resize(image_number);
@@ -67,59 +75,56 @@ detect_points::detect_points(const std::string &location) {
   // 关闭根目录
   std::cout << "test: " << images[0].size << std::endl;
   closedir(pDir);
-  //_finddata32_t file_infor{};
-  // cv::Mat temp;
-  /*char *file_path = new char[location.size() + 1];
+
+  // windows edition
+  /*intptr_t file_handle = 0;
+  _finddata32_t file_infor{};
+  cv::Mat temp;
+  char *file_path = new char[location.size() + 1];
   strcpy_s(file_path, location.size() + 1, location.c_str());
   std::string target(location, 0, location.size() - 5);
   file_handle = _findfirst32(file_path, &file_infor);
 
   if (file_handle == -1) {
-    std::cout << "error occurred!!! can not find the target file" << std::endl;
-  } else {
-    temp = cv::imread(target + file_infor.name);
-    images.push_back(temp);
-
-    while (_findnext32(file_handle, &file_infor) != -1) {
-      temp = cv::imread(target + file_infor.name);
-      images.push_back(temp);
-    }*/
-
-  //_findclose(file_handle);
+      std::cout << "error occurred!!! can not find the target file" <<
+  std::endl; } else { begin_image = cv::imread(target + file_infor.name);
+      cv::Ptr<cv::ORB> orb = cv::ORB::create(500, 1.2f, 8, 31, 0, 2,
+  cv::ORB::HARRIS_SCORE, 31, 20); orb->detect(begin_image,
+  begin_image_key_points); orb->compute(begin_image, begin_image_key_points,
+  begin_image_descriptors); while (_findnext32(file_handle, &file_infor) != -1)
+  { temp = cv::imread(target + file_infor.name); images.push_back(temp);
+      }
+      _findclose(file_handle);
+  }*/
+}
+/**
+ *
+ * @param i
+ */
+void detect_points::find_feature_points(int i) {
+  cv::Ptr<cv::ORB> orb =
+      cv::ORB::create(500, 1.2f, 8, 31, 0, 2, cv::ORB::HARRIS_SCORE, 31, 20);
+  orb->detect(images[i], key_points[i]);
+  orb->compute(images[i], key_points[i], descriptors[i]);
 }
 
 /**
- * ues orb to detect the feature points from the input images
+ *
+ * @param i
  */
-void detect_points::find_feature_points() {
-  cv::Ptr<cv::ORB> orb = cv::ORB::create();
-
-  for (unsigned int i = 0; i < images.size(); ++i) {
-    orb->detect(images[i], key_points[i]);
-    orb->compute(images[i], key_points[i], descriptors[i]);
-  }
-  std::cout << "have successfully found all the feature points" << std::endl;
-}
-
-/**
- * after find all the feature points.
- * match them between images for other uses
- */
-void detect_points::matchFeaturePoints() {
-  find_feature_points();
-  cv::BFMatcher matcher(cv::NORM_HAMMING);
+void detect_points::matchFeaturePoints(int i) {
   double min_distance{10000};
   double max_distance{};
-
-  for (unsigned int i = 0; i < key_points.size(); ++i) {
-    //    min_distance = 100000, max_distance = 0;
-    matcher.match(descriptors[0], descriptors[i], matches[i]);
-    //    for (int j = 0; j < descriptors[0].rows; ++j) {
-    //      double distance = matches[0][i].distance;
-    //      min_distance = min_distance < distance ? min_distance : distance;
-    //      max_distance = max_distance > distance ? max_distance : distance;
-    //    }
-  }
+  cv::BFMatcher matcher(cv::NORM_HAMMING);
+  matcher.match(begin_image_descriptors, descriptors[i], matches[i]);
+  // for (unsigned int i = 0; i < key_points.size(); ++i) {
+  //     min_distance = 100000, max_distance = 0;
+  //     for (int j = 0; j < descriptors[0].rows; ++j) {
+  //       double distance = matches[0][i].distance;
+  //       min_distance = min_distance < distance ? min_distance : distance;
+  //       max_distance = max_distance > distance ? max_distance : distance;
+  //     }
+  //   }
   //  std::cout << "have successfully found all the match points" << std::endl;
 
   //  for (unsigned int i = 0; i < key_points.size(); ++i) {
@@ -131,9 +136,12 @@ void detect_points::matchFeaturePoints() {
   //    }
   //    good_matches.push_back(temp_good_matches);
   //  }
-  std::cout << "have successfully matched all the feature points" << std::endl;
+  //        std::cout << "have successfully matched all the feature points" <<
+  //        std::endl;
 }
+
 int detect_points::get_image_number() { return image_number; }
+
 /**
  *
  * @param points1
@@ -146,56 +154,73 @@ void detect_points::copy_key_points(std::vector<cv::Point2f> &points1,
   points1.clear();
   points2.clear();
   for (int i = 0; i < (int)matches[image_index].size(); ++i) {
-    points1.push_back(key_points[0][matches[image_index][i].queryIdx].pt);
+    points1.push_back(
+        begin_image_key_points[matches[image_index][i].queryIdx].pt);
     points2.push_back(
         key_points[image_index][matches[image_index][i].trainIdx].pt);
   }
 }
 
-void pose_estimation_2d2d(detect_points points, std::vector<cv::Mat> &R,
-                          std::vector<cv::Mat> &t) {
-  cv::Mat k = (cv::Mat_<double>(3, 3) << 951.432064, 0.000000, 652.394558,
-               0.000000, 959.549543, 412.655670, 0.000000, 0.000000, 1.000000);
+void pose_estimation_2d2d(detect_points &points, cv::Mat &R, cv::Mat &t,
+                          int index) {
   double focal_length = 951.432;
-  cv::Mat fundamental_matrix;
+  //        cv::Mat fundamental_matrix;
   cv::Mat essential_matrix;
-  cv::Mat homography_matrix;
+  //        cv::Mat homography_matrix;
 
   std::vector<cv::Point2f> first_image_points;
   std::vector<cv::Point2f> now_image_points;
   cv::Point2d principal_point(966.617, 532.934);
 
-  for (int i = 1; i < points.image_number; ++i) {
-    points.copy_key_points(first_image_points, now_image_points, i);
-    fundamental_matrix =
-        cv::findFundamentalMat(first_image_points, now_image_points);
-    homography_matrix =
-        cv::findHomography(first_image_points, now_image_points);
-    essential_matrix =
-        cv::findEssentialMat(first_image_points, now_image_points, focal_length,
-                             principal_point, cv::RANSAC);
-    cv::recoverPose(essential_matrix, first_image_points, now_image_points,
-                    R[i], t[i], focal_length, principal_point);
+  points.copy_key_points(first_image_points, now_image_points, index);
+  //            fundamental_matrix =
+  //                    cv::findFundamentalMat(first_image_points,
+  //                    now_image_points);
+  //            homography_matrix =
+  //                    cv::findHomography(first_image_points,
+  //                    now_image_points);
+  essential_matrix =
+      cv::findEssentialMat(first_image_points, now_image_points, focal_length,
+                           principal_point, cv::RANSAC);
+  cv::recoverPose(essential_matrix, first_image_points, now_image_points, R, t,
+                  focal_length, principal_point);
+  // verify the R and t
+  /*for (int j = 0; j < points.matches[i].size(); ++j) {
+    cv::Mat t_x = (cv::Mat_<double>(3, 3) << 0, t[i].at<double>(2, 0),
+                   t[i].at<double>(1, 0), t[i].at<double>(2, 0), 0,
+                   -t[i].at<double>(0, 0), -t[i].at<double>(1, 0),
+                   t[i].at<double>(0, 0), 0);
+    cv::Point2d point1 =
+        pixel2cam(points.key_points[0][points.matches[i][j].queryIdx].pt, k);
+    cv::Point2d point2 =
+        pixel2cam(points.key_points[i][points.matches[i][j].trainIdx].pt, k);
+    cv::Mat y1 = (cv::Mat_<double>(3, 1) << point1.x, point1.y, 1);
+    cv::Mat y2 = (cv::Mat_<double>(3, 1) << point2.x, point2.y, 1);
+<<<<<<< HEAD
+=======
 
-    std::cout << R[i] << ' ' << t[i] << std::endl;
-    std::cout << t[i].cols << " " << t[i].rows;
-
-    // verify the R and t
-    /*for (int j = 0; j < points.matches[i].size(); ++j) {
-      cv::Mat t_x = (cv::Mat_<double>(3, 3) << 0, t[i].at<double>(2, 0),
-                     t[i].at<double>(1, 0), t[i].at<double>(2, 0), 0,
-                     -t[i].at<double>(0, 0), -t[i].at<double>(1, 0),
-                     t[i].at<double>(0, 0), 0);
-      cv::Point2d point1 =
-          pixel2cam(points.key_points[0][points.matches[i][j].queryIdx].pt, k);
-      cv::Point2d point2 =
-          pixel2cam(points.key_points[i][points.matches[i][j].trainIdx].pt, k);
-      cv::Mat y1 = (cv::Mat_<double>(3, 1) << point1.x, point1.y, 1);
-      cv::Mat y2 = (cv::Mat_<double>(3, 1) << point2.x, point2.y, 1);
-
-      cv::Mat d = y2.t() * t_x * R[i] * y1;
-    }*/
-  }
-  std::cout << "have successfully computed all the R and t" << std::endl;
+>>>>>>> dev_dcr
+    cv::Mat d = y2.t() * t_x * R[i] * y1;
+  }*/
 }
+
+void fuc(detect_points &points, std::vector<cv::Mat> &R,
+         std::vector<cv::Mat> &t, int i) {
+  points.find_feature_points(i);
+  points.matchFeaturePoints(i);
+  pose_estimation_2d2d(points, std::ref(R[i]), t[i], i);
+}
+
+void get_R_t(detect_points &points, std::vector<cv::Mat> &R,
+             std::vector<cv::Mat> &t) {
+  std::vector<std::thread> all_threads;
+  for (int i = 0; i < points.image_number; ++i) {
+    all_threads.push_back(
+        std::thread{fuc, std::ref(points), std::ref(R), std::ref(t), i});
+    //    std::cout << i << std::endl;
+  }
+  std::for_each(all_threads.begin(), all_threads.end(),
+                std::mem_fn(&std::thread::join));
+}
+
 }  // namespace sfmProject
