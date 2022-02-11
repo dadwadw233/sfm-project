@@ -57,11 +57,12 @@ detect_points::detect_points(const std::string &location) {
         if (strstr(ptr->d_name, ".png")) {
           temp = cv::imread(location + ptr->d_name);
           orb->detect(temp, temp_key_points);
-          if (temp_key_points.size() >=8 ){
+          if (temp_key_points.size() >= 8) {
             std::cout << ptr->d_name << " ";
             images.push_back(temp);
             key_points.push_back(temp_key_points);
-            orb->compute(images[images.size() - 1], key_points[key_points.size() - 1], temp_descriptors);
+            orb->compute(images[images.size() - 1],
+                         key_points[key_points.size() - 1], temp_descriptors);
             descriptors.push_back(temp_descriptors);
           }
         }
@@ -131,9 +132,20 @@ void detect_points::find_feature_points(int i) {
  * @param i
  */
 void detect_points::matchFeaturePoints(int i) {
-  const float minRatio = 1.f / 1.5f;
-  cv::BFMatcher matcher(cv::NORM_HAMMING, true);
-  matcher.match(begin_image_descriptors, descriptors[i], matches[i]);
+  const float min_ratio = 1.f / 1.5f;
+  cv::BFMatcher matcher(cv::NORM_HAMMING, false);
+  std::vector<std::vector<cv::DMatch>> temp_matches;
+  //  matcher.match(begin_image_descriptors, descriptors[i], matches[i]);
+  matcher.knnMatch(begin_image_descriptors, descriptors[i], temp_matches, 2);
+
+  for (auto &temp_match : temp_matches) {
+    const cv::DMatch b_match0 = temp_match[0];
+    const cv::DMatch b_match1 = temp_match[1];
+
+    if (b_match0.distance / b_match1.distance < min_ratio) {
+      matches[i].push_back(b_match0);
+    }
+  }
 }
 
 int detect_points::get_image_number() { return image_number; }
