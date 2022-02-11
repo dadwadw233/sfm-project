@@ -6,13 +6,14 @@
 
 #include "cmath"
 #include "cstring"
-#include <io.h>
 #include "fstream"
 #include "opencv2/opencv.hpp"
 #include "string"
 #include "thread"
 #include "vector"
-#include "direct.h"
+#include "dirent.h"
+//#include "direct.h"
+//#include <io.h>
 
 namespace sfmProject {
     class detect_points {
