@@ -44,7 +44,7 @@ namespace sfmProject {
 
         void matchFeaturePoints(int i);
 
-        int get_image_number();
+        int get_image_number() const;
 
         void copy_key_points(std::vector<cv::Point2f> &points1, std::vector<cv::Point2f> &points2, int image_index);
 

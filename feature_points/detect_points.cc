@@ -148,7 +148,7 @@ void detect_points::matchFeaturePoints(int i) {
   }
 }
 
-int detect_points::get_image_number() { return image_number; }
+int detect_points::get_image_number() const { return image_number; }
 
 /**
  *
@@ -225,7 +225,7 @@ void fuc(detect_points &points, std::vector<cv::Mat> &R,
          std::vector<cv::Mat> &t, int i) {
   points.find_feature_points(i);
   points.matchFeaturePoints(i);
-  pose_estimation_2d2d(points, std::ref(R[i]), t[i], i);
+//  pose_estimation_2d2d(points, std::ref(R[i]), t[i], i);
 }
 
 void get_R_t(detect_points &points, std::vector<cv::Mat> &R,
