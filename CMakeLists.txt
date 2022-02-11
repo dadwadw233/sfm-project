@@ -14,6 +14,6 @@ add_executable(sfm_project main.cc feature_points/detect_points.cc feature_point
 add_library(detect_points feature_points/detect_points.cc)
 
 target_link_libraries(sfm_project
-                        ${OpenCV_LIBS}
-                        Ceres::ceres
-                        Eigen3::Eigen)
+        ${OpenCV_LIBS}
+        Ceres::ceres
+        Eigen3::Eigen)

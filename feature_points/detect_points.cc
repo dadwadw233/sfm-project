@@ -21,11 +21,12 @@ detect_points::detect_points(std::vector<cv::Mat> &input_images) {
   descriptors.resize(image_number);
   matches.resize(image_number);
   good_matches.resize(image_number);
-  return;
 }
 
 detect_points::detect_points(const std::string &location) {
   // Linux edition
+  cv::Ptr<cv::ORB> orb =
+      cv::ORB::create(500, 1.2f, 8, 31, 0, 2, cv::ORB::HARRIS_SCORE, 31, 20);
   DIR *pDir;
   struct dirent *ptr;
 
@@ -45,6 +46,9 @@ detect_points::detect_points(const std::string &location) {
       return;
     }
     cv::Mat temp;
+    cv::Mat temp_descriptors;
+    std::vector<cv::KeyPoint> temp_key_points;
+
     // 普通文件直接加入到files
     if (ptr->d_type == 8) {
       // 相当于将命令下使用ls展示出来的文件中除了. 和 ..全部保存在files中
@@ -52,15 +56,19 @@ detect_points::detect_points(const std::string &location) {
       if (strcmp(ptr->d_name, ".") != 0 && strcmp(ptr->d_name, "..") != 0) {
         if (strstr(ptr->d_name, ".png")) {
           temp = cv::imread(location + ptr->d_name);
-          std::cout << ptr->d_name << " ";
-          images.push_back(temp);
+          orb->detect(temp, temp_key_points);
+          if (temp_key_points.size() >=8 ){
+            std::cout << ptr->d_name << " ";
+            images.push_back(temp);
+            key_points.push_back(temp_key_points);
+            orb->compute(images[images.size() - 1], key_points[key_points.size() - 1], temp_descriptors);
+            descriptors.push_back(temp_descriptors);
+          }
         }
       }
     }
   }
   begin_image = images[0].clone();
-  cv::Ptr<cv::ORB> orb =
-      cv::ORB::create(500, 1.2f, 8, 31, 0, 2, cv::ORB::HARRIS_SCORE, 31, 20);
   orb->detect(begin_image, begin_image_key_points);
   orb->compute(begin_image, begin_image_key_points, begin_image_descriptors);
   std::cout << std::endl;
@@ -123,31 +131,9 @@ void detect_points::find_feature_points(int i) {
  * @param i
  */
 void detect_points::matchFeaturePoints(int i) {
-  double min_distance{10000};
-  double max_distance{};
-  cv::BFMatcher matcher(cv::NORM_HAMMING);
+  const float minRatio = 1.f / 1.5f;
+  cv::BFMatcher matcher(cv::NORM_HAMMING, true);
   matcher.match(begin_image_descriptors, descriptors[i], matches[i]);
-  // for (unsigned int i = 0; i < key_points.size(); ++i) {
-  //     min_distance = 100000, max_distance = 0;
-  //     for (int j = 0; j < descriptors[0].rows; ++j) {
-  //       double distance = matches[0][i].distance;
-  //       min_distance = min_distance < distance ? min_distance : distance;
-  //       max_distance = max_distance > distance ? max_distance : distance;
-  //     }
-  //   }
-  //  std::cout << "have successfully found all the match points" << std::endl;
-
-  //  for (unsigned int i = 0; i < key_points.size(); ++i) {
-  //    std::vector<cv::DMatch> temp_good_matches;
-  //    for (int j = 0; j < descriptors[0].rows; ++j) {
-  //      if (matches[i][j].distance <= fmax(2 * min_distance, 10.0)) {
-  //        temp_good_matches.push_back(matches[i][j]);
-  //      }
-  //    }
-  //    good_matches.push_back(temp_good_matches);
-  //  }
-  //        std::cout << "have successfully matched all the feature points" <<
-  //        std::endl;
 }
 
 int detect_points::get_image_number() { return image_number; }
@@ -211,6 +197,16 @@ void pose_estimation_2d2d(detect_points &points, cv::Mat &R, cv::Mat &t,
 
     cv::Mat d = y2.t() * t_x * R[i] * y1;
   }*/
+}
+
+void detect_points::test_function() {
+  cv::Mat outImage;
+  for (int i = 0; i < image_number; ++i) {
+    cv::drawMatches(begin_image, begin_image_key_points, images[i],
+                    key_points[i], matches[i], outImage);
+    cv::imshow("matches", outImage);
+    cv::waitKey(0);
+  }
 }
 
 void fuc(detect_points &points, std::vector<cv::Mat> &R,
