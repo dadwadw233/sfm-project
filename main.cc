@@ -21,11 +21,11 @@ int main() {
   std::vector<cv::Mat> t;
   R.resize(image_number), t.resize(image_number);
 
-    get_R_t(points, R, t);
-    pose_estimate P;
-    P.poseGeneration(R, t);
-    b = clock();
-    std::cout << b - a << std::endl;
+  get_R_t(points, R, t);
+  pose_estimate P;
+  P.poseGeneration(R, t);
+  b = clock();
+  std::cout << b - a << std::endl;
   P.poseViewer();
-    return 0;
+  return 0;
 }
