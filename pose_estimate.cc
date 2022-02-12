@@ -95,7 +95,7 @@ void pose_estimate::poseGeneration(const std::vector<cv::Mat> R,
   std::pair<cv::Mat, cv::Mat> initPoint(initLoc, initOrientation);
   this->poseList.push_back(initPoint);
   for (size_t i = 1; i < R.size(); i++) {
-    cv::Mat nL = initLoc + t[i];
+    cv::Mat nL = initLoc + (t[i]);
     cv::Mat nO = R[i] * initOrientation;
     std::pair<cv::Mat, cv::Mat> nextPoint(nL, nO);
     this->poseList.push_back(nextPoint);
@@ -116,8 +116,10 @@ void pose_estimate::poseViewer() {
 
   pcl::PointCloud<pcl::PointXYZRGB>::Ptr poseCloud (new pcl::PointCloud<pcl::PointXYZRGB>);
 
-  for(auto i = 0; i<this->poseList.size();i++){
+  for(auto i = 2; i<this->poseList.size();i++){
     pcl::PointXYZRGB point;
+    //std::cout<<poseList[i].first.at<float>(0,1)<<std::endl;
+
     point.x = poseList[i].first.at<float>(0,0);
     point.y = poseList[i].first.at<float>(1,0);
     point.z = poseList[i].first.at<float>(2,0);
@@ -128,22 +130,18 @@ void pose_estimate::poseViewer() {
   pcl::visualization::PCLVisualizer::Ptr viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
 //设置背景颜色
   viewer->setBackgroundColor (0, 0, 0);
-//添加坐标系（即红绿蓝三色轴，放置在原点）
-  //viewer->addCoordinateSystem (3.0);//3.0指轴的长度
-  viewer->addCoordinateSystem (20.0,1,2,3);
+
+  viewer->addCoordinateSystem();
 //初始化默认相机参数
   viewer->initCameraParameters ();
-  pcl::visualization::PointCloudColorHandlerRGBField<pcl::PointXYZRGB> rgb(poseCloud);
 //将点云加入到viewer
-  viewer->addPointCloud<pcl::PointXYZRGB> (poseCloud, rgb, "label_pc");
-//设置点云的可视化信息——这里设置了点云的大小为1.
+  //viewer->addPointCloud<pcl::PointXYZRGB> (poseCloud, "label_pc");
 
-  viewer->setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 10, "label_pc");
+  //viewer->setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 10, "label_pc");
 
-  while (!viewer->wasStopped ())
+  while (!viewer->wasStopped())
   {
-    viewer->spinOnce (100);
-    //std::this_thread::sleep_for(100);
+    viewer->spinOnce();
   }
 }
 }  // namespace sfmProject
