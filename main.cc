@@ -2,7 +2,6 @@
 #include "ctime"
 #include "feature_points/detect_points.h"
 #include "pose_estimate.h"
-
 using namespace sfmProject;
 cv::Mat pose_estimate::K;  // init the static var
 
@@ -14,7 +13,7 @@ int main() {
   std::string path = R"(.\out\2022_01_29_21_10_10\color\*.png)";
   std::string path2 = "/home/yyh/sfm-project/out/2022_01_29_21_10_10/color/";
   std::string path3 = "/home/dcr/sfm-project/out/2022_01_29_21_10_10/color/";
-  detect_points points(path3);
+  detect_points points(path2);
 
   int image_number = points.get_image_number();
 
@@ -27,6 +26,6 @@ int main() {
     P.poseGeneration(R, t);
     b = clock();
     std::cout << b - a << std::endl;
-
+  P.poseViewer();
     return 0;
 }
