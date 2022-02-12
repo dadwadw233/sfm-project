@@ -114,4 +114,13 @@ void pose_estimate::pcGeneration(
     }
   }
 }
+void pose_estimate::poseViewer() {
+  for(auto i = 0; i<this->poseList.size();i++){
+    pcl::PointXYZ point;
+    point.x = poseList[i].first.at<float>(0,0);
+    point.y = poseList[i].first.at<float>(1,0);
+    point.z = poseList[i].first.at<float>(2,0);
+    this->poseCloud->points.push_back(point);
+  }
+}
 }  // namespace sfmProject

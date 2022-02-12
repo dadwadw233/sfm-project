@@ -28,8 +28,8 @@ class pose_estimate {
   ceres::Solver::Options options;
   ceres::Solver::Summary summary;
   std::vector<std::pair<cv::Mat, cv::Mat>> poseList;
-  pcl::PointCloud<pcl::PointXYZ>::Ptr cloud;
-
+  pcl::PointCloud<pcl::PointXYZ>::Ptr obCloud;
+  pcl::PointCloud<pcl::PointXYZ>::Ptr poseCloud;
 
  public:
   explicit pose_estimate();
@@ -66,6 +66,7 @@ class pose_estimate {
 
   void pcGeneration(const std::vector<std::vector<cv::KeyPoint>>keyPoints);
 
+  void poseViewer();
   void pcShow(const pcl::PointCloud<pcl::PointXYZ>pointCloud);
 };
 

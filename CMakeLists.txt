@@ -8,6 +8,7 @@ find_package(OpenCV REQUIRED)
 find_package(Ceres REQUIRED)
 find_package(Eigen3 CONFIG REQUIRED)
 add_definitions(-DBOOST_ERROR_CODE_HEADER_ONLY)
+add_definitions(${PCL_DEFINITIONS})
 find_package(Threads REQUIRED)
 find_package(Eigen3 REQUIRED)
 find_package(Glog REQUIRED)
@@ -31,7 +32,7 @@ add_executable(sfm_project main.cc feature_points/detect_points.cc feature_point
 
 add_library(detect_points feature_points/detect_points.cc)
 add_library(pose_estimate pose_estimate.cc pose_estimate.h)
-
+target_link_libraries(pose_estimate ${PCL_LIBRARIES})
 target_link_libraries(sfm_project
         pose_estimate
         ${OpenCV_LIBS}
