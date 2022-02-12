@@ -109,8 +109,8 @@ void pose_estimate::poseGeneration(const std::vector<cv::Mat> R,
 void pose_estimate::pcGeneration(
     const std::vector<std::vector<cv::KeyPoint>> keyPoints) {
   for(auto i = 0;i<keyPoints.size();i++){
-    for(auto i = 0;i<keyPoints[i].size();i++){
-      //pcl::PointXYZ point;
+    for(auto j = 0;j<keyPoints[i].size();j++){
+      pcl::PointXYZ point;
     }
   }
 }

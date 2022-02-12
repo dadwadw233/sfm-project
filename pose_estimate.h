@@ -11,6 +11,10 @@
 #include <opencv2/opencv.hpp>
 #include <vector>
 #include "ceres/rotation.h"
+#include "pcl/point_types.h"
+#include "pcl/point_cloud.h"
+#include "pcl/visualization/cloud_viewer.h"
+
 //#include "feature_points/detect_points.h"
 
 namespace sfmProject {
@@ -24,6 +28,8 @@ class pose_estimate {
   ceres::Solver::Options options;
   ceres::Solver::Summary summary;
   std::vector<std::pair<cv::Mat, cv::Mat>> poseList;
+  pcl::PointCloud<pcl::PointXYZ>::Ptr cloud;
+
 
  public:
   explicit pose_estimate();
@@ -60,7 +66,7 @@ class pose_estimate {
 
   void pcGeneration(const std::vector<std::vector<cv::KeyPoint>>keyPoints);
 
-  //void pcShow(const pcl::PointCloud<pcl::PointXYZ>pointCloud);
+  void pcShow(const pcl::PointCloud<pcl::PointXYZ>pointCloud);
 };
 
 }  // namespace sfmProject
