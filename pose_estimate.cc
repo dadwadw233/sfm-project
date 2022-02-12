@@ -110,7 +110,7 @@ void pose_estimate::pcGeneration(
     const std::vector<std::vector<cv::KeyPoint>> keyPoints) {
   for(auto i = 0;i<keyPoints.size();i++){
     for(auto i = 0;i<keyPoints[i].size();i++){
-      pcl::PointXYZ point;
+      //pcl::PointXYZ point;
     }
   }
 }
