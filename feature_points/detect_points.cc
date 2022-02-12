@@ -220,27 +220,30 @@ void fuc(detect_points &points, std::vector<cv::Mat> &R,
 void get_R_t(detect_points &points, std::vector<cv::Mat> &R,
              std::vector<cv::Mat> &t) {
   std::vector<std::thread> all_threads;
+  std::vector<std::thread> threads;
   for (int i = 0; i < points.image_number; ++i) {
     all_threads.push_back(
         std::thread{fuc, std::ref(points), std::ref(R), std::ref(t), i});
   }
-    std::for_each(all_threads.begin(), all_threads.end(),
-                  std::mem_fn(&std::thread::join));
-  //  points.images.erase(std::remove_if(points.images.begin(),
-  //  points.images.end(), [&](){return points.matches.size()<8;}),
-  //  points.images.end()); std::remove_if(points.images.begin(),
-  //  points.images.end(),
-  //                 points.matches.size() < 8);
-  //  std::remove_if(points.key_points.begin(), points.key_points.end(),
-  //                 points.matches.size() < 8);
-  //  std::remove_if(points.descriptors.begin(), points.descriptors.end(),
-  //                 points.matches.size() < 8);
-  //  for (int i = 0; i < points.image_number; ++i) {
-  //    threads.push_back(std::thread{pose_estimation_2d2d, std::ref(points),
-  //                                  std::ref(R[i]), std::ref(t[i]), i});
-  //  }
-  //  std::for_each(threads.begin(), threads.end(),
-  //                std::mem_fn(&std::thread::join));
+  std::for_each(all_threads.begin(), all_threads.end(),
+                std::mem_fn(&std::thread::join));
+  points.images.erase(
+      std::remove_if(points.images.begin(), points.images.end(),
+                     [&](int i) { return points.matches[i].size() < 8; }),
+      points.images.end());
+
+//  std::remove_if(points.images.begin(), points.images.end(),
+//                 points.matches.size() < 8);
+//  std::remove_if(points.key_points.begin(), points.key_points.end(),
+//                 points.matches.size() < 8);
+//  std::remove_if(points.descriptors.begin(), points.descriptors.end(),
+//                 points.matches.size() < 8);
+  for (int i = 0; i < points.image_number; ++i) {
+    threads.push_back(std::thread{pose_estimation_2d2d, std::ref(points),
+                                  std::ref(R[i]), std::ref(t[i]), i});
+  }
+  std::for_each(threads.begin(), threads.end(),
+                std::mem_fn(&std::thread::join));
 }
 
 }  // namespace sfmProject
