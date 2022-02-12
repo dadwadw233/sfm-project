@@ -2,7 +2,6 @@
 #include "ctime"
 #include "feature_points/detect_points.h"
 #include "pose_estimate.h"
-
 using namespace sfmProject;
 cv::Mat pose_estimate::K;  // init the static var
 
@@ -27,6 +26,6 @@ int main() {
     P.poseGeneration(R, t);
     b = clock();
     std::cout << b - a << std::endl;
-
+  P.poseViewer();
     return 0;
 }

@@ -1,7 +1,6 @@
 //
 // Created by yyh on 2022/1/28.
 //
-
 #ifndef SFM_PROJECT__POSE_ESTIMATE_H_
 #define SFM_PROJECT__POSE_ESTIMATE_H_
 #include <ceres/ceres.h>
@@ -14,9 +13,8 @@
 #include "pcl/point_types.h"
 #include "pcl/point_cloud.h"
 #include "pcl/visualization/cloud_viewer.h"
-
+#include <thread>
 //#include "feature_points/detect_points.h"
-
 namespace sfmProject {
 class pose_estimate {
  private:
@@ -28,8 +26,8 @@ class pose_estimate {
   ceres::Solver::Options options;
   ceres::Solver::Summary summary;
   std::vector<std::pair<cv::Mat, cv::Mat>> poseList;
-  pcl::PointCloud<pcl::PointXYZ>::Ptr obCloud;
-  pcl::PointCloud<pcl::PointXYZ>::Ptr poseCloud;
+
+
 
  public:
   explicit pose_estimate();
@@ -69,6 +67,5 @@ class pose_estimate {
   void poseViewer();
   void pcShow(const pcl::PointCloud<pcl::PointXYZ>pointCloud);
 };
-
 }  // namespace sfmProject
 #endif  // SFM_PROJECT__POSE_ESTIMATE_H_
