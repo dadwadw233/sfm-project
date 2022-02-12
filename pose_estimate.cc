@@ -18,7 +18,6 @@ void pose_estimate::initialize() {}
  */
 template <typename T>
 
-
 bool pose_estimate::PnPCeres::operator()(const T *const camera,
                                          T *residual) const {
   T p[3];
@@ -47,7 +46,8 @@ bool pose_estimate::PnPCeres::operator()(const T *const camera,
  */
 ceres::CostFunction *pose_estimate::PnPCeres::Create(const cv::Point2f &uv,
                                                      const cv::Point3f &xyz) {
-  return (new ceres::AutoDiffCostFunction<PnPCeres, 2, 6>(new PnPCeres(uv, xyz)));
+  return (
+      new ceres::AutoDiffCostFunction<PnPCeres, 2, 6>(new PnPCeres(uv, xyz)));
 }
 
 /**
@@ -83,5 +83,26 @@ void pose_estimate::solveBA() {
   Eigen::Isometry3d T(R_est);  //
   T.pretranslate(t_est);
   std::cout << T.matrix() << std::endl;
+}
+void pose_estimate::poseGeneration(const std::vector<cv::Mat> R,
+                                   const std::vector<cv::Mat> t) {
+  cv::Mat initLoc(3, 1, CV_64F);
+  cv::Mat initOrientation(3, 1, CV_64F);
+  for (auto i = 0; i < initLoc.rows; i++) {
+    initLoc.at<float>(i, 0) = 0;
+  }
+  for (auto i = 0; i < initOrientation.rows; i++) {
+    initOrientation.at<float>(i, 0) = (i == 0) ? 1 : 0;
+  }
+  std::pair<cv::Mat, cv::Mat> initPoint(initLoc, initOrientation);
+  this->poseList.push_back(initPoint);
+  for (size_t i = 1; i < R.size(); i++) {
+    cv::Mat nL = initLoc + t[i];
+    cv::Mat nO = R[i] * initOrientation;
+    std::pair<cv::Mat, cv::Mat> nextPoint(nL, nO);
+    this->poseList.push_back(nextPoint);
+    std::cout << nL << " " << nO << std::endl;
+  }
+  return;
 }
 }  // namespace sfmProject

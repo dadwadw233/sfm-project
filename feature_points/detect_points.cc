@@ -6,6 +6,7 @@
 
 #include <functional>
 #include <utility>
+#include <functional>
 
 namespace sfmProject {
 
@@ -103,19 +104,8 @@ detect_points::detect_points(const std::string &location) {
   { temp = cv::imread(target + file_infor.name); images.push_back(temp);
       }
       _findclose(file_handle);
-  }
-
-  image_number = images.size();
-  key_points.resize(image_number);
-  descriptors.resize(image_number);
-  matches.resize(image_number);
-  good_matches.resize(image_number);
-  delete[] file_path;*/
-
-  std::cout << "have successfully read " << image_number << " images"
-            << std::endl;
+  }*/
 }
-
 /**
  *
  * @param i
@@ -192,8 +182,6 @@ void pose_estimation_2d2d(detect_points &points, cv::Mat &R, cv::Mat &t,
                            principal_point, cv::RANSAC);
   cv::recoverPose(essential_matrix, first_image_points, now_image_points, R, t,
                   focal_length, principal_point);
-  //    std::cout<<R[i].size<<' '<<t[i].size<<std::endl;
-
   // verify the R and t
   /*for (int j = 0; j < points.matches[i].size(); ++j) {
     cv::Mat t_x = (cv::Mat_<double>(3, 3) << 0, t[i].at<double>(2, 0),
@@ -206,7 +194,10 @@ void pose_estimation_2d2d(detect_points &points, cv::Mat &R, cv::Mat &t,
         pixel2cam(points.key_points[i][points.matches[i][j].trainIdx].pt, k);
     cv::Mat y1 = (cv::Mat_<double>(3, 1) << point1.x, point1.y, 1);
     cv::Mat y2 = (cv::Mat_<double>(3, 1) << point2.x, point2.y, 1);
+<<<<<<< HEAD
+=======
 
+>>>>>>> dev_dcr
     cv::Mat d = y2.t() * t_x * R[i] * y1;
   }*/
 }

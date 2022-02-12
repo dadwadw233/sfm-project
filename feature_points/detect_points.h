@@ -3,7 +3,9 @@
 //
 
 #ifndef SFM_PROJECT_DETECT_POINTS_H
-
+#include "dirent.h"
+//#include "direct.h"
+//#include "io.h"
 #include "cmath"
 #include "cstring"
 #include "fstream"
@@ -12,8 +14,6 @@
 #include "thread"
 #include "vector"
 #include "dirent.h"
-//#include "direct.h"
-//#include <io.h>
 
 namespace sfmProject {
     class detect_points {

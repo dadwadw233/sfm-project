@@ -1,8 +1,10 @@
 #include <iostream>
 #include "ctime"
 #include "feature_points/detect_points.h"
+#include "pose_estimate.h"
 
 using namespace sfmProject;
+cv::Mat pose_estimate::K;  // init the static var
 
 void get_file_names(std::string path, std::vector<std::string> &file_names) {}
 
@@ -20,11 +22,11 @@ int main() {
   std::vector<cv::Mat> t;
   R.resize(image_number), t.resize(image_number);
 
-  get_R_t(points, R, t);
-  b = clock();
-  std::cout << b - a << std::endl;
+    get_R_t(points, R, t);
+    pose_estimate P;
+    P.poseGeneration(R, t);
+    b = clock();
+    std::cout << b - a << std::endl;
 
-  points.test_function();
-
-  return 0;
+    return 0;
 }
