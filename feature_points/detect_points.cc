@@ -6,7 +6,6 @@
 
 #include <functional>
 #include <utility>
-#include <functional>
 
 namespace sfmProject {
 
@@ -59,7 +58,7 @@ detect_points::detect_points(const std::string &location) {
           temp = cv::imread(location + ptr->d_name);
           orb->detect(temp, temp_key_points);
           if (temp_key_points.size() >= 8) {
-            std::cout << ptr->d_name << " ";
+            std::cout << ptr->d_name << std::endl;
             images.push_back(temp);
             key_points.push_back(temp_key_points);
             orb->compute(images[images.size() - 1],
@@ -136,6 +135,9 @@ void detect_points::matchFeaturePoints(int i) {
       matches[i].push_back(b_match0);
     }
   }
+  if (matches[i].size() < 8) {
+    std::cout << i << std::endl;
+  }
 }
 
 int detect_points::get_image_number() const { return image_number; }
@@ -194,10 +196,6 @@ void pose_estimation_2d2d(detect_points &points, cv::Mat &R, cv::Mat &t,
         pixel2cam(points.key_points[i][points.matches[i][j].trainIdx].pt, k);
     cv::Mat y1 = (cv::Mat_<double>(3, 1) << point1.x, point1.y, 1);
     cv::Mat y2 = (cv::Mat_<double>(3, 1) << point2.x, point2.y, 1);
-<<<<<<< HEAD
-=======
-
->>>>>>> dev_dcr
     cv::Mat d = y2.t() * t_x * R[i] * y1;
   }*/
 }
@@ -216,7 +214,7 @@ void fuc(detect_points &points, std::vector<cv::Mat> &R,
          std::vector<cv::Mat> &t, int i) {
   points.find_feature_points(i);
   points.matchFeaturePoints(i);
-//  pose_estimation_2d2d(points, std::ref(R[i]), t[i], i);
+  //  pose_estimation_2d2d(points, R[i], t[i], i);
 }
 
 void get_R_t(detect_points &points, std::vector<cv::Mat> &R,
@@ -225,10 +223,24 @@ void get_R_t(detect_points &points, std::vector<cv::Mat> &R,
   for (int i = 0; i < points.image_number; ++i) {
     all_threads.push_back(
         std::thread{fuc, std::ref(points), std::ref(R), std::ref(t), i});
-    //    std::cout << i << std::endl;
   }
-  std::for_each(all_threads.begin(), all_threads.end(),
-                std::mem_fn(&std::thread::join));
+    std::for_each(all_threads.begin(), all_threads.end(),
+                  std::mem_fn(&std::thread::join));
+  //  points.images.erase(std::remove_if(points.images.begin(),
+  //  points.images.end(), [&](){return points.matches.size()<8;}),
+  //  points.images.end()); std::remove_if(points.images.begin(),
+  //  points.images.end(),
+  //                 points.matches.size() < 8);
+  //  std::remove_if(points.key_points.begin(), points.key_points.end(),
+  //                 points.matches.size() < 8);
+  //  std::remove_if(points.descriptors.begin(), points.descriptors.end(),
+  //                 points.matches.size() < 8);
+  //  for (int i = 0; i < points.image_number; ++i) {
+  //    threads.push_back(std::thread{pose_estimation_2d2d, std::ref(points),
+  //                                  std::ref(R[i]), std::ref(t[i]), i});
+  //  }
+  //  std::for_each(threads.begin(), threads.end(),
+  //                std::mem_fn(&std::thread::join));
 }
 
 }  // namespace sfmProject
