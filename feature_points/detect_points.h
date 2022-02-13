@@ -42,13 +42,11 @@ class detect_points {
 
   explicit detect_points(const std::string &location);
 
-  void find_feature_points(std::list<cv::Mat>::iterator now_image,
-                           std::list<std::vector<cv::KeyPoint>> &now_key_points,
-                           std::list<cv::Mat> &now_descriptors);
+  void find_feature_points(std::list<cv::Mat>::iterator now_image);
 
   void matchFeaturePoints(
       std::list<cv::Mat>::iterator image_descriptors,
-      std::list<std::list<cv::DMatch>>::iterator image_match);
+      std::list<std::vector<cv::DMatch>>::iterator image_match);
 
   unsigned int get_image_number() const;
 
@@ -59,8 +57,11 @@ class detect_points {
 
   void test_function();
 
-  friend void pose_estimation_2d2d(detect_points &points, cv::Mat &R,
-                                   cv::Mat &t, int index);
+  friend void pose_estimation_2d2d(
+      detect_points &points, cv::Mat &R, cv::Mat &t,
+      std::list<std::vector<cv::KeyPoint>>::iterator now_key_points,
+      std::list<cv::Mat>::iterator now_descriptors,
+      std::list<std::vector<cv::DMatch>>::iterator now_match);
 
   friend void get_R_t(detect_points &points, std::vector<cv::Mat> &R,
                       std::vector<cv::Mat> &t);

@@ -110,9 +110,7 @@ detect_points::detect_points(const std::string &location) {
  * @param i
  */
 void detect_points::find_feature_points(
-    std::list<cv::Mat>::iterator now_image,
-    std::list<std::vector<cv::KeyPoint>> &now_key_points,
-    std::list<cv::Mat> &now_descriptors) {
+    std::list<cv::Mat>::iterator now_image) {
   cv::Ptr<cv::ORB> orb =
       cv::ORB::create(500, 1.2f, 8, 31, 0, 2, cv::ORB::HARRIS_SCORE, 31, 20);
 
@@ -121,8 +119,8 @@ void detect_points::find_feature_points(
   orb->detect(*now_image, temp_key_points);
   orb->compute(*now_image, temp_key_points, temp_descriptor);
 
-  now_key_points.push_back(temp_key_points);
-  now_descriptors.push_back(temp_descriptor);
+  key_points.push_back(temp_key_points);
+  descriptors.push_back(temp_descriptor);
 }
 
 /**
@@ -131,10 +129,11 @@ void detect_points::find_feature_points(
  */
 void detect_points::matchFeaturePoints(
     std::list<cv::Mat>::iterator image_descriptors,
-    std::list<std::list<cv::DMatch>>::iterator image_match) {
+    std::list<std::vector<cv::DMatch>>::iterator image_match) {
   const float min_ratio = 1.f / 1.5f;
   cv::BFMatcher matcher(cv::NORM_HAMMING, false);
   std::vector<std::vector<cv::DMatch>> temp_matches;
+
   matcher.knnMatch(begin_image_descriptors, *image_descriptors, temp_matches,
                    2);
 
@@ -171,8 +170,11 @@ void detect_points::copy_key_points(
   }
 }
 
-void pose_estimation_2d2d(detect_points &points, cv::Mat &R, cv::Mat &t,
-                          int index) {
+void pose_estimation_2d2d(
+    detect_points &points, cv::Mat &R, cv::Mat &t,
+    std::list<std::vector<cv::KeyPoint>>::iterator now_key_points,
+    std::list<cv::Mat>::iterator now_descriptors,
+    std::list<std::vector<cv::DMatch>>::iterator now_matches) {
   double focal_length = 951.432;
   //        cv::Mat fundamental_matrix;
   cv::Mat essential_matrix;
@@ -182,13 +184,8 @@ void pose_estimation_2d2d(detect_points &points, cv::Mat &R, cv::Mat &t,
   std::vector<cv::Point2f> now_image_points;
   cv::Point2d principal_point(966.617, 532.934);
 
-  points.copy_key_points(first_image_points, now_image_points, index);
-  //            fundamental_matrix =
-  //                    cv::findFundamentalMat(first_image_points,
-  //                    now_image_points);
-  //            homography_matrix =
-  //                    cv::findHomography(first_image_points,
-  //                    now_image_points);
+  points.copy_key_points(first_image_points, now_image_points, now_matches,
+                         now_key_points);
   essential_matrix =
       cv::findEssentialMat(first_image_points, now_image_points, focal_length,
                            principal_point, cv::RANSAC);
@@ -210,20 +207,15 @@ void pose_estimation_2d2d(detect_points &points, cv::Mat &R, cv::Mat &t,
   }*/
 }
 
-void detect_points::test_function() {
-  cv::Mat outImage;
-  for (int i = 0; i < image_number; ++i) {
-    cv::drawMatches(begin_image, begin_image_key_points, images[i],
-                    key_points[i], matches[i], outImage);
-    cv::imshow("matches", outImage);
-    cv::waitKey(0);
-  }
-}
+void detect_points::test_function() { cv::Mat outImage; }
 
 void fuc(detect_points &points, std::vector<cv::Mat> &R,
-         std::vector<cv::Mat> &t, int i) {
-  points.find_feature_points(i);
-  points.matchFeaturePoints(i);
+         std::vector<cv::Mat> &t, std::list<cv::Mat>::iterator now_image,
+         std::list<std::vector<cv::KeyPoint>>::iterator now_key_points,
+         std::list<cv::Mat>::iterator now_descriptors,
+         std::list<std::vector<cv::DMatch>>::iterator now_match) {
+  points.find_feature_points(now_image);
+  points.matchFeaturePoints(now_image, now_match);
   //  pose_estimation_2d2d(points, R[i], t[i], i);
 }
 
@@ -231,27 +223,44 @@ void get_R_t(detect_points &points, std::vector<cv::Mat> &R,
              std::vector<cv::Mat> &t) {
   std::vector<std::thread> all_threads;
   std::vector<std::thread> threads;
-  for (int i = 0; i < points.image_number; ++i) {
-    all_threads.push_back(
-        std::thread{fuc, std::ref(points), std::ref(R), std::ref(t), i});
+
+  auto now_image = points.images.begin();
+  auto now_key_points = points.key_points.begin();
+  auto now_descriptors = points.descriptors.begin();
+  auto now_matches = points.matches.begin();
+
+  for (; now_image != points.images.end();
+       ++now_image, ++now_key_points, ++now_descriptors, ++now_matches) {
+    all_threads.push_back(std::thread{
+        fuc,
+        std::ref(points),
+        std::ref(R),
+        std::ref(t),
+        now_image,
+        now_key_points,
+        now_descriptors,
+        now_matches,
+    });
   }
   std::for_each(all_threads.begin(), all_threads.end(),
                 std::mem_fn(&std::thread::join));
 
-  for (int i = 0; i < 100; ++i) {
+  for (; now_image != points.images.end();
+       ++now_image, ++now_key_points, ++now_descriptors, ++now_matches) {
+    if (now_matches->size() < 8) {
+      now_image = points.images.erase(now_image);
+      now_key_points = points.key_points.erase(now_key_points);
+      now_descriptors = points.descriptors.erase(now_descriptors);
+      now_matches = points.matches.erase(now_matches);
+
+      continue;
+    }
   }
-  //  std::remove_if(points.images.begin(), points.images.end(),
-  //                 points.matches.size() < 8);
-  //  std::remove_if(points.key_points.begin(), points.key_points.end(),
-  //                 points.matches.size() < 8);
-  //  std::remove_if(points.descriptors.begin(), points.descriptors.end(),
-  //                 points.matches.size() < 8);
-  for (int i = 0; i < points.image_number; ++i) {
-    threads.push_back(std::thread{pose_estimation_2d2d, std::ref(points),
-                                  std::ref(R[i]), std::ref(t[i]), i});
-  }
-  std::for_each(threads.begin(), threads.end(),
-                std::mem_fn(&std::thread::join));
+
+  now_image = points.images.begin();
+  now_key_points = points.key_points.begin();
+  now_descriptors = points.descriptors.begin();
+  now_matches = points.matches.begin();
 }
 
 }  // namespace sfmProject
