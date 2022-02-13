@@ -9,10 +9,10 @@
 
 namespace sfmProject {
 
-cv::Point2d pixel2cam(const cv::Point2d &p, cv::Mat K) {
-  return cv::Point2d((p.x - K.at<double>(0, 2)) / K.at<double>(0, 0),
-                     (p.y - K.at<double>(1, 2)) / K.at<double>(1, 1));
-}
+// cv::Point2d pixel2cam(const cv::Point2d &p, cv::Mat K) {
+//   return cv::Point2d((p.x - K.at<double>(0, 2)) / K.at<double>(0, 0),
+//                      (p.y - K.at<double>(1, 2)) / K.at<double>(1, 1));
+// }
 
 detect_points::detect_points(std::vector<cv::Mat> &input_images) {
   std::copy(input_images.begin(), input_images.end(), images.begin());
@@ -36,6 +36,10 @@ detect_points::detect_points(const std::string &location) {
     return;
   }
 
+  cv::Mat temp;
+  cv::Mat temp_descriptors;
+  std::vector<cv::KeyPoint> temp_key_points;
+
   while ((ptr = readdir(pDir)) != nullptr) {
     // 这里我理解他的指针应该是自动会指向到下一个文件，所以不用写指针的移动
     std::string sub_file =
@@ -45,9 +49,6 @@ detect_points::detect_points(const std::string &location) {
             4) {  // 递归出口，当不是普通文件（8）和文件夹（4）时退出递归
       return;
     }
-    cv::Mat temp;
-    cv::Mat temp_descriptors;
-    std::vector<cv::KeyPoint> temp_key_points;
 
     // 普通文件直接加入到files
     if (ptr->d_type == 8) {
@@ -61,18 +62,17 @@ detect_points::detect_points(const std::string &location) {
             std::cout << ptr->d_name << std::endl;
             images.push_back(temp);
             key_points.push_back(temp_key_points);
-            orb->compute(images[images.size() - 1],
-                         key_points[key_points.size() - 1], temp_descriptors);
+
+            orb->compute(images.back(), key_points.back(), temp_descriptors);
             descriptors.push_back(temp_descriptors);
           }
         }
       }
     }
   }
-  begin_image = images[0].clone();
+  begin_image = images.begin()->clone();
   orb->detect(begin_image, begin_image_key_points);
   orb->compute(begin_image, begin_image_key_points, begin_image_descriptors);
-  std::cout << std::endl;
   image_number = images.size();
   key_points.resize(image_number);
   descriptors.resize(image_number);
@@ -81,7 +81,7 @@ detect_points::detect_points(const std::string &location) {
   std::cout << "have successfully read " << images.size() << " images"
             << std::endl;
   // 关闭根目录
-  std::cout << "test: " << images[0].size << std::endl;
+  std::cout << "test: " << images.front().size << std::endl;
   closedir(pDir);
 
   // windows edition
@@ -109,38 +109,49 @@ detect_points::detect_points(const std::string &location) {
  *
  * @param i
  */
-void detect_points::find_feature_points(int i) {
+void detect_points::find_feature_points(
+    std::list<cv::Mat>::iterator now_image,
+    std::list<std::vector<cv::KeyPoint>> &now_key_points,
+    std::list<cv::Mat> &now_descriptors) {
   cv::Ptr<cv::ORB> orb =
       cv::ORB::create(500, 1.2f, 8, 31, 0, 2, cv::ORB::HARRIS_SCORE, 31, 20);
-  orb->detect(images[i], key_points[i]);
-  orb->compute(images[i], key_points[i], descriptors[i]);
+
+  cv::Mat temp_descriptor;
+  std::vector<cv::KeyPoint> temp_key_points;
+  orb->detect(*now_image, temp_key_points);
+  orb->compute(*now_image, temp_key_points, temp_descriptor);
+
+  now_key_points.push_back(temp_key_points);
+  now_descriptors.push_back(temp_descriptor);
 }
 
 /**
  *
  * @param i
  */
-void detect_points::matchFeaturePoints(int i) {
+void detect_points::matchFeaturePoints(
+    std::list<cv::Mat>::iterator image_descriptors,
+    std::list<std::list<cv::DMatch>>::iterator image_match) {
   const float min_ratio = 1.f / 1.5f;
   cv::BFMatcher matcher(cv::NORM_HAMMING, false);
   std::vector<std::vector<cv::DMatch>> temp_matches;
-  //  matcher.match(begin_image_descriptors, descriptors[i], matches[i]);
-  matcher.knnMatch(begin_image_descriptors, descriptors[i], temp_matches, 2);
+  matcher.knnMatch(begin_image_descriptors, *image_descriptors, temp_matches,
+                   2);
 
   for (auto &temp_match : temp_matches) {
     const cv::DMatch b_match0 = temp_match[0];
     const cv::DMatch b_match1 = temp_match[1];
 
     if (b_match0.distance / b_match1.distance < min_ratio) {
-      matches[i].push_back(b_match0);
+      image_match->push_back(b_match0);
     }
   }
-  if (matches[i].size() < 8) {
-    std::cout << i << std::endl;
+  if (image_match->size() < 8) {
+    std::cout << "This is less than 8" << std::endl;
   }
 }
 
-int detect_points::get_image_number() const { return image_number; }
+unsigned int detect_points::get_image_number() const { return image_number; }
 
 /**
  *
@@ -148,16 +159,15 @@ int detect_points::get_image_number() const { return image_number; }
  * @param points2
  * @param image_index
  */
-void detect_points::copy_key_points(std::vector<cv::Point2f> &points1,
-                                    std::vector<cv::Point2f> &points2,
-                                    const int image_index) {
+void detect_points::copy_key_points(
+    std::vector<cv::Point2f> &points1, std::vector<cv::Point2f> &points2,
+    std::list<std::vector<cv::DMatch>>::iterator now_match,
+    std::list<std::vector<cv::KeyPoint>>::iterator now_key_points) {
   points1.clear();
   points2.clear();
-  for (int i = 0; i < (int)matches[image_index].size(); ++i) {
-    points1.push_back(
-        begin_image_key_points[matches[image_index][i].queryIdx].pt);
-    points2.push_back(
-        key_points[image_index][matches[image_index][i].trainIdx].pt);
+  for (int i = 0; i < (int)now_match->size(); ++i) {
+    points1.push_back(begin_image_key_points[(*now_match)[i].queryIdx].pt);
+    points2.push_back((*now_key_points)[(*now_match)[i].trainIdx].pt);
   }
 }
 
@@ -227,17 +237,15 @@ void get_R_t(detect_points &points, std::vector<cv::Mat> &R,
   }
   std::for_each(all_threads.begin(), all_threads.end(),
                 std::mem_fn(&std::thread::join));
-  points.images.erase(
-      std::remove_if(points.images.begin(), points.images.end(),
-                     [&](int i) { return points.matches[i].size() < 8; }),
-      points.images.end());
 
-//  std::remove_if(points.images.begin(), points.images.end(),
-//                 points.matches.size() < 8);
-//  std::remove_if(points.key_points.begin(), points.key_points.end(),
-//                 points.matches.size() < 8);
-//  std::remove_if(points.descriptors.begin(), points.descriptors.end(),
-//                 points.matches.size() < 8);
+  for (int i = 0; i < 100; ++i) {
+  }
+  //  std::remove_if(points.images.begin(), points.images.end(),
+  //                 points.matches.size() < 8);
+  //  std::remove_if(points.key_points.begin(), points.key_points.end(),
+  //                 points.matches.size() < 8);
+  //  std::remove_if(points.descriptors.begin(), points.descriptors.end(),
+  //                 points.matches.size() < 8);
   for (int i = 0; i < points.image_number; ++i) {
     threads.push_back(std::thread{pose_estimation_2d2d, std::ref(points),
                                   std::ref(R[i]), std::ref(t[i]), i});
