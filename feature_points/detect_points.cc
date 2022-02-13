@@ -129,23 +129,23 @@ void detect_points::find_feature_points(
  */
 void detect_points::matchFeaturePoints(
     std::list<cv::Mat>::iterator image_descriptors,
-    std::list<std::vector<cv::DMatch>>::iterator image_match) {
+    std::list<std::vector<cv::DMatch>>::iterator now_matches) {
   const float min_ratio = 1.f / 1.5f;
   cv::BFMatcher matcher(cv::NORM_HAMMING, false);
   std::vector<std::vector<cv::DMatch>> temp_matches;
 
-  matcher.knnMatch(begin_image_descriptors, *image_descriptors, temp_matches,
-                   2);
+  matcher.knnMatch(begin_image_descriptors, *image_descriptors,
+                   std::ref(temp_matches), 2);
 
   for (auto &temp_match : temp_matches) {
     const cv::DMatch b_match0 = temp_match[0];
     const cv::DMatch b_match1 = temp_match[1];
 
     if (b_match0.distance / b_match1.distance < min_ratio) {
-      image_match->push_back(b_match0);
+      now_matches->push_back(b_match0);
     }
   }
-  if (image_match->size() < 8) {
+  if (now_matches->size() < 8) {
     std::cout << "This is less than 8" << std::endl;
   }
 }
@@ -207,7 +207,54 @@ void pose_estimation_2d2d(
   }*/
 }
 
-void detect_points::test_function() { cv::Mat outImage; }
+void get_R_t(detect_points &points, std::vector<cv::Mat> &R,
+             std::vector<cv::Mat> &t) {
+  //  std::vector<std::thread> all_threads;
+  //  std::vector<std::thread> threads;
+
+  auto now_image = points.images.begin();
+  auto now_key_points = points.key_points.begin();
+  auto now_descriptors = points.descriptors.begin();
+  auto now_matches = points.matches.begin();
+
+  for (; now_image != points.images.end();
+       ++now_image, ++now_key_points, ++now_descriptors, ++now_matches) {
+    points.find_feature_points(now_image);
+    points.matchFeaturePoints(now_descriptors, now_matches);
+    //    all_threads.push_back(std::thread{
+    //        fuc,
+    //        std::ref(points),
+    //        std::ref(R),
+    //        std::ref(t),
+    //        now_image,
+    //        now_key_points,
+    //        now_descriptors,
+    //        now_matches,
+    //    });
+  }
+  //  std::for_each(all_threads.begin(), all_threads.end(),
+  //                std::mem_fn(&std::thread::join));
+
+  for (int i = 0; now_image != points.images.end();
+       i++, ++now_image, ++now_key_points, ++now_descriptors, ++now_matches) {
+    if (now_matches->size() < 8) {
+      now_image = points.images.erase(now_image);
+      now_key_points = points.key_points.erase(now_key_points);
+      now_descriptors = points.descriptors.erase(now_descriptors);
+      now_matches = points.matches.erase(now_matches);
+
+      continue;
+    } else {
+      pose_estimation_2d2d(points, R[i], t[i], now_key_points, now_descriptors,
+                           now_matches);
+    }
+  }
+
+  now_image = points.images.begin();
+  now_key_points = points.key_points.begin();
+  now_descriptors = points.descriptors.begin();
+  now_matches = points.matches.begin();
+}
 
 void fuc(detect_points &points, std::vector<cv::Mat> &R,
          std::vector<cv::Mat> &t, std::list<cv::Mat>::iterator now_image,
@@ -219,48 +266,6 @@ void fuc(detect_points &points, std::vector<cv::Mat> &R,
   //  pose_estimation_2d2d(points, R[i], t[i], i);
 }
 
-void get_R_t(detect_points &points, std::vector<cv::Mat> &R,
-             std::vector<cv::Mat> &t) {
-  std::vector<std::thread> all_threads;
-  std::vector<std::thread> threads;
-
-  auto now_image = points.images.begin();
-  auto now_key_points = points.key_points.begin();
-  auto now_descriptors = points.descriptors.begin();
-  auto now_matches = points.matches.begin();
-
-  for (; now_image != points.images.end();
-       ++now_image, ++now_key_points, ++now_descriptors, ++now_matches) {
-    all_threads.push_back(std::thread{
-        fuc,
-        std::ref(points),
-        std::ref(R),
-        std::ref(t),
-        now_image,
-        now_key_points,
-        now_descriptors,
-        now_matches,
-    });
-  }
-  std::for_each(all_threads.begin(), all_threads.end(),
-                std::mem_fn(&std::thread::join));
-
-  for (; now_image != points.images.end();
-       ++now_image, ++now_key_points, ++now_descriptors, ++now_matches) {
-    if (now_matches->size() < 8) {
-      now_image = points.images.erase(now_image);
-      now_key_points = points.key_points.erase(now_key_points);
-      now_descriptors = points.descriptors.erase(now_descriptors);
-      now_matches = points.matches.erase(now_matches);
-
-      continue;
-    }
-  }
-
-  now_image = points.images.begin();
-  now_key_points = points.key_points.begin();
-  now_descriptors = points.descriptors.begin();
-  now_matches = points.matches.begin();
-}
+void detect_points::test_function() { cv::Mat outImage; }
 
 }  // namespace sfmProject

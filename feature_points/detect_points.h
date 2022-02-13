@@ -46,7 +46,7 @@ class detect_points {
 
   void matchFeaturePoints(
       std::list<cv::Mat>::iterator image_descriptors,
-      std::list<std::vector<cv::DMatch>>::iterator image_match);
+      std::list<std::vector<cv::DMatch>>::iterator now_matches);
 
   unsigned int get_image_number() const;
 

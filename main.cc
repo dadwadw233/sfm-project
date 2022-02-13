@@ -3,7 +3,7 @@
 #include "feature_points/detect_points.h"
 //#include "pose_estimate.h"
 using namespace sfmProject;
-//cv::Mat pose_estimate::K;  // init the static var
+// cv::Mat pose_estimate::K;  // init the static var
 
 void get_file_names(std::string path, std::vector<std::string> &file_names) {}
 
@@ -22,10 +22,11 @@ int main() {
   R.resize(image_number), t.resize(image_number);
 
   get_R_t(points, R, t);
-//  pose_estimate P;
-//  P.poseGeneration(R, t);
+  //  pose_estimate P;
+  //  P.poseGeneration(R, t);
   b = clock();
   std::cout << b - a << std::endl;
-//  P.poseViewer();
+  std::cout << R.size() << ' ' << t.size() << std::endl;
+  //  P.poseViewer();
   return 0;
 }
