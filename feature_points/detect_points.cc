@@ -6,7 +6,6 @@
 
 #include <functional>
 #include <utility>
-#include <functional>
 
 namespace sfmProject {
 
@@ -73,7 +72,7 @@ detect_points::detect_points(const std::string &location) {
   std::cout << "have successfully read " << images.size() << " images"
             << std::endl;
   // 关闭根目录
-  std::cout << "test: " << images[0].size << std::endl;
+  // std::cout << "test: " << images[0].size << std::endl;
   closedir(pDir);
 
   // windows edition
@@ -113,31 +112,20 @@ void detect_points::find_feature_points(int i) {
  * @param i
  */
 void detect_points::matchFeaturePoints(int i) {
-  double min_distance{10000};
-  double max_distance{};
-  cv::BFMatcher matcher(cv::NORM_HAMMING);
-  matcher.match(begin_image_descriptors, descriptors[i], matches[i]);
-  // for (unsigned int i = 0; i < key_points.size(); ++i) {
-  //     min_distance = 100000, max_distance = 0;
-  //     for (int j = 0; j < descriptors[0].rows; ++j) {
-  //       double distance = matches[0][i].distance;
-  //       min_distance = min_distance < distance ? min_distance : distance;
-  //       max_distance = max_distance > distance ? max_distance : distance;
-  //     }
-  //   }
-  //  std::cout << "have successfully found all the match points" << std::endl;
+  const float min_ratio = 0.8;
+  cv::BFMatcher matcher(cv::NORM_HAMMING, false);
+  std::vector<std::vector<cv::DMatch>> temp_matches;
+  //  matcher.match(begin_image_descriptors, descriptors[i], matches[i]);
+  matcher.knnMatch(begin_image_descriptors, descriptors[i], temp_matches, 2);
 
-  //  for (unsigned int i = 0; i < key_points.size(); ++i) {
-  //    std::vector<cv::DMatch> temp_good_matches;
-  //    for (int j = 0; j < descriptors[0].rows; ++j) {
-  //      if (matches[i][j].distance <= fmax(2 * min_distance, 10.0)) {
-  //        temp_good_matches.push_back(matches[i][j]);
-  //      }
-  //    }
-  //    good_matches.push_back(temp_good_matches);
-  //  }
-  //        std::cout << "have successfully matched all the feature points" <<
-  //        std::endl;
+  for (auto &temp_match : temp_matches) {
+    const cv::DMatch b_match0 = temp_match[0];
+    const cv::DMatch b_match1 = temp_match[1];
+
+    if (b_match0.distance / b_match1.distance < min_ratio) {
+      matches[i].push_back(b_match0);
+    }
+  }
 }
 
 int detect_points::get_image_number() { return image_number; }
@@ -153,12 +141,20 @@ void detect_points::copy_key_points(std::vector<cv::Point2f> &points1,
                                     const int image_index) {
   points1.clear();
   points2.clear();
-  for (int i = 0; i < (int)matches[image_index].size(); ++i) {
+  for (int i = 0; i < (int) matches[image_index].size(); ++i) {
     points1.push_back(
         begin_image_key_points[matches[image_index][i].queryIdx].pt);
     points2.push_back(
         key_points[image_index][matches[image_index][i].trainIdx].pt);
   }
+}
+
+void detect_points::drawMatchedPoint() {
+  cv::Mat m;
+  cv::drawMatches(begin_image, key_points[0], images[9], key_points[9],
+                  matches[9], m);
+  cv::imshow("MatchedPoint", m);
+  cv::waitKey(0);
 }
 
 void pose_estimation_2d2d(detect_points &points, cv::Mat &R, cv::Mat &t,
@@ -221,6 +217,7 @@ void get_R_t(detect_points &points, std::vector<cv::Mat> &R,
   }
   std::for_each(all_threads.begin(), all_threads.end(),
                 std::mem_fn(&std::thread::join));
+
 }
 
 }  // namespace sfmProject

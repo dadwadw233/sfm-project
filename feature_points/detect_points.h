@@ -51,6 +51,8 @@ namespace sfmProject {
         friend void pose_estimation_2d2d(detect_points &points, cv::Mat &R, cv::Mat &t, int index);
 
         friend void get_R_t(detect_points &points, std::vector<cv::Mat> &R, std::vector<cv::Mat> &t);
+
+        void drawMatchedPoint();
     };
 }  // namespace sfmProject
 #endif  // SFM_PROJECT_DETECT_POINTS_H//

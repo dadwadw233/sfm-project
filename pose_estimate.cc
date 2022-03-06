@@ -14,7 +14,7 @@ void pose_estimate::initialize() {}
  * @param residual
  * @return
  */
-template <typename T>
+template<typename T>
 
 bool pose_estimate::PnPCeres::operator()(const T *const camera,
                                          T *residual) const {
@@ -69,7 +69,7 @@ void pose_estimate::solveBA() {
   ceres::Solve(options, &problem, &summary);
   std::cout << summary.FullReport() << "\n";
   cv::Mat R_vec = (cv::Mat_<double>(3, 1) << camera[0], camera[1],
-                   camera[2]);  //
+      camera[2]);  //
   cv::Mat R_cvest;
   Rodrigues(R_vec, R_cvest);  //
   std::cout << "R_cvest=" << R_cvest << std::endl;
@@ -87,10 +87,10 @@ void pose_estimate::poseGeneration(const std::vector<cv::Mat> R,
   cv::Mat initLoc(3, 1, CV_64F);
   cv::Mat initOrientation(3, 1, CV_64F);
   for (auto i = 0; i < initLoc.rows; i++) {
-    initLoc.at<float>(i, 0) = 0;
+    initLoc.at<double>(i, 0) = 0;
   }
   for (auto i = 0; i < initOrientation.rows; i++) {
-    initOrientation.at<float>(i, 0) = (i == 0) ? 1 : 0;
+    initOrientation.at<double>(i, 0) = (i == 0) ? 1 : 0;
   }
   std::pair<cv::Mat, cv::Mat> initPoint(initLoc, initOrientation);
   this->poseList.push_back(initPoint);
@@ -98,49 +98,48 @@ void pose_estimate::poseGeneration(const std::vector<cv::Mat> R,
     cv::Mat nL = initLoc + (t[i]);
     cv::Mat nO = R[i] * initOrientation;
     std::pair<cv::Mat, cv::Mat> nextPoint(nL, nO);
+    // std::cout<<nextPoint.first<<std::endl;
     this->poseList.push_back(nextPoint);
-    std::cout << nL << " " << nO << std::endl;
   }
   return;
 }
 
 void pose_estimate::pcGeneration(
     const std::vector<std::vector<cv::KeyPoint>> keyPoints) {
-  for(auto i = 0;i<keyPoints.size();i++){
-    for(auto j = 0;j<keyPoints[i].size();j++){
+  for (auto i = 0; i < keyPoints.size(); i++) {
+    for (auto j = 0; j < keyPoints[i].size(); j++) {
       pcl::PointXYZ point;
     }
   }
 }
 void pose_estimate::poseViewer() {
+  pcl::PointCloud<pcl::PointXYZRGB>::Ptr poseCloud(
+      new pcl::PointCloud<pcl::PointXYZRGB>);
 
-  pcl::PointCloud<pcl::PointXYZRGB>::Ptr poseCloud (new pcl::PointCloud<pcl::PointXYZRGB>);
-
-  for(auto i = 2; i<this->poseList.size();i++){
+  for (auto i = 2; i < this->poseList.size(); i++) {
     pcl::PointXYZRGB point;
-    //std::cout<<poseList[i].first.at<float>(0,1)<<std::endl;
-
-    point.x = poseList[i].first.at<float>(0,0);
-    point.y = poseList[i].first.at<float>(1,0);
-    point.z = poseList[i].first.at<float>(2,0);
-    std::cout<<point.x<<" "<<point.y<<" "<<point.z<<std::endl;
+    point.x = poseList[i].first.at<double>(0, 0);
+    point.y = poseList[i].first.at<double>(1, 0);
+    point.z = poseList[i].first.at<double>(2, 0);
+    std::cout << point.x << " " << point.y << " " << point.z << std::endl;
     point.rgb = 255;
     poseCloud->points.push_back(point);
   }
-  pcl::visualization::PCLVisualizer::Ptr viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
-//设置背景颜色
-  viewer->setBackgroundColor (0, 0, 0);
+  pcl::visualization::PCLVisualizer::Ptr viewer(
+      new pcl::visualization::PCLVisualizer("3D Viewer"));
+  //设置背景颜色
+  viewer->setBackgroundColor(0, 0, 0);
 
   viewer->addCoordinateSystem();
-//初始化默认相机参数
-  viewer->initCameraParameters ();
-//将点云加入到viewer
-  //viewer->addPointCloud<pcl::PointXYZRGB> (poseCloud, "label_pc");
+  //初始化默认相机参数
+  viewer->initCameraParameters();
+  //将点云加入到viewer
+  viewer->addPointCloud<pcl::PointXYZRGB>(poseCloud, "label_pc");
 
-  //viewer->setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 10, "label_pc");
+  viewer->setPointCloudRenderingProperties(
+      pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 10, "label_pc");
 
-  while (!viewer->wasStopped())
-  {
+  while (!viewer->wasStopped()) {
     viewer->spinOnce();
   }
 }
