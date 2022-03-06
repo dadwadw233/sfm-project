@@ -14,7 +14,7 @@ void pose_estimate::initialize() {}
  * @param residual
  * @return
  */
-template<typename T>
+template <typename T>
 
 bool pose_estimate::PnPCeres::operator()(const T *const camera,
                                          T *residual) const {
@@ -69,7 +69,7 @@ void pose_estimate::solveBA() {
   ceres::Solve(options, &problem, &summary);
   std::cout << summary.FullReport() << "\n";
   cv::Mat R_vec = (cv::Mat_<double>(3, 1) << camera[0], camera[1],
-      camera[2]);  //
+                   camera[2]);  //
   cv::Mat R_cvest;
   Rodrigues(R_vec, R_cvest);  //
   std::cout << "R_cvest=" << R_cvest << std::endl;
@@ -116,19 +116,10 @@ void pose_estimate::poseViewer() {
   pcl::PointCloud<pcl::PointXYZRGB>::Ptr poseCloud(
       new pcl::PointCloud<pcl::PointXYZRGB>);
 
-  for (auto i = 2; i < this->poseList.size(); i++) {
-    pcl::PointXYZRGB point;
-    point.x = poseList[i].first.at<double>(0, 0);
-    point.y = poseList[i].first.at<double>(1, 0);
-    point.z = poseList[i].first.at<double>(2, 0);
-    std::cout << point.x << " " << point.y << " " << point.z << std::endl;
-    point.rgb = 255;
-    poseCloud->points.push_back(point);
-  }
   pcl::visualization::PCLVisualizer::Ptr viewer(
       new pcl::visualization::PCLVisualizer("3D Viewer"));
   //设置背景颜色
-  viewer->setBackgroundColor(0, 0, 0);
+  viewer->setBackgroundColor(255, 255, 255);
 
   viewer->addCoordinateSystem();
   //初始化默认相机参数
@@ -139,8 +130,23 @@ void pose_estimate::poseViewer() {
   viewer->setPointCloudRenderingProperties(
       pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 10, "label_pc");
 
+  int i = 2;
   while (!viewer->wasStopped()) {
-    viewer->spinOnce();
+    // for (auto i = 2; i < this->poseList.size(); i++) {
+    pcl::PointXYZRGB point;
+    point.x = poseList[i].first.at<double>(0, 0);
+    point.y = poseList[i].first.at<double>(1, 0);
+    point.z = poseList[i].first.at<double>(2, 0);
+    std::cout << point.x << " " << point.y << " " << point.z << std::endl;
+    point.rgb = 255;
+    poseCloud->points.push_back(point);
+    //}
+    viewer->updatePointCloud(poseCloud, "label_pc");
+    if (i != 2) {
+      viewer->addLine(poseCloud->points[i-3],poseCloud->points[i-2]);
+    }
+    i++;
+    viewer->spinOnce(1000);
   }
 }
 }  // namespace sfmProject
