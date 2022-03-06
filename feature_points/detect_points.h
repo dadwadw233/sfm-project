@@ -53,6 +53,8 @@ namespace sfmProject {
         friend void get_R_t(detect_points &points, std::vector<cv::Mat> &R, std::vector<cv::Mat> &t);
 
         void drawMatchedPoint();
+
+        void reducefalsematches();
     };
 }  // namespace sfmProject
 #endif  // SFM_PROJECT_DETECT_POINTS_H//

@@ -137,13 +137,15 @@ void pose_estimate::poseViewer() {
     point.x = poseList[i].first.at<double>(0, 0);
     point.y = poseList[i].first.at<double>(1, 0);
     point.z = poseList[i].first.at<double>(2, 0);
+    //point.z = 0;
     std::cout << point.x << " " << point.y << " " << point.z << std::endl;
     point.rgb = 255;
     poseCloud->points.push_back(point);
     //}
     viewer->updatePointCloud(poseCloud, "label_pc");
     if (i != 2) {
-      viewer->addLine(poseCloud->points[i-3],poseCloud->points[i-2]);
+      //viewer->addArrow(poseCloud->points[i-3],poseCloud->points[i-2],("lines"+i));
+      viewer->addArrow(poseCloud->points[i-2],poseCloud->points[i-3],0,0,0, false,("lines"+i));
     }
     i++;
     viewer->spinOnce(1000);

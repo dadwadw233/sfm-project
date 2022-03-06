@@ -21,8 +21,8 @@ int main() {
   std::vector<cv::Mat> R;
   std::vector<cv::Mat> t;
   R.resize(image_number), t.resize(image_number);
-
   get_R_t(points, R, t);
+  //points.reducefalsematches();
   points.drawMatchedPoint();
   pose_estimate P;
   P.poseGeneration(R, t);

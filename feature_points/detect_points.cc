@@ -127,6 +127,27 @@ void detect_points::matchFeaturePoints(int i) {
     }
   }
 }
+void detect_points::reducefalsematches() {
+  for(auto i = 1;i<matches.size();i++){
+  std::vector<cv::Point2f>srcPoint(matches[i].size());
+  std::vector<cv::Point2f>dstPoint(matches[i].size());
+  for (auto j = 0;j<matches[i].size();j++){
+    std::cout<<"successfully entered the first circle"<<std::endl;
+    srcPoint[j] = key_points[0][matches[i][j].trainIdx].pt;
+    dstPoint[j] = key_points[i][matches[i][j].queryIdx].pt;
+  }
+
+  std::vector<unsigned char>inlierMask(srcPoint.size());
+  auto homography = cv::findHomography(srcPoint,dstPoint,CV_FM_RANSAC,3,inlierMask);
+  std::vector<cv::DMatch>inliers;
+  for(auto k = 0;i< inlierMask.size(); k++){
+    if(inlierMask[k]){
+      inliers.push_back(matches[i][k]);
+    }
+  }
+  matches[i].swap(inliers);
+  }
+}
 
 int detect_points::get_image_number() { return image_number; }
 
