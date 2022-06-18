@@ -1,10 +1,8 @@
 //
 // Created by yyh on 2022/1/28.
 //
-
 #include "pose_estimate.h"
 namespace sfmProject {
-
 pose_estimate::pose_estimate() {}
 pose_estimate::~pose_estimate() {}
 void pose_estimate::initialize() {}
@@ -17,7 +15,6 @@ void pose_estimate::initialize() {}
  * @return
  */
 template <typename T>
-
 
 bool pose_estimate::PnPCeres::operator()(const T *const camera,
                                          T *residual) const {
@@ -47,7 +44,8 @@ bool pose_estimate::PnPCeres::operator()(const T *const camera,
  */
 ceres::CostFunction *pose_estimate::PnPCeres::Create(const cv::Point2f &uv,
                                                      const cv::Point3f &xyz) {
-  return (new ceres::AutoDiffCostFunction<PnPCeres, 2, 6>(new PnPCeres(uv, xyz)));
+  return (
+      new ceres::AutoDiffCostFunction<PnPCeres, 2, 6>(new PnPCeres(uv, xyz)));
 }
 
 /**
@@ -83,5 +81,67 @@ void pose_estimate::solveBA() {
   Eigen::Isometry3d T(R_est);  //
   T.pretranslate(t_est);
   std::cout << T.matrix() << std::endl;
+}
+void pose_estimate::poseGeneration(const std::vector<cv::Mat> R,
+                                   const std::vector<cv::Mat> t) {
+  cv::Mat initLoc(3, 1, CV_64F);
+  cv::Mat initOrientation(3, 1, CV_64F);
+  for (auto i = 0; i < initLoc.rows; i++) {
+    initLoc.at<float>(i, 0) = 0;
+  }
+  for (auto i = 0; i < initOrientation.rows; i++) {
+    initOrientation.at<float>(i, 0) = (i == 0) ? 1 : 0;
+  }
+  std::pair<cv::Mat, cv::Mat> initPoint(initLoc, initOrientation);
+  this->poseList.push_back(initPoint);
+  for (size_t i = 1; i < R.size(); i++) {
+    cv::Mat nL = initLoc + (t[i]);
+    cv::Mat nO = R[i] * initOrientation;
+    std::pair<cv::Mat, cv::Mat> nextPoint(nL, nO);
+    this->poseList.push_back(nextPoint);
+    std::cout << nL << " " << nO << std::endl;
+  }
+  return;
+}
+
+void pose_estimate::pcGeneration(
+    const std::vector<std::vector<cv::KeyPoint>> keyPoints) {
+  for(auto i = 0;i<keyPoints.size();i++){
+    for(auto j = 0;j<keyPoints[i].size();j++){
+      pcl::PointXYZ point;
+    }
+  }
+}
+void pose_estimate::poseViewer() {
+
+  pcl::PointCloud<pcl::PointXYZRGB>::Ptr poseCloud (new pcl::PointCloud<pcl::PointXYZRGB>);
+
+  for(auto i = 2; i<this->poseList.size();i++){
+    pcl::PointXYZRGB point;
+    //std::cout<<poseList[i].first.at<float>(0,1)<<std::endl;
+
+    point.x = poseList[i].first.at<float>(0,0);
+    point.y = poseList[i].first.at<float>(1,0);
+    point.z = poseList[i].first.at<float>(2,0);
+    std::cout<<point.x<<" "<<point.y<<" "<<point.z<<std::endl;
+    point.rgb = 255;
+    poseCloud->points.push_back(point);
+  }
+  pcl::visualization::PCLVisualizer::Ptr viewer (new pcl::visualization::PCLVisualizer ("3D Viewer"));
+//设置背景颜色
+  viewer->setBackgroundColor (0, 0, 0);
+
+  viewer->addCoordinateSystem();
+//初始化默认相机参数
+  viewer->initCameraParameters ();
+//将点云加入到viewer
+  //viewer->addPointCloud<pcl::PointXYZRGB> (poseCloud, "label_pc");
+
+  //viewer->setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 10, "label_pc");
+
+  while (!viewer->wasStopped())
+  {
+    viewer->spinOnce();
+  }
 }
 }  // namespace sfmProject
