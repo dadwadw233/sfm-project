@@ -11,7 +11,7 @@
 #include <opencv2/opencv.hpp>
 #include <vector>
 #include "ceres/rotation.h"
-#include "feature_points/detect_points.h"
+#include "detect_points.h"
 namespace sfmProject {
 class pose_estimate {
  private:
